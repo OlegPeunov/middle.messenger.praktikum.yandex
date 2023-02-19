@@ -12,9 +12,12 @@ id: "root"
 </head>
 <body>
   <div class="root">
+    <header class="pages-nav">
+      <a href="../../main/index.hbs">{{> button/button label = 'Авторизоваться' className='button-nav'}}</a>
+    </header>
     <div class="popup popup_type_autorisation">
       <div class="popup__content">
-        <div class="popup__title">Вход</div>
+        <div class="popup__title">Регистрация</div>
         <form class="popup__form" novalidate id="signin">
           <p class="popup__input-title">Логин</p>
           <input type="login" id="login-signin" name="login" class="popup__input" required placeholder="Логин" value="">
@@ -25,7 +28,7 @@ id: "root"
 
           <button id="popup-button-signin" class="popup__button" disabled >Авторизоваться</button>
           <p class="popup__no-account">
-          <a class="popup__no-account popup__no-account_link" id="no-account" href="#">Нет аккаунта?</a></p>
+          <a class="popup__no-account popup__no-account_link" id="no-account" href="../../main/index.hbs">Войти</a></p>
         </form>
       </div>
     </div>
