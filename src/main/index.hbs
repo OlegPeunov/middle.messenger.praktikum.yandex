@@ -13,8 +13,8 @@ id: "root"
 <body>
   <div class="root">
     <header class="pages-nav">
-      {{> button label = 'Авторизоваться'}}
-      {{> button label = 'Регистрация'}}
+      {{> button/button label = 'Авторизоваться' className='button-nav'}}
+      <a href="../pages/sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
     </header>
     <div class="popup popup_type_autorisation">
       <div class="popup__content">
