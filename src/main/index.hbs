@@ -8,10 +8,27 @@ id: "root"
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Massenger</title>
-  <script src="index.js" type="module"></script>
   <link rel="stylesheet" href="../pages/index.pcss" />
 </head>
 <body>
-  <div class="{{ id }}"></div>
+  <div class="root">
+    <div class="popup popup_type_autorisation">
+      <div class="popup__content">
+        <div class="popup__title">Вход</div>
+        <form class="popup__form" novalidate id="signin">
+          <p class="popup__input-title">Логин</p>
+          <input type="email" id="email-signin" name="email" class="popup__input" required placeholder="Введите почту" value="">
+          <span id="error-email-signin" class="error-message"></span>
+          <p class="popup__input-title">Пароль</p>
+          <input type="password" id="password-signin" name="password" class="popup__input" required minlength="8" placeholder="Введите пароль" value="">
+          <span id="error-password-signin" class="error-message"></span>
+          <span id="error-server-signIn" class="error-message error-message_type_server"></span>
+
+          <button id="popup-button-signin" class="popup__button" disabled >Войти</button>
+          <a class="popup__or-text popup__or-text_link" id="registration" href="#">Нет аккаунта?</a>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
