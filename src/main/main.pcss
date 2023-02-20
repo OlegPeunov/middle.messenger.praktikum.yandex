@@ -15,7 +15,7 @@
   align-items: center;
   top: 0;
   left: 0;
-  background-color: #FF0000;
+  background-color: rgba(71, 84, 181, 0.2);
   width: 100%;
   height: 32px;
 }
@@ -23,5 +23,52 @@
 .chat{
   width: 100%;
   height: 100vh;
-  background-color: blueviolet;
+  background-color: white;
+}
+
+.chat__left{
+  width: 310px;
+  height: 100%;
+  background-color: #FBFBFB;
+  border-right: 1px solid #EAEAEA;
+}
+
+.chat__search-block{
+  width: 290px;
+  height: 102px;
+  border-bottom: 1px solid #EAEAEA;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat__profile{
+  width: 100%;
+  text-align: end;
+  color: #999999;
+  font-family: 'inter';
+  font-weight: 500;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.7px;
+}
+
+.chat__search{
+  width: 290px;
+  height: 32px;
+  border-radius: 5px;
+  margin: 0 10px 14px;
+  border: none;
+  background-color: #EFEFEF;
+  text-align: center;
+  outline: none;
+}
+
+.chat__list{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  overflow: scroll;
 }
