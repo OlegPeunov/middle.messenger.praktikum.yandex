@@ -8,12 +8,12 @@ id: "root"
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Massenger</title>
-  <link rel="stylesheet" href="../index.pcss" />
+  <link rel="stylesheet" href="../../pages/index.pcss" />
 </head>
 <body>
   <div class="root">
     <header class="pages-nav">
-      <a href="../../main/index.hbs">{{> button/button label = 'Авторизоваться' className='button-nav'}}</a>
+      <a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a>
     </header>
     <div class="popup popup_type_signup">
       <div class="popup__content">
@@ -45,7 +45,7 @@ id: "root"
           <div>
             <button id="popup-button-signup" class="popup__button" disabled >Авторизоваться</button>
             <p class="popup__no-account">
-            <a class="popup__no-account popup__no-account_link" id="no-account" href="../../main/index.hbs">Войти</a></p>
+            <a class="popup__no-account popup__no-account_link" id="no-account" href="../sign-in/signin.hbs">Войти</a></p>
           </div>
         </form>
       </div>
