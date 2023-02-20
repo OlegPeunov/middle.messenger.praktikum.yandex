@@ -32,14 +32,13 @@
   height: 100%;
 }
 
-.popup_type_autorisation{
+.popup_type_signin{
   display: flex;
   /* display: none; */
 }
 
 .popup__content {
   width: 340px;
-  height: 450px;
   background-color: #fff;
   border-radius: 10px;
   position: relative;
@@ -60,7 +59,14 @@
 }
 
 .popup__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-top: 40px;
+}
+
+.popup__form_type_signin {
+  height: 320px;
 }
 
 .popup__input-title{
@@ -94,8 +100,11 @@
 .popup__button {
   width: 100%;
   height: 37px;
-  margin-top: 99px;
+  position: relative;
+  left: 0;
+  bottom: 0;
   color: white;
+  letter-spacing: 0.7px;
   /* opacity: 0.8; */
   font-family: 'inter';
   font-weight: 500;
@@ -109,7 +118,8 @@
 }
 
 .popup__no-account{
-  margin: 16px 0 0;
+  margin: 14px 0 0 0;
+  letter-spacing: 0.5px;
   text-align: center;
   font-family: 'inter'; 
   font-weight: 400;
@@ -125,15 +135,12 @@
 
 .error-message{
   position: relative;
-  display: inline-block;
-  height: 15px;
-  top: -14px;
   left: 0;
   font-family: 'inter';
+  top: -14px;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-
   color: #FF0000;
 }
