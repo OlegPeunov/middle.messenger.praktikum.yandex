@@ -63,6 +63,16 @@
   background-color: #EFEFEF;
   text-align: center;
   outline: none;
+  background-image: url('../../static/images/search_icon.svg');
+  background-repeat: no-repeat;
+}
+
+.chat__search:focus::placeholder {
+  color: transparent;
+}
+
+.chat__search:focus {
+  background-image:none;
 }
 
 .chat__list{
