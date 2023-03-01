@@ -26,23 +26,6 @@
   background-color: white;
 }
 
-.chat__left{
-  width: 310px;
-  height: 100%;
-  background-color: #FBFBFB;
-  border-right: 1px solid #EAEAEA;
-}
-
-.chat__search-block{
-  width: 290px;
-  height: 102px;
-  border-bottom: 1px solid #EAEAEA;
-  margin: 0 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .chat__profile{
   width: 100%;
   text-align: end;
@@ -76,10 +59,29 @@
   background-image:none;
 }
 
+.chat__left{
+  width: 310px;
+  height: 100%;
+  background-color: #FBFBFB;
+  border-right: 1px solid #EAEAEA;
+  overflow: hidden;
+}
+
+.chat__search-block{
+  width: 290px;
+  height: 102px;
+  border-bottom: 1px solid #EAEAEA;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .chat__list{
+  direction: rtl;
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 605px;
   flex-direction: column;
-  overflow: hidden;
+  overflow: scroll;
 }
