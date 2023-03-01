@@ -23,7 +23,9 @@ id: "root"
           <input type="search" id="search-chat" name="search" class="chat__search" placeholder="Поиск" value="">
         </div>
         <div class="chat__list">
-          {{!-- {{> chat/chat userName = 'Андрей' lastMessage ='Привет, дружище' dateTime: 'Вт' unredAmount = 3 }} --}}
+          {{> chat/chat  contentClass = "" userName = 'Гутенберг' lastMessage ='Привет, дружище' dateTime = 'Вт' unredAmount = 3 }}
+          {{> chat/chat  contentClass = "content-holder__choice" userName = 'Аня' lastMessage ='Привет, дружище' dateTime = 'Вт' unredAmount = 3 }}
+          {{> chat/chat  contentClass = "" userName = 'Фердинант' lastMessage ='Привет, дружище' dateTime = 'Вт' unredAmount = 3 }}
         </div>
       </div>
       <div class="chat-right"></div>
