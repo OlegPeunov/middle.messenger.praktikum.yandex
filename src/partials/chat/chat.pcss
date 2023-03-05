@@ -13,19 +13,20 @@
 .content-holder{
   position: relative;
   display: flex;
-  width: 310px;
+  width: 290px;
   height: 70px;
   margin: 2px 0;
-  left: 10px;
 }
 
 .content-holder__choice{
   background-color: #E4EDFD;
+  width: 290px;
   display: flex;
 }
 
 .avatar-parent{
   display: flex;
+  /* margin-left: 10px; */
   width: 47px;
 }
 
@@ -61,14 +62,16 @@
   max-width: 193px;
   max-height: 30px;
   color: #999999;
-  text-overflow: ellipsis; 
-  display: block; 
-  overflow: hidden; 
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  position:absolute;
 }
 
 .info{
   border: 1px solid red;
-  width: 28px;
+  width: 40px;
   display: flex;
   flex-direction: column;
   justify-content: end;
