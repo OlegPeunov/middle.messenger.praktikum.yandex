@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "postcss-custom-media": {},
+    "postcss-easy-import": {},
+    "postcss-for": {},
+    "postcss-mixins": {},
+    "postcss-nested": {}
+  }
+}
