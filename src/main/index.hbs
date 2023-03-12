@@ -30,7 +30,6 @@ id: "root"
             adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit. 
             Eaque quaerat nobis quod.' dateTime = '15:12' unredAmount = 3 }}
           {{> chat/chat  contentClass = "content-holder__choice" userName = 'Аня' lastMessage ='Привет, дружище' dateTime = 'Вт' isUnread = "unread-show" unredAmount = 3 }}
-
         </div>
       </div>
       <div class="chat__right">
@@ -45,7 +44,17 @@ id: "root"
           </div>
         </div>
         <div class="chat__mesaages">
-
+          {{> message/message contentClass = "message_received" sentTime = '11:56' isPicture='' textMessage='Привет! Смотри, 
+          тут всплыл интересный кусок лунной космической 
+          истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC 
+          для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL —
+           и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
+           как астронавты с собой забрали только кассеты с пленкой.<br><br>Хассельблад в итоге 
+           адаптировал SWC для космоса, но что-то пошло не так и на ракету 
+          они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно 
+          продали на аукционе за 45000 евро.' showImg=''}}
+          {{> message/message contentClass = "" textMessage='' sentTime = '11:56' showImg='message-img_show'}}
+          {{> message/message contentClass = "message_sent" sentTime = '11:56' isPicture='' textMessage='Круто!' showImg=''}}
         </div>
         <div class="chat__write">
           <form class="write__input-block">
