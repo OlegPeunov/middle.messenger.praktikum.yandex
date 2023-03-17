@@ -14,12 +14,14 @@ id: "root"
   <div class="root">
     <header class="header">
       <nav class="pages-nav">
-        <a class="button-nav" href="../pages/sign-in/signin.hbs">{{> button/button label = 'Вход'}}</a>
-        <a class="button-nav" href="../pages/sign-up/signup.hbs">{{> button/button label = 'Регистрация'}}</a>
-        <a class="button-nav" href="../pages/profile/profile.hbs">{{> button/button label = 'Профиль'}}</a>
-        <a class="button-nav" href="../pages/edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль'}}</a>
-        <a class="button-nav" href="../pages/404/404.hbs">{{> button/button label = '404'}}</a>
-        <a class="button-nav" href="../pages/500/500.hbs">{{> button/button label = '500'}}</a>
+        <ul class="nav-list">
+          <li class="nav-element"><a class="button-nav" href="../pages/sign-in/signin.hbs">{{> button/button label = 'Вход'}}</a></li>
+          <li class="nav-element"><a class="button-nav" href="../pages/sign-up/signup.hbs">{{> button/button label = 'Регистрация'}}</a></li>
+          <li class="nav-element"><a class="button-nav" href="../pages/profile/profile.hbs">{{> button/button label = 'Профиль'}}</a></li>
+          <li class="nav-element"><a class="button-nav" href="../pages/edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль'}}</a></li>
+          <li class="nav-element"><a class="button-nav" href="../pages/404/404.hbs">{{> button/button label = '404'}}</a></li>
+          <li class="nav-element"><a class="button-nav" href="../pages/500/500.hbs">{{> button/button label = '500'}}</a></li>
+        </ul>
       </nav>
     </header>
     <main class="chat">

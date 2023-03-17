@@ -14,11 +14,13 @@ id: "root"
   <div class="root">
     <header class="header">
       <nav class="pages-nav">
-        <a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a>
-        <a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a> 
-        <a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a>       
-        <a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a> 
-        <a href="../edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль' className='button-nav'}}</a>          
+        <ul class="nav-list">
+          <li class="nav-element"><a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a></li>
+          <li class="nav-element"><a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a></li> 
+          <li class="nav-element"><a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a></li>       
+          <li class="nav-element"><a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a></li> 
+          <li class="nav-element"><a href="../edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль' className='button-nav'}}</a></li>          
+        </ul>
       </nav>
     </header>
     <main class="popup popup_type_signup">
