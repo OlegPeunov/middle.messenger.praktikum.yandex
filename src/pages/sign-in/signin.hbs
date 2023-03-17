@@ -1,0 +1,43 @@
+---
+id: "root" 
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massenger</title>
+  <link rel="stylesheet" href="../../pages/index.pcss" />
+</head>
+<body>
+  <div class="root">
+    <header class="pages-nav">
+      <a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
+      <a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a>    
+      <a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a>    
+      <a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a>    
+    </header>
+    <div class="popup popup_type_signin">
+      <div class="popup__content">
+        <div class="popup__title">Вход</div>
+        <form class="popup__form popup__form_type_signin" novalidate id="signin">
+          <div>
+            <p class="popup__input-title">Логин</p>
+            <input type="login" id="login-signin" name="login" class="popup__input" required placeholder="Логин" value="">
+            <span id="error-login-signin" class="error-message"></span>
+            <p class="popup__input-title">Пароль</p>
+            <input type="password" id="password-signin" name="password" class="popup__input" required minlength="8" placeholder="Пароль" value="">
+            <span id="error-password-signin" class="error-message">Пример ошибки</span>
+          </div>
+          <div>
+            <button id="popup-button-signin" class="popup__button" disabled >Авторизоваться</button>
+            <p class="popup__no-account">
+            <a class="popup__no-account popup__no-account_link" id="no-account" href="../sign-up/signup.hbs">Нет аккаунта?</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
