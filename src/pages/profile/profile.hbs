@@ -12,14 +12,16 @@ id: "root"
 </head>
 <body>
   <div class="root">
-    <header class="pages-nav">
-      <a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
-      <a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a>
-      <a href="../../main/index.hbs">{{> button/button label = 'Основная' className='button-nav'}}</a>
-      <a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a>
-      <a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a>
+    <header class="header">
+      <nav class="pages-nav">
+        <a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
+        <a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a>
+        <a href="../../main/index.hbs">{{> button/button label = 'Основная' className='button-nav'}}</a>
+        <a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a>
+        <a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a>
+      </nav>
     </header>
-    <div class="profile">
+    <main class="profile">
       <div class="prfile__img-block">
         <div class="user-img"></div>
         <div class="sub-name">Иван</div>
@@ -55,7 +57,7 @@ id: "root"
         <div class="profile__item"><a class="profile-btn" id="change-password" href="#">Изменить пароль</a></div>
         <a class="exit-btn" id="change-data" href="../../main/index.hbs">Выйти</a>
       </div>  
-    </div>
+    </main>
   </div>
 </body>
 </html>
