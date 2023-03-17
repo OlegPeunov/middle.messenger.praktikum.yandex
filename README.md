@@ -18,9 +18,8 @@
 * Development режим - **npm run dev**
 * Запустить сборку production-билда - **npm run start**
 
-
-### [Посмотреть проект>>>](https://glittering-faloodeh-884039.netlify.app/)
-## [Макет>>>](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0-1&t=JFuSa2YWbRhbvhdY-0)
+### [Посмотреть проект>>>](https://glowing-custard-98d816.netlify.app/)
+#### [Макет>>>](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0-1&t=JFuSa2YWbRhbvhdY-0)
 
 ***
 Проект создан с помощью следующих технологий: JS, Git, Parcel, PostCss Code, Netlify
