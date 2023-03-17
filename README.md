@@ -20,7 +20,7 @@
 
 
 ### [Посмотреть проект>>>](https://glowing-custard-98d816.netlify.app/)
-### [Макет>>>](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0-1&t=JFuSa2YWbRhbvhdY-0)
+#### [Макет>>>](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0-1&t=JFuSa2YWbRhbvhdY-0)
 
 
 ***
