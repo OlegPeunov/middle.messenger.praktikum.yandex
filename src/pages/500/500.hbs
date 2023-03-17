@@ -2,7 +2,7 @@
 id: "root" 
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,17 +12,20 @@ id: "root"
 </head>
 <body>
   <div class="root-err">
-    <header class="pages-nav">
-      <a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
-      <a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a>
-      <a href="../../main/index.hbs">{{> button/button label = 'Основная' className='button-nav'}}</a>
-      <a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a>    
+    <header class="header">
+      <nav class="pages-nav">
+        <a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
+        <a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a>
+        <a href="../../main/index.hbs">{{> button/button label = 'Основная' className='button-nav'}}</a>
+        <a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a>    
+        <a href="../edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль' className='button-nav'}}</a>    
+      </nav>
     </header>
-    <div class="err__block">
+    <main class="err__block">
       <h1 class="err__num">500</h1>
       <h2 class="err__description">Мы уже фиксим</h2>
       <a class="err__btn" id="back-to-chat" href="../../main/index.hbs">Назад к чатам</a>
-    </div>
+    </main>
   </div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 id: "root" 
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +12,16 @@ id: "root"
 </head>
 <body>
   <div class="root">
-    <header class="pages-nav">
-      <a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
-      <a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a>    
-      <a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a>    
-      <a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a>    
+    <header class="header">
+      <nav class="pages-nav">
+        <a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a>
+        <a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a>    
+        <a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a>    
+        <a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a>
+        <a href="../edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль' className='button-nav'}}</a>        
+      </nav>
     </header>
-    <div class="popup popup_type_signin">
+    <main class="popup popup_type_signin">
       <div class="popup__content">
         <div class="popup__title">Вход</div>
         <form class="popup__form popup__form_type_signin" novalidate id="signin">
@@ -37,7 +40,7 @@ id: "root"
           </div>
         </form>
       </div>
-    </div>
+    </main>
   </div>
 </body>
 </html>
