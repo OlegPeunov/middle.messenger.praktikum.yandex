@@ -19,7 +19,7 @@
 * Запустить сборку production-билда - **npm run start**
 
 
-### [Посмотреть проект>>>](https://glittering-faloodeh-884039.netlify.app/)
+### [Посмотреть проект>>>](https://glowing-custard-98d816.netlify.app/)
 
 
 ***
