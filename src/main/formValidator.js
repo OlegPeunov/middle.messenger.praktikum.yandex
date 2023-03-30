@@ -110,7 +110,8 @@ export default class FormValidator{
   validateForm(event, submitButton){
     const inputs = Array.from(event.currentTarget.querySelectorAll('input'))
     this.checkInputValidity(event.target);
-    const isValid = inputs.every((input) => input.validity.valid && this.res);
+    console.log(this.res.err)
+    const isValid = inputs.every((input) => input.validity.valid && !this.res.err);
     this.setSubmitButtonState(submitButton, isValid);
   }
 
