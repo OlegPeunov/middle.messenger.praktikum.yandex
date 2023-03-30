@@ -29,11 +29,11 @@ id: "root"
         <form class="popup__form popup__form_type_signin" novalidate id="signin">
           <div>
             <p class="popup__input-title">Логин</p>
-            <input type="login" id="login-signin" name="login" class="popup__input" required placeholder="Логин" value="">
+            <input type="login" id="login-signin" name="login" class="popup__input" required minlength="3" placeholder="Логин" value="">
             <span id="error-login-signin" class="error-message"></span>
             <p class="popup__input-title">Пароль</p>
             <input type="password" id="password-signin" name="password" class="popup__input" required minlength="8" placeholder="Пароль" value="">
-            <span id="error-password-signin" class="error-message">Пример ошибки</span>
+            <span id="error-password-signin" class="error-message"></span>
           </div>
           <div>
             <button id="popup-button-signin" class="popup__button" disabled >Авторизоваться</button>
@@ -43,6 +43,7 @@ id: "root"
         </form>
       </div>
     </main>
+    <script type='module' type="text/javascript" src="./index.js"></script> 
   </div>
 </body>
 </html>
