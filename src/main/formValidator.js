@@ -10,6 +10,7 @@ export default class FormValidator{
     const checkValue = inputField.value;
 
     let regexSpace = /^\S*$/gi;
+    let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi;
     let regexCapital = /^[A-ZА-Я]/;
     let regexNums = /^[0-9]*$/;
     let regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
@@ -80,6 +81,17 @@ export default class FormValidator{
       this.res.err = false
     }
 
+    
+    if(checkType === 'email' && inputField.value.length !== 0){
+      if(!regexMail.test(checkValue)){
+        this.res.message = 'Здесь должен быть имейл'
+        this.res.err = true
+        return this.res
+      } 
+    }else{
+      this.res.err = false
+    }
+
     return this.res
   }
 
@@ -88,12 +100,12 @@ export default class FormValidator{
 
     const regExp = this.regularCheck(inputField)
 
-    console.log()
     if (regExp.err){
       errorElement.textContent = regExp.message
 
       return false;
     } else {
+
       errorElement.textContent = ''
       return true;
     }
@@ -110,7 +122,6 @@ export default class FormValidator{
   validateForm(event, submitButton){
     const inputs = Array.from(event.currentTarget.querySelectorAll('input'))
     this.checkInputValidity(event.target);
-    console.log(this.res.err)
     const isValid = inputs.every((input) => input.validity.valid && !this.res.err);
     this.setSubmitButtonState(submitButton, isValid);
   }
