@@ -12,6 +12,7 @@ export default class FormValidator{
     let regexSpace = /^\S*$/gi;
     let regexCapital = /^[A-ZА-Я]/;
     let regexNums = /^[0-9]*$/;
+    let regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
     // let regexLang1 = /^[a-zа-яё\-]*$/gi; first_name
     let regexLang2 = /^[\w\_\-]*$/gi;
     
@@ -57,18 +58,18 @@ export default class FormValidator{
         this.res.err = true
         return this.res
       }
+      
+      if(!regexOneCap.test(checkValue)){
+        this.res.message = 'Обязательна хотя бы одна заглавная буква и цифра'
+        this.res.err = true
+        return this.res
+      }
 
       // if(!regexCapital.test(checkValue) && inputField.value.length !== 0){
       //   this.res.message = 'Первая буква должна быть заглавной'
       //   this.res.err = true
       //   return this.res
       // }
-
-      if(!regexLang2.test(checkValue)){
-        this.res.message = 'Принимается только кириллица или латиница'
-        this.res.err = true
-        return this.res
-      }
 
       if(inputField.value.length < 8 || inputField.value.length > 40){
         this.res.message = 'Должно быть от 8 до 40 символов'
