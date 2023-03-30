@@ -1,29 +1,85 @@
 export default class FormValidator{
   constructor(formEvent) {
     this.formEvent = formEvent;
+    this.res = {err: false, message: null}
 
   }
 
   regularCheck(inputField){
-    const res = {err: false, message: null}
     const checkType = inputField.name;
     const checkValue = inputField.value;
 
     let regexSpace = /^\S*$/gi;
-    let regexLang = /^[a-zа-яё\-]*$/gi;
+    let regexCapital = /^[A-ZА-Я]/;
+    let regexNums = /^[0-9]*$/;
+    // let regexLang1 = /^[a-zа-яё\-]*$/gi; first_name
+    let regexLang2 = /^[\w\_\-]*$/gi;
+    
 
-    if(checkType === 'login'){
+    if(checkType === 'login' && inputField.value.length !== 0){
       if(!regexSpace.test(checkValue)){
-        console.log('ошибка')
-        res.message = 'Здесь не должно быть пробелов'
-        res.err = true
-        return res
+        this.res.message = 'Здесь не должно быть пробелов'
+        this.res.err = true
+        return this.res
+      }
+
+
+      // if(!regexCapital.test(checkValue)){
+      //   this.res.message = 'Первая буква должна быть заглавной'
+      //   this.res.err = true
+      //   return this.res
+      // }
+
+      if(!regexLang2.test(checkValue)){
+        this.res.message = 'Принимается только латиница и цифры'
+        this.res.err = true
+        return this.res
+      }
+
+      if(regexNums.test(checkValue)){
+        this.res.message = 'Логин не может состоять из одних цифр'
+        this.res.err = true
+        return this.res
+      }
+
+      if(inputField.value.length < 3 || inputField.value.length > 20){
+        this.res.message = 'Должно быть от 3 до 20 символов'
+        this.res.err = true
+        return this.res
       }
     }else{
-      res.err = false
+      this.res.err = false
     }
 
-    return res
+    if(checkType === 'password' && inputField.value.length !== 0){
+      if(!regexSpace.test(checkValue)){
+        this.res.message = 'Здесь не должно быть пробелов'
+        this.res.err = true
+        return this.res
+      }
+
+      // if(!regexCapital.test(checkValue) && inputField.value.length !== 0){
+      //   this.res.message = 'Первая буква должна быть заглавной'
+      //   this.res.err = true
+      //   return this.res
+      // }
+
+      if(!regexLang2.test(checkValue)){
+        this.res.message = 'Принимается только кириллица или латиница'
+        this.res.err = true
+        return this.res
+      }
+
+      if(inputField.value.length < 8 || inputField.value.length > 40){
+        this.res.message = 'Должно быть от 8 до 40 символов'
+        this.res.err = true
+        return this.res
+      }
+    }else{
+      this.res.err = false
+    }
+
+    return this.res
   }
 
   checkInputValidity(inputField){
@@ -34,21 +90,6 @@ export default class FormValidator{
     console.log()
     if (regExp.err){
       errorElement.textContent = regExp.message
-      // if()
-      // if(inputField.validity.typeMismatch){
-      //   errorElement.textContent = 'Здесь должен быть имейл';
-
-      // } else if (inputField.value.length===0&& inputField.name == 'password'){
-      //   errorElement.textContent = 'Это обязательное поле';
-
-
-      // } else if ( inputField.value.length<8 && inputField.name == 'password'){
-      //   errorElement.textContent = 'Должно быть не менее 8 символов'
-
-      // }
-      // if(inputField.value.length<2 && inputField.name == 'login'){
-      //   errorElement.textContent = 'Должно быть от 3 до 20 символов'
-      // }
 
       return false;
     } else {
@@ -67,8 +108,8 @@ export default class FormValidator{
   }
   validateForm(event, submitButton){
     const inputs = Array.from(event.currentTarget.querySelectorAll('input'))
-    const isValid = inputs.every((input) => input.validity.valid);
     this.checkInputValidity(event.target);
+    const isValid = inputs.every((input) => input.validity.valid && this.res);
     this.setSubmitButtonState(submitButton, isValid);
   }
 
