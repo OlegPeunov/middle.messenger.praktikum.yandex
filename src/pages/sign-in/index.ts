@@ -2,7 +2,6 @@ import FormValidator from '../../main/formValidator';
 
 (function () {
   const container = this.document.querySelector('.root');
-
   const signInForm = container.querySelector('#signin');
 
   const signInValidator = new FormValidator(signInForm);
