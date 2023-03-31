@@ -11,6 +11,7 @@ export default class FormValidator{
 
     let regexSpace = /^\S*$/gi;
     let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi;
+    let regexTel = /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/;
     let regexCapital = /^[A-ZА-Я]/;
     let regexNums = /^[0-9]*$/;
     let regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
@@ -75,7 +76,7 @@ export default class FormValidator{
       this.res.err = false
     }
 
-    if((checkType === 'password'||checkType === 'password-one'|checkType === 'password-two') && inputField.value.length !== 0){      
+    if((checkType === 'password'||checkType === 'password_one'|checkType === 'password_two') && inputField.value.length !== 0){      
       
       if(!regexSpace.test(checkValue)){
         this.res.message = 'Здесь не должно быть пробелов'
@@ -95,8 +96,8 @@ export default class FormValidator{
         return this.res
       }
 
-      if(checkType === 'password-two'){
-        const passOne = this.formEvent.querySelector('#password-one-signup').value
+      if(checkType === 'password_two'){
+        const passOne = this.formEvent.querySelector('#password_one-signup').value
         if(checkValue !== passOne){
           this.res.message = 'Пароли не свопадают'
           this.res.err = true
@@ -108,10 +109,25 @@ export default class FormValidator{
       this.res.err = false
     }
 
-    
     if(checkType === 'email' && inputField.value.length !== 0){
       if(!regexMail.test(checkValue)){
         this.res.message = 'Здесь должен быть имейл'
+        this.res.err = true
+        return this.res
+      } 
+    }else{
+      this.res.err = false
+    }
+
+    if(checkType === 'phone' && inputField.value.length !== 0){
+      if(inputField.value.length < 10 || inputField.value.length > 15){
+        this.res.message = 'Должно быть от 10 до 15 символов'
+        this.res.err = true
+        return this.res
+      }
+
+      if(!regexTel.test(checkValue)){
+        this.res.message = 'Укажите ваш телефон'
         this.res.err = true
         return this.res
       } 
