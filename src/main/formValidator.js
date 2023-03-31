@@ -75,7 +75,8 @@ export default class FormValidator{
       this.res.err = false
     }
 
-    if(checkType === 'password' && inputField.value.length !== 0){
+    if((checkType === 'password'||checkType === 'password-one'|checkType === 'password-two') && inputField.value.length !== 0){      
+      
       if(!regexSpace.test(checkValue)){
         this.res.message = 'Здесь не должно быть пробелов'
         this.res.err = true
@@ -87,12 +88,22 @@ export default class FormValidator{
         this.res.err = true
         return this.res
       }
-      
+
       if(inputField.value.length < 8 || inputField.value.length > 40){
         this.res.message = 'Должно быть от 8 до 40 символов'
         this.res.err = true
         return this.res
       }
+
+      if(checkType === 'password-two'){
+        const passOne = this.formEvent.querySelector('#password-one-signup').value
+        if(checkValue !== passOne){
+          this.res.message = 'Пароли не свопадают'
+          this.res.err = true
+          return this.res
+        }
+      }
+
     }else{
       this.res.err = false
     }
