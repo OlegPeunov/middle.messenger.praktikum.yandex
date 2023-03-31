@@ -1,180 +1,187 @@
-export default class FormValidator{
-  private _formEvent: any;
-  private _res: {'err': boolean, 'message': string | null} = {err: false, message: null};;
-  
+export default class FormValidator {
+  private formEvent: any;
+
+  private res: {'err': boolean, 'message': string | null} = { err: false, message: null };
+
   constructor(formEvent: unknown) {
-    this._formEvent = formEvent;
-    
+    this.formEvent = formEvent;
   }
-  
-  regularCheck (inputField) {
+
+  regularCheck(inputField) {
     const checkType = inputField.name;
     const checkValue = inputField.value;
 
-    let regexSpace = /^\S*$/gi;
-    let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi;
-    let regexTel = /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/;
-    let regexCapital = /^[A-ZА-Я]/;
-    let regexNums = /^[0-9]*$/;
-    let regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
-    let regexLang1 = /^[a-zа-яё\-]*$/gi;
-    let regexLang2 = /^[\w\_\-]*$/gi;
+    const regexSpace = /^\S*$/gi;
+    const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi;
+    const regexTel = /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/;
+    const regexCapital = /^[A-ZА-Я]/;
+    const regexNums = /^[0-9]*$/;
+    const regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
+    const regexLang1 = /^[a-zа-яё\-]*$/gi;
+    const regexLang2 = /^[\w\_\-]*$/gi;
 
-    if(checkType === 'login' && inputField.value.length !== 0){
-      if(!regexSpace.test(checkValue)){
-        this._res.message = 'Здесь не должно быть пробелов'
-        this._res.err = true
-        return this._res
+    if (checkType === 'login' && inputField.value.length !== 0) {
+      if (!regexSpace.test(checkValue)) {
+        this.res.message = 'Здесь не должно быть пробелов';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(!regexLang2.test(checkValue)){
-        this._res.message = 'Принимается только латиница и цифры'
-        this._res.err = true
-        return this._res
+      if (!regexLang2.test(checkValue)) {
+        this.res.message = 'Принимается только латиница и цифры';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(regexNums.test(checkValue)){
-        this._res.message = 'Логин не может состоять из одних цифр'
-        this._res.err = true
-        return this._res
+      if (regexNums.test(checkValue)) {
+        this.res.message = 'Логин не может состоять из одних цифр';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(inputField.value.length < 3 || inputField.value.length > 20){
-        this._res.message = 'Должно быть от 3 до 20 символов'
-        this._res.err = true
-        return this._res
+      if (inputField.value.length < 3 || inputField.value.length > 20) {
+        this.res.message = 'Должно быть от 3 до 20 символов';
+        this.res.err = true;
+        return this.res;
       }
-    }else{
-      this._res.err = false
+    } else {
+      this.res.err = false;
     }
 
-
-    if((checkType === 'second_name' || checkType === 'first_name') && inputField.value.length !== 0){
-      if(!regexSpace.test(checkValue)){
-        this._res.message = 'Здесь не должно быть пробелов'
-        this._res.err = true
-        return this._res
+    if ((checkType === 'second_name' || checkType === 'first_name')
+       && inputField.value.length !== 0) {
+      if (!regexSpace.test(checkValue)) {
+        this.res.message = 'Здесь не должно быть пробелов';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(!regexCapital.test(checkValue)){
-        this._res.message = 'Первая буква должна быть заглавной'
-        this._res.err = true
-        return this._res
+      if (!regexCapital.test(checkValue)) {
+        this.res.message = 'Первая буква должна быть заглавной';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(!regexLang1.test(checkValue)){
-        this._res.message = 'Принимается только латиница и кириллица'
-        this._res.err = true
-        return this._res
+      if (!regexLang1.test(checkValue)) {
+        this.res.message = 'Принимается только латиница и кириллица';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(inputField.value.length < 3 || inputField.value.length > 20){
-        this._res.message = 'Должно быть от 3 до 20 символов'
-        this._res.err = true
-        return this._res
+      if (inputField.value.length < 3 || inputField.value.length > 20) {
+        this.res.message = 'Должно быть от 3 до 20 символов';
+        this.res.err = true;
+        return this.res;
       }
-    }else{
-      this._res.err = false
+    } else {
+      this.res.err = false;
     }
 
-    if((checkType === 'password'|| checkType === 'password_one' || checkType === 'password_two') && inputField.value.length !== 0){      
-      
-      if(!regexSpace.test(checkValue)){
-        this._res.message = 'Здесь не должно быть пробелов'
-        this._res.err = true
-        return this._res
-      }
-      
-      if(!regexOneCap.test(checkValue)){
-        this._res.message = 'Обязательна хотя бы одна заглавная буква и цифра'
-        this._res.err = true
-        return this._res
+    if ((checkType === 'password' || checkType === 'password_one' || checkType === 'password_two')
+      && inputField.value.length !== 0) {
+      if (!regexSpace.test(checkValue)) {
+        this.res.message = 'Здесь не должно быть пробелов';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(inputField.value.length < 8 || inputField.value.length > 40){
-        this._res.message = 'Должно быть от 8 до 40 символов'
-        this._res.err = true
-        return this._res
+      if (!regexOneCap.test(checkValue)) {
+        this.res.message = 'Обязательна хотя бы одна заглавная буква и цифра';
+        this.res.err = true;
+        return this.res;
       }
 
-      if(checkType === 'password_two'){
-        const passOne = this._formEvent.querySelector('#password_one').value
-        if(checkValue !== passOne){
-          this._res.message = 'Пароли не свопадают'
-          this._res.err = true
-          return this._res
+      if (inputField.value.length < 8 || inputField.value.length > 40) {
+        this.res.message = 'Должно быть от 8 до 40 символов';
+        this.res.err = true;
+        return this.res;
+      }
+
+      if (checkType === 'password_two') {
+        const passOne = this.formEvent.querySelector('#password_one').value;
+        if (checkValue !== passOne && passOne.length !== 0) {
+          this.res.message = 'Пароли не свопадают';
+          this.res.err = true;
+          return this.res;
         }
       }
 
-    }else{
-      this._res.err = false
-    }
-
-    if(checkType === 'email' && inputField.value.length !== 0){
-      if(!regexMail.test(checkValue)){
-        this._res.message = 'Здесь должен быть имейл'
-        this._res.err = true
-        return this._res
-      } 
-    }else{
-      this._res.err = false
-    }
-
-    if(checkType === 'phone' && inputField.value.length !== 0){
-      if(inputField.value.length < 10 || inputField.value.length > 15){
-        this._res.message = 'Должно быть от 10 до 15 символов'
-        this._res.err = true
-        return this._res
+      if (checkType === 'password_one') {
+        const passTwo = this.formEvent.querySelector('#password_two').value;
+        if (checkValue !== passTwo && passTwo.length !== 0) {
+          this.res.message = 'Пароли не свопадают';
+          this.res.err = true;
+          return this.res;
+        }
       }
 
-      if(!regexTel.test(checkValue)){
-        this._res.message = 'Укажите ваш телефон'
-        this._res.err = true
-        return this._res
-      } 
-    }else{
-      this._res.err = false
+    } else {
+      this.res.err = false;
     }
-    return this._res
+
+    if (checkType === 'email' && inputField.value.length !== 0) {
+      if (!regexMail.test(checkValue)) {
+        this.res.message = 'Здесь должен быть имейл';
+        this.res.err = true;
+        return this.res;
+      }
+    } else {
+      this.res.err = false;
+    }
+
+    if (checkType === 'phone' && inputField.value.length !== 0) {
+      if (inputField.value.length < 10 || inputField.value.length > 15) {
+        this.res.message = 'Должно быть от 10 до 15 символов';
+        this.res.err = true;
+        return this.res;
+      }
+
+      if (!regexTel.test(checkValue)) {
+        this.res.message = 'Укажите ваш телефон';
+        this.res.err = true;
+        return this.res;
+      }
+    } else {
+      this.res.err = false;
+    }
+    return this.res;
   }
 
-  checkInputValidity (event) {
-    const errorElement: any = document.querySelector(`#error-${event.id}`);
-    const regExp = this.regularCheck(event)
+  checkInputValidity(event) {
+    const errorElement: any = this.formEvent.querySelector(`#error-${event.id}`);
+    const regExp = this.regularCheck(event);
 
-    if (regExp.err){
-      errorElement.textContent = regExp.message
+    if (regExp.err) {
+      errorElement.textContent = regExp.message;
 
       return false;
-    } else {
-
-      errorElement.textContent = ''
-      return true;
     }
+    errorElement.textContent = '';
+    return true;
   }
-  
+
   setSubmitButtonState(submitButton, isValid) {
     if (!isValid) {
-      submitButton.classList.remove('button-active')
-      submitButton.setAttribute('disabled', 'true')
+      submitButton.classList.remove('button-active');
+      submitButton.setAttribute('disabled', 'true');
     } else {
-      submitButton.classList.add('button-active')
-      submitButton.removeAttribute('disabled')
+      submitButton.classList.add('button-active');
+      submitButton.removeAttribute('disabled');
     }
   }
-  
+
   validateForm(event:any, submitButton) {
-    const inputs = Array.from(event.currentTarget.querySelectorAll('input'))
+    const inputs = Array.from(event.currentTarget.querySelectorAll('input'));
     this.checkInputValidity(event.target);
-    const isValid = inputs.every((input: any) => input.validity.valid && !this._res.err);
+    const isValid = inputs.every((input: any) => input.validity.valid && !this.res.err);
     this.setSubmitButtonState(submitButton, isValid);
   }
 
-  setEventListeners () {
-    const submitButton = this._formEvent.querySelector('button');
+  setEventListeners() {
+    const submitButton = this.formEvent.querySelector('button');
 
-    this._formEvent.addEventListener('input', (evt) => {
+    this.formEvent.addEventListener('input', (evt) => {
       this.validateForm(evt, submitButton);
     });
   }
-};
+}
