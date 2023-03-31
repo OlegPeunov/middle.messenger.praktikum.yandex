@@ -1,5 +1,5 @@
 export default class FormValidator{
-  private _formEvent: unknown;
+  private _formEvent: any;
   private _res: {'err': boolean, 'message': string | null} = {err: false, message: null};;
   
   constructor(formEvent: unknown) {
@@ -138,9 +138,9 @@ export default class FormValidator{
     return this._res
   }
 
-  checkInputValidity (inputField, event:any) {
-    const errorElement: any = document.querySelector(`#error-${event.target.id}`);
-    const regExp = this.regularCheck(inputField)
+  checkInputValidity (event) {
+    const errorElement: any = document.querySelector(`#error-${event.id}`);
+    const regExp = this.regularCheck(event)
 
     if (regExp.err){
       errorElement.textContent = regExp.message
@@ -163,7 +163,7 @@ export default class FormValidator{
     }
   }
   
-  validateForm(event:Event, submitButton) {
+  validateForm(event:any, submitButton) {
     const inputs = Array.from(event.currentTarget.querySelectorAll('input'))
     this.checkInputValidity(event.target);
     const isValid = inputs.every((input: any) => input.validity.valid && !this._res.err);
