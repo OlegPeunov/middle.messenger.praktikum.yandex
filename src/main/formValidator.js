@@ -97,7 +97,7 @@ export default class FormValidator{
       }
 
       if(checkType === 'password_two'){
-        const passOne = this.formEvent.querySelector('#password_one-signup').value
+        const passOne = this.formEvent.querySelector('#password_one').value
         if(checkValue !== passOne){
           this.res.message = 'Пароли не свопадают'
           this.res.err = true
