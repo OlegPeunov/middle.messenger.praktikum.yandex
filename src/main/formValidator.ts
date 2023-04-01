@@ -158,7 +158,7 @@ export default class FormValidator {
     errorElement.textContent = '';
     return true;
   }
-
+  // eslint-disable-next-line
   setSubmitButtonState(submitButton:any, isValid:any):void {
     if (!isValid) {
       submitButton.classList.remove('button-active');
