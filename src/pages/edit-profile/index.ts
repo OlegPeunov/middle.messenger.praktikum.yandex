@@ -1,4 +1,4 @@
-import FormValidator from '../../main/formValidator';
+import FormValidator from '../../utils/formValidator';
 
 (function () {
   const container = this.document.querySelector('.root');
