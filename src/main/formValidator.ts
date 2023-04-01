@@ -12,13 +12,13 @@ export default class FormValidator {
     const checkValue = inputField.value;
 
     const regexSpace = /^\S*$/gi;
-    const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi;
+    const regexMail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/gi;
     const regexTel = /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/;
     const regexCapital = /^[A-ZА-Я]/;
     const regexNums = /^[0-9]*$/;
     const regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
-    const regexLang1 = /^[a-zа-яё\-]*$/gi;
-    const regexLang2 = /^[\w\_\-]*$/gi;
+    const regexLang1 = /^[a-zа-яё-]*$/gi;
+    const regexLang2 = /^[\w_-]*$/gi;
 
     if (checkType === 'login' && inputField.value.length !== 0) {
       if (!regexSpace.test(checkValue)) {
@@ -114,7 +114,6 @@ export default class FormValidator {
           return this.res;
         }
       }
-
     } else {
       this.res.err = false;
     }
@@ -160,7 +159,7 @@ export default class FormValidator {
     return true;
   }
 
-  setSubmitButtonState(submitButton, isValid) {
+  setSubmitButtonState(submitButton:any, isValid:any):void {
     if (!isValid) {
       submitButton.classList.remove('button-active');
       submitButton.setAttribute('disabled', 'true');
@@ -170,7 +169,7 @@ export default class FormValidator {
     }
   }
 
-  validateForm(event:any, submitButton) {
+  validateForm(event:any, submitButton:any) {
     const inputs = Array.from(event.currentTarget.querySelectorAll('input'));
     this.checkInputValidity(event.target);
     const isValid = inputs.every((input: any) => input.validity.valid && !this.res.err);
