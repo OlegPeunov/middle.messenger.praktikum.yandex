@@ -8,7 +8,7 @@ interface ButtonProps{
 
 export class Button extends Block<ButtonProps>{
   constructor() {
-    super('button', {})
+    super('button', { label: 'button' })
   }
 
   render() {
