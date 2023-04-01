@@ -30,6 +30,7 @@
     "postcss-load-config": "^4.0.1",
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.1",
+    "stylelint": "^15.4.0",
     "typescript": "^5.0.2"
   }
 }
