@@ -4,9 +4,13 @@ import { Button } from './partials/button/index';
 window.addEventListener('DOMContentLoaded', ()=> {
   const root = document.querySelector('#root')!;
 
-  const homePage = new HomePage({});
+  // const homePage = new HomePage({});
 
-  root.append(homePage.getContent()!);
+  const button = new Button({ label: 'button' });
 
-  homePage.dispatchComponentDidMount();
+  root.innerHTML = button.element!.outerHTML;
+
+  // root.append(button.getContent()!);
+
+  // homePage.dispatchComponentDidMount();
 });

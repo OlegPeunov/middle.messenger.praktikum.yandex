@@ -5,12 +5,12 @@ interface ButtonProps {
   label: string;
 }
 
-export class Button extends Block {
+export class Button extends Block<ButtonProps> {
   constructor(props: ButtonProps) {
-    super({ type: 'button', ...props });
+    super('button', {label: 'button'});
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template, this.props);
   }
 }
