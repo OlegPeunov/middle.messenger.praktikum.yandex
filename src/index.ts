@@ -7,5 +7,5 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
   root.append(homePage.getContent()!);
 
-  // homePage.dispatchComponentDidMount();
+  homePage.dispatchComponentDidMount();
 });

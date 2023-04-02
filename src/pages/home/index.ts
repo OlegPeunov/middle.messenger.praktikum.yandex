@@ -1,5 +1,6 @@
 import { Block } from '../../utils/Block';
 import { Button } from '../../partials/button/index'
+import { HeaderPage } from '../../partials/header/index'
 import homeTpl from './home.hbs';
 
 interface HomeProps {
@@ -12,11 +13,10 @@ export class HomePage extends Block<HomeProps>{
   }
 
   init() {
-    this.children.loginButton = new Button({ 
+    this.children.headerBlock = new HeaderPage({ 
       label: 'click me',
-      events: {click: () => {console.log('клик')}} 
+      events: {click: () => {}} 
     });
-  
   }
 
   render() {
