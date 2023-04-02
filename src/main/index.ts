@@ -1,7 +1,9 @@
-// import "./pages/index.css";
-// import FormValidator from './formValidator';
-// import signInFFile from '../pages/sign-in/signin.hbs';
+// import { HomePage } from './';
 
-(function () {
-// const container = this.document.querySelector('.root');
-}());
+// window.addEventListener('DOMContentLoaded', ()=> {
+//   const root = document.querySelector('.root')!;
+
+//   const homePage = new HomePage();
+
+//   root.append(homePage.getContent());
+// });

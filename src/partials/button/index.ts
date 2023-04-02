@@ -1,17 +1,17 @@
-import { Block } from "../../utils/Block";
+// import { Block } from "../../utils/Block";
 
-import template from './button.hbs'
+// import template from './button.hbs'
 
-interface ButtonProps{
-  label: string;
-};
+// interface ButtonProps{
+//   label: string;
+// };
 
-export class Button extends Block<ButtonProps>{
-  constructor() {
-    super('button', { label: 'button' })
-  }
+// export class Button extends Block<ButtonProps>{
+//   constructor(props: ButtonProps) {
+//     super('button', props)
+//   }
 
-  render() {
-    return this.compile(template, this.props)
-  }
-}
+//   render() {
+//     return this.compile(template, this.props)
+//   }
+// }

@@ -33,7 +33,7 @@ export class Block<P extends Record<string, any> = any> {
     this.eventBus = () => eventBus;
 
     this._registerEvents(eventBus);
-
+    
     eventBus.emit(Block.EVENTS.INIT);
   }
 
@@ -133,7 +133,7 @@ export class Block<P extends Record<string, any> = any> {
     this._addEvents();
   }
 
-  protected compile(template: string, context: any) {
+  protected compile(template: any, context: any) {
     const contextAndStubs = {...context};
 
     const tpl = Handlebars.compile(template)
