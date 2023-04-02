@@ -3,11 +3,12 @@ import template from './button.hbs';
 
 interface ButtonProps {
   label: string;
+  events: {click: () => void};
 }
 
 export class Button extends Block<ButtonProps> {
   constructor(props: ButtonProps) {
-    super('button', {label: 'button'});
+    super('button', props);
   }
 
   render() {

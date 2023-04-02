@@ -6,11 +6,14 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
   // const homePage = new HomePage({});
 
-  const button = new Button({ label: 'button' });
+  const button = new Button({ 
+    label: 'button',
+    events: {click: () => {console.log('клик')}} 
+  });
 
-  root.innerHTML = button.element!.outerHTML;
+  // root.innerHTML = button.element!.outerHTML;
 
-  // root.append(button.getContent()!);
+  root.append(button.getContent()!);
 
   // homePage.dispatchComponentDidMount();
 });
