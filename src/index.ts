@@ -1,19 +1,11 @@
 import { HomePage } from './pages/home';
-import { Button } from './partials/button/index';
 
 window.addEventListener('DOMContentLoaded', ()=> {
   const root = document.querySelector('#root')!;
+  
+  const homePage = new HomePage({});
 
-  // const homePage = new HomePage({});
-
-  const button = new Button({ 
-    label: 'button',
-    events: {click: () => {console.log('клик')}} 
-  });
-
-  // root.innerHTML = button.element!.outerHTML;
-
-  root.append(button.getContent()!);
+  root.append(homePage.getContent()!);
 
   // homePage.dispatchComponentDidMount();
 });

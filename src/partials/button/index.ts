@@ -1,5 +1,6 @@
 import {Block} from '../../utils/Block';
 import template from './button.hbs';
+import './button.pcss';
 
 interface ButtonProps {
   label: string;
@@ -9,6 +10,10 @@ interface ButtonProps {
 export class Button extends Block<ButtonProps> {
   constructor(props: ButtonProps) {
     super('button', props);
+  }
+
+  init() {
+    this.element!.classList.add('button-nav')
   }
 
   render() {
