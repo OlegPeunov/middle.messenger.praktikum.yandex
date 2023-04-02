@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel src/main/index.hbs",
-    "build": "parcel build src/main/index.hbs",
+    "dev": "parcel src/index.ts",
+    "build": "parcel build src/index.ts",
     "express": "node ./server.js",
     "start": "npm run build && npm run express"
   },
