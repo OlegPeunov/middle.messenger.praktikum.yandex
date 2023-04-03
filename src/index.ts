@@ -4,11 +4,12 @@ import { Page500 } from './pages/500';
 import { Profile } from './pages/profile';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
+import { EditProfile } from './pages/edit-profile';
 
 window.addEventListener('DOMContentLoaded', ()=> {
   const root = document.querySelector('#root')!;
 
-  const pageProfile = new Signup({});
+  const pageProfile = new EditProfile({});
 
   root.append(pageProfile.getContent()!);
 
