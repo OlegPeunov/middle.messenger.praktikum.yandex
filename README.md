@@ -10,6 +10,7 @@
 ## Основной функционал:
 
 * Переключение между страницами
+* Валидация форм
 
 
 ## Интсрукции по запуску:
@@ -22,4 +23,4 @@
 #### [Макет>>>](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0-1&t=JFuSa2YWbRhbvhdY-0)
 
 ***
-Проект создан с помощью следующих технологий: JS, Git, Parcel, PostCss Code, Netlify
+Проект создан с помощью следующих технологий: JS, Git, Parcel, PostCss Code, Eslint, Netlify
