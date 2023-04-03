@@ -1,40 +1,42 @@
+// eslint-disable-next-line
 import { Block } from '../../utils/Block';
-import { Button } from '../../partials/button/index'
+// eslint-disable-next-line
+import { Button } from '../../partials/button/index';
 import headerTpl from './header.hbs';
 
 interface HeaderProps {
 
 }
-
-export class HeaderPage extends Block<HeaderProps>{
-  constructor(props: HeaderProps){
-    super('header', props)
+// eslint-disable-next-line
+export class HeaderPage extends Block<HeaderProps> {
+  constructor(props: HeaderProps) {
+    super('header', props);
   }
 
   init() {
-    this.children.loginButton1 = new Button({ 
+    this.children.loginButton1 = new Button({
       label: 'Вход',
-      events: {click: () => {}} 
+      events: { click: () => {} },
     });
-    this.children.loginButton2 = new Button({ 
+    this.children.loginButton2 = new Button({
       label: 'Регистрация',
-      events: {click: () => {}} 
+      events: { click: () => {} },
     });
-    this.children.loginButton3 = new Button({ 
+    this.children.loginButton3 = new Button({
       label: 'Профиль',
-      events: {click: () => {}} 
+      events: { click: () => {} },
     });
-    this.children.loginButton4 = new Button({ 
+    this.children.loginButton4 = new Button({
       label: 'Редактивровать профиль',
-      events: {click: () => {}} 
+      events: { click: () => {} },
     });
-    this.children.loginButton5 = new Button({ 
+    this.children.loginButton5 = new Button({
       label: '404',
-      events: {click: () => {}} 
+      events: { click: () => {} },
     });
-    this.children.loginButton6 = new Button({ 
+    this.children.loginButton6 = new Button({
       label: '500',
-      events: {click: () => {}} 
+      events: { click: () => {} },
     });
   }
 
