@@ -1,6 +1,4 @@
 import { Block } from '../../utils/Block';
-import { HeaderPage } from '../../partials/header/index'
-import { MainPage } from '../main/index'
 import Tpl404 from './404.hbs';
 
 interface Props404 {

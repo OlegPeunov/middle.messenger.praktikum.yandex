@@ -1,14 +1,15 @@
 import { HomePage } from './pages/home';
 import { Page404 } from './pages/404';
+import { Page500 } from './pages/500';
 
 window.addEventListener('DOMContentLoaded', ()=> {
   const root = document.querySelector('#root')!;
 
-  const page404 = new Page404({});
+  const page500 = new Page500({});
 
-  root.append(page404.getContent()!);
+  root.append(page500.getContent()!);
 
-  page404.dispatchComponentDidMount();
+  page500.dispatchComponentDidMount();
 });
 
 // window.addEventListener('DOMContentLoaded', ()=> {
