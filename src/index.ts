@@ -6,24 +6,34 @@ import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
 
-window.addEventListener('DOMContentLoaded', ()=> {
-  const root = document.querySelector('#root')!;
-
-  const pageProfile = new EditProfile({});
-
-  root.append(pageProfile.getContent()!);
-
-  pageProfile.dispatchComponentDidMount();
-});
-
-// window.addEventListener('DOMContentLoaded', ()=> {
-//   const root = document.querySelector('#root')!;
-
-//   const Page404 = new Page404({});
-
-//   root.append(Page404.getContent()!);
-
-//   Page404.dispatchComponentDidMount();
+// let setPage = function setPage(() => {
+  
 // });
 
 
+window.addEventListener('DOMContentLoaded', ()=> {
+  const root = document.querySelector('#root')!;
+  let currentPage
+  let pathPage = window.location.pathname;
+
+  if(pathPage === '/'){
+    currentPage = new HomePage({});
+  } else if(pathPage === '/Page404'){
+    currentPage = new Page404({});
+  } else if(pathPage === '/Page500'){
+    currentPage = new Page500({});
+  } else if(pathPage === '/Profile'){
+    currentPage = new Profile({});
+  } else if(pathPage === '/Signin'){
+    currentPage = new Signin({});
+  } else if(pathPage === '/Signup'){
+    currentPage = new Signup({});
+  } else if(pathPage === '/EditProfile'){
+    currentPage = new EditProfile({});
+  }
+  
+  root.append(currentPage.getContent()!);
+
+  currentPage.getContent();
+
+});
