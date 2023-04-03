@@ -2,11 +2,13 @@ import { HomePage } from './pages/home';
 import { Page404 } from './pages/404';
 import { Page500 } from './pages/500';
 import { Profile } from './pages/profile';
+import { Signin } from './pages/sign-in';
+import { Signup } from './pages/sign-up';
 
 window.addEventListener('DOMContentLoaded', ()=> {
   const root = document.querySelector('#root')!;
 
-  const pageProfile = new Profile({});
+  const pageProfile = new Signup({});
 
   root.append(pageProfile.getContent()!);
 
