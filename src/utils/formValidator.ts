@@ -1,4 +1,4 @@
-export default class FormValidator {
+export class FormValidator {
   private formEvent: any;
 
   private res: {'err': boolean, 'message': string | null} = { err: false, message: null };
