@@ -1,7 +1,7 @@
 import { Block } from '../../utils/Block';
 import { Button } from '../../partials/button/index'
 import { HeaderPage } from '../../partials/header/index'
-import { MainPage } from '../../partials/main/index'
+import { MainPage } from '../main/index'
 import homeTpl from './home.hbs';
 
 interface HomeProps {
@@ -18,9 +18,7 @@ export class HomePage extends Block<HomeProps>{
  
     });
 
-    this.children.mainBlock = new MainPage({ 
- 
-    });
+    this.children.mainBlock = new MainPage({});
   }
 
   render() {
