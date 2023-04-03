@@ -1,21 +1,24 @@
+// eslint-disable-next-line
 import { Block } from '../../utils/Block';
-import { Message } from '../../partials/message/index'
-import { Chat } from '../../partials/chat/index'
+// eslint-disable-next-line
+import { Message } from '../../partials/message/index';
+// eslint-disable-next-line
+import { Chat } from '../../partials/chat/index';
 import mainTpl from './main.hbs';
 
 interface MainProps {
 
 }
-
+// eslint-disable-next-line
 export class MainPage extends Block<MainProps>{
-  constructor(props: MainProps){
-    super('main', props)
+  constructor(props: MainProps) {
+    super('main', props);
   }
 
   init() {
-    this.element!.classList.add('chat')
+    this.element!.classList.add('chat');
 
-    this.children.message1 = new Message({ 
+    this.children.message1 = new Message({
       contentClass: 'message_received',
       textMessage: `Привет! Смотри, 
       тут всплыл интересный кусок лунной космической 
@@ -27,40 +30,42 @@ export class MainPage extends Block<MainProps>{
       они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно 
       продали на аукционе за 45000 евро. <span class="message__time">11:56</span>`,
       showImg: '',
-      sentTime: ''
+      sentTime: '',
     });
 
-    this.children.message2 = new Message({ 
+    this.children.message2 = new Message({
       contentClass: 'message_no',
       textMessage: '',
       showImg: 'message__img-show',
-      sentTime: '11:56'
+      sentTime: '11:56',
     });
 
-    this.children.message3 = new Message({ 
+    this.children.message3 = new Message({
       contentClass: 'message_sent',
       textMessage: 'Круто!',
       showImg: '',
-      sentTime: '12:00'
+      sentTime: '12:00',
     });
 
-    this.children.chat1 = new Chat ({ 
+    this.children.chat1 = new Chat({
       chatClass: '',
       userName: 'Гутенберг',
+      // eslint-disable-next-line
       lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
       dateTime: 'вт',
       isUnread: '',
       unredAmount: '0',
     });
-    this.children.chat2 = new Chat ({ 
+    this.children.chat2 = new Chat({
       chatClass: '',
       userName: 'Гутенберг',
+      // eslint-disable-next-line
       lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
       dateTime: 'вт',
       isUnread: '',
       unredAmount: '0',
     });
-    this.children.chat3 = new Chat ({ 
+    this.children.chat3 = new Chat({
       chatClass: 'content-holder__choice',
       userName: 'Аня',
       lastMessage: 'Приветикик',

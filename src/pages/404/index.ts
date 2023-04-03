@@ -1,21 +1,24 @@
+// eslint-disable-next-line
 import { Block } from '../../utils/Block';
 import Tpl404 from './404.hbs';
+// eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index';
 
 interface Props404 {
 
 }
 
-export class Page404 extends Block<Props404>{
-  constructor(props: Props404){
-    super('div', props)
+// eslint-disable-next-line
+export class Page404 extends Block<Props404> {
+  constructor(props: Props404) {
+    super('div', props);
   }
 
   init() {
-    this.children.headerBlock = new HeaderPage({ 
- 
+    this.children.headerBlock = new HeaderPage({
+
     });
-    this.element!.classList.add('root-err')
+    this.element!.classList.add('root-err');
   }
 
   render() {

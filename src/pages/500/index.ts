@@ -1,4 +1,6 @@
+// eslint-disable-next-line
 import { Block } from '../../utils/Block';
+// eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index'
 
 import Tpl500 from './500.hbs';
@@ -7,16 +9,17 @@ interface Props500 {
 
 }
 
+// eslint-disable-next-line
 export class Page500 extends Block<Props500>{
-  constructor(props: Props500){
-    super('div', props)
+  constructor(props: Props500) {
+    super('div', props);
   }
 
   init() {
-    this.children.headerBlock = new HeaderPage({ 
- 
+    this.children.headerBlock = new HeaderPage({
+
     });
-    this.element!.classList.add('root-err')
+    this.element!.classList.add('root-err');
   }
 
   render() {
