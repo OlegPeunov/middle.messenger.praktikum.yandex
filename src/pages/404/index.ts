@@ -1,15 +1,13 @@
 import { Block } from '../../utils/Block';
-import { Button } from '../../partials/button/index'
 import { HeaderPage } from '../../partials/header/index'
-import { MainPage } from '../main/index'
-import homeTpl from './home.hbs';
+import Tpl404 from './404.hbs';
 
-interface HomeProps {
+interface Props404 {
 
 }
 
-export class HomePage extends Block<HomeProps>{
-  constructor(props: HomeProps){
+export class Page404 extends Block<Props404>{
+  constructor(props: Props404){
     super('div', props)
   }
 
@@ -17,13 +15,10 @@ export class HomePage extends Block<HomeProps>{
     this.children.headerBlock = new HeaderPage({ 
  
     });
-
-    this.children.mainBlock = new MainPage({});
-    
   }
 
   render() {
-    return this.compile(homeTpl, this.props);
+    return this.compile(Tpl404, this.props);
   }
 }
 

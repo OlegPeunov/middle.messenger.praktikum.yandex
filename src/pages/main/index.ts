@@ -9,10 +9,12 @@ interface MainProps {
 
 export class MainPage extends Block<MainProps>{
   constructor(props: MainProps){
-    super('div', props)
+    super('main', props)
   }
 
   init() {
+    this.element!.classList.add('chat')
+
     this.children.message1 = new Message({ 
       contentClass: 'message_received',
       textMessage: `Привет! Смотри, 

@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export class HeaderPage extends Block<HeaderProps>{
   constructor(props: HeaderProps){
-    super('div', props)
+    super('header', props)
   }
 
   init() {
