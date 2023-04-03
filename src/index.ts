@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { FormValidator } from './utils/FormValidator';
 import { HomePage } from './pages/home';
 import { Page404 } from './pages/404';
@@ -6,39 +7,39 @@ import { Profile } from './pages/profile';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
+/* eslint-enable */
 
-window.addEventListener('DOMContentLoaded', ()=> {
+window.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('#root')!;
-  let currentPage
-  let pathPage = window.location.pathname;
+  let currentPage;
+  const pathPage = window.location.pathname;
 
-  if(pathPage === '/'){
+  if (pathPage === '/') {
     currentPage = new HomePage({});
-  } else if(pathPage === '/Page404'){
+  } else if (pathPage === '/Page404') {
     currentPage = new Page404({});
-  } else if(pathPage === '/Page500'){
+  } else if (pathPage === '/Page500') {
     currentPage = new Page500({});
-  } else if(pathPage === '/Profile'){
+  } else if (pathPage === '/Profile') {
     currentPage = new Profile({});
-  } else if(pathPage === '/Signin'){
+  } else if (pathPage === '/Signin') {
     currentPage = new Signin({});
-  } else if(pathPage === '/Signup'){
+  } else if (pathPage === '/Signup') {
     currentPage = new Signup({});
-  } else if(pathPage === '/EditProfile'){
+  } else if (pathPage === '/EditProfile') {
     currentPage = new EditProfile({});
   }
-  
+
   root.append(currentPage.getContent()!);
   currentPage.getContent();
   currentPage.dispatchComponentDidMount();
 
-
-  //работаем с формой, если есть такая на странице
+  // работаем с формой, если есть такая на странице
   const fotmToValidate: any = root!.querySelector('#validateRform');
 
-  if(fotmToValidate !== null){
+  if (fotmToValidate !== null) {
     const formValidator = new FormValidator(fotmToValidate);
-    if(pathPage === '/Signup' || pathPage === '/EditProfile'){
+    if (pathPage === '/Signup' || pathPage === '/EditProfile') {
       fotmToValidate.addEventListener('submit', (event:Event) => {
         event.preventDefault();
         const email = fotmToValidate.elements.email.value;
@@ -68,10 +69,10 @@ window.addEventListener('DOMContentLoaded', ()=> {
         };
         console.log(res);
       });
-    } else if(pathPage === '/Signin'){
+    } else if (pathPage === '/Signin') {
       fotmToValidate.addEventListener('submit', (event:Event) => {
         event.preventDefault();
-    
+
         const login = fotmToValidate.elements.login.value;
         const password = fotmToValidate.elements.password.value;
         type Res = {'login': string, 'password': string};
@@ -79,10 +80,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
         console.log(res);
       });
     }
-  
+
     formValidator.setEventListeners();
-  } 
+  }
 });
-
-
-
