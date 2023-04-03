@@ -3,7 +3,8 @@ import { nanoid } from 'nanoid';
 import { EventBus } from './EventBus';
 
 // Нельзя создавать экземпляр данного класса
-export default class Block<P extends Record<string, any> = any> {
+// eslint-disable-next-line
+export class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
