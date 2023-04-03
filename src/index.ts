@@ -7,11 +7,6 @@ import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
 
-// let setPage = function setPage(() => {
-  
-// });
-
-
 window.addEventListener('DOMContentLoaded', ()=> {
   const root = document.querySelector('#root')!;
   let currentPage
