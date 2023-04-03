@@ -1,5 +1,6 @@
 import { Block } from '../../utils/Block';
 import { Message } from '../../partials/message/index'
+import { Chat } from '../../partials/chat/index'
 import mainTpl from './main.hbs';
 
 interface MainProps {
@@ -12,7 +13,7 @@ export class MainPage extends Block<MainProps>{
   }
 
   init() {
-    this.children.chat1 = new Message({ 
+    this.children.message1 = new Message({ 
       contentClass: 'message_received',
       textMessage: `Привет! Смотри, 
       тут всплыл интересный кусок лунной космической 
@@ -27,18 +28,43 @@ export class MainPage extends Block<MainProps>{
       sentTime: ''
     });
 
-    this.children.chat2 = new Message({ 
+    this.children.message2 = new Message({ 
       contentClass: 'message_no',
       textMessage: '',
       showImg: 'message__img-show',
       sentTime: '11:56'
     });
 
-    this.children.chat3 = new Message({ 
+    this.children.message3 = new Message({ 
       contentClass: 'message_sent',
       textMessage: 'Круто!',
       showImg: '',
       sentTime: '12:00'
+    });
+
+    this.children.chat1 = new Chat ({ 
+      chatClass: '',
+      userName: 'Гутенберг',
+      lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
+      dateTime: 'вт',
+      isUnread: '',
+      unredAmount: '0',
+    });
+    this.children.chat2 = new Chat ({ 
+      chatClass: '',
+      userName: 'Гутенберг',
+      lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
+      dateTime: 'вт',
+      isUnread: '',
+      unredAmount: '0',
+    });
+    this.children.chat3 = new Chat ({ 
+      chatClass: 'content-holder__choice',
+      userName: 'Аня',
+      lastMessage: 'Приветикик',
+      dateTime: '15:12',
+      isUnread: 'unread-show',
+      unredAmount: '3',
     });
   }
 
