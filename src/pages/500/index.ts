@@ -1,4 +1,5 @@
 import { Block } from '../../utils/Block';
+import { HeaderPage } from '../../partials/header/index'
 
 import Tpl500 from './500.hbs';
 
@@ -12,6 +13,9 @@ export class Page500 extends Block<Props500>{
   }
 
   init() {
+    this.children.headerBlock = new HeaderPage({ 
+ 
+    });
     this.element!.classList.add('root-err')
   }
 

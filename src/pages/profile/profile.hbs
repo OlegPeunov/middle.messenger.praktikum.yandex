@@ -1,66 +1,38 @@
----
-id: "root" 
----
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Massenger</title>
-  <link rel="stylesheet" href="../../pages/index.pcss" />
-</head>
-<body>
-  <div class="root">
-    <header class="header">
-      <nav class="pages-nav">
-        <ul class="nav-list">
-          <li class="nav-element"><a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../../main/index.hbs">{{> button/button label = 'Основная' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль' className='button-nav'}}</a></li>    
-        </ul>
-      </nav>
-    </header>
-    <main class="profile">
-      <div class="prfile__img-block">
-        <div class="user-img"></div>
-        <div class="sub-name">Иван</div>
-      </div>
-      <div class="profile__info-block">
-        <div class="profile__item">
-          <div class="item-info">Почта</div>
-          <div class="item-value">pochta@yandex.ru</div>
-        </div>
-        <div class="profile__item">
-          <div class="item-info">Логин</div>
-          <div class="item-value">ivanivanov</div>
-        </div>
-        <div class="profile__item">
-          <div class="item-info">Имя</div>
-          <div class="item-value">Иван</div>
-        </div>
-        <div class="profile__item">
-          <div class="item-info">Фамилия</div>
-          <div class="item-value">Иванов</div>
-        </div>
-        <div class="profile__item">
-          <div class="item-info">Имя в чате</div>
-          <div class="item-value">Иван</div>
-        </div>
-        <div class="profile__item">
-          <div class="item-info">Телефон</div>
-          <div class="item-value">+7 (909) 967 30 30</div>
-        </div>
-      </div>
-      <div class="profile__buttons-block">
-        <div class="profile__item"><a class="profile-btn" id="change-data" href="#">Изменить данные</a></div>
-        <div class="profile__item"><a class="profile-btn" id="change-password" href="#">Изменить пароль</a></div>
-        <a class="exit-btn" id="change-data" href="../../main/index.hbs">Выйти</a>
-      </div>  
-    </main>
+{{{headerBlock}}}
+<main class="profile">
+  <div class="prfile__img-block">
+    <div class="user-img"></div>
+    <div class="sub-name">Иван</div>
   </div>
-</body>
-</html>
+  <div class="profile__info-block">
+    <div class="profile__item">
+      <div class="item-info">Почта</div>
+      <div class="item-value">pochta@yandex.ru</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Логин</div>
+      <div class="item-value">ivanivanov</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Имя</div>
+      <div class="item-value">Иван</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Фамилия</div>
+      <div class="item-value">Иванов</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Имя в чате</div>
+      <div class="item-value">Иван</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Телефон</div>
+      <div class="item-value">+7 (909) 967 30 30</div>
+    </div>
+  </div>
+  <div class="profile__buttons-block">
+    <div class="profile__item"><a class="profile-btn" id="change-data" href="#">Изменить данные</a></div>
+    <div class="profile__item"><a class="profile-btn" id="change-password" href="#">Изменить пароль</a></div>
+    <a class="exit-btn" id="change-data" href="../../main/index.hbs">Выйти</a>
+  </div>  
+</main>

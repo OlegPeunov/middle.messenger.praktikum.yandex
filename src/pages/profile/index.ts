@@ -1,13 +1,13 @@
 import { Block } from '../../utils/Block';
-import Tpl404 from './404.hbs';
+import profileTpl from './profile.hbs';
 import { HeaderPage } from '../../partials/header/index';
 
-interface Props404 {
+interface profileProps {
 
 }
 
-export class Page404 extends Block<Props404>{
-  constructor(props: Props404){
+export class Profile extends Block<profileProps>{
+  constructor(props: profileProps){
     super('div', props)
   }
 
@@ -15,10 +15,9 @@ export class Page404 extends Block<Props404>{
     this.children.headerBlock = new HeaderPage({ 
  
     });
-    this.element!.classList.add('root-err')
   }
 
   render() {
-    return this.compile(Tpl404, this.props);
+    return this.compile(profileTpl, this.props);
   }
 }
