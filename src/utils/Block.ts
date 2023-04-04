@@ -232,6 +232,8 @@ export class Block<P extends Record<string, any> = any> {
     return document.createElement(tagName);
   }
 
+  public get(){};
+
   show() {
     this.getContent()!.style.display = 'block';
   }
