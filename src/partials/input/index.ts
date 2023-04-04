@@ -8,7 +8,10 @@ interface InputProps {
   name: string;
   placeholder: string;
   id: string;
-  events: {click: () => void};
+  events: { 
+    focus: () => void,
+    blur: () => void
+  };
 }
 
 // eslint-disable-next-line
