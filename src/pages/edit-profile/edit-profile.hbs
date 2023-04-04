@@ -4,33 +4,33 @@
     <div class="popup__title">Редактировать</div>
     <form class="popup__form popup__form_type_signup" novalidate id="validateRform">
       <div>
+        <p class="popup__input-title">Отоброжаемое имя</p>
+        {{{inputDisplayName}}}
+        {{{errDisplayName}}}
         <p class="popup__input-title">Почта</p>
-        <input type="login" id="email-edit" name="email" class="popup__input" required placeholder="Почта" value="">
-        <span id="error-email-edit" class="error-message"></span>
+        {{{inputMail}}}
+        {{{errPlaceMail}}}
         <p class="popup__input-title">Логин</p>
-        <input type="login" id="login-edit" name="login" class="popup__input" required placeholder="Логин" value="">
-        <span id="error-login-edit" class="error-message"></span>
+        {{{inputLogin}}}
+        {{{errPlaceLogin}}}
         <p class="popup__input-title">Имя</p>
-        <input type="login" id="first_name-edit" name="display_name" class="popup__input" required placeholder="Имя" value="">
-        <span id="error-first_name-edit" class="error-message"></span>
-        <p class="popup__input-title">Имя в чате</p>
-        <input type="login" id="display_name-edit" name="display_name" class="popup__input" required placeholder="Имя в чате" value="">
-        <span id="error-display_name-edit" class="error-message"></span>
+        {{{inputFirst}}}
+        {{{errPlaceFirst}}}
         <p class="popup__input-title">Фамилия</p>
-        <input type="login" id="second_name-edit" name="second_name" class="popup__input" required placeholder="Фамилия" value="">
-        <span id="error-second_name-edit" class="error-message"></span>
+        {{{inputSecond}}}
+        {{{errPlaceSecond}}}
         <p class="popup__input-title">Телефон</p>
-        <input type="tel" id="phone-edit" name="phone" class="popup__input" required placeholder="Телефон" value="">
-        <span id="error-phone-edit" class="error-message"></span>
+        {{{inputTel}}}
+        {{{errPlaceTel}}}
         <p class="popup__input-title">Пароль</p>
-        <input type="password" id="password_one" name="password_one" class="popup__input" required minlength="8" placeholder="Пароль" value="">
-        <span id="error-password_one" class="error-message"></span>
+        {{{inputPassOne}}}
+        {{{errPlacePassOne}}}
         <p class="popup__input-title">Пароль (еще раз)</p>
-        <input type="password" id="password_two" name="password_two" class="popup__input" required minlength="8" placeholder="Пароль" value="">
-        <span id="error-password_two" class="error-message"></span>
+        {{{inputPassTwo}}}
+        {{{errPlacePassTwo}}}
       </div>
       <div>
-        <button id="popup-button-edit" class="popup__button" disabled >Сохранить</button>
+        {{{signUpButton}}}
       </div>
     </form>
   </div>

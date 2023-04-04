@@ -88,7 +88,7 @@ export class Signup extends Block<signupProps> {
 
     this.children.inputFirst = new Input({
       name: 'first_name',
-      id: '"first_name-signup',
+      id: 'first_name-signup',
       type: 'login',
       placeholder: 'Имя',
       events: { focus: () => {
@@ -216,13 +216,36 @@ export class Signup extends Block<signupProps> {
       events: { click: (event:Event) => {
         event.preventDefault();
 
-        // const res1 = inputValidator.regularCheck(this.children.inputLogin.get(), 'login')
-        // this.children.errPlaceLogin.setProps({label : res1.message})
-        // validateButton.input1 = res1.err
+        const res1 = inputValidator.regularCheck(this.children.inputMail.get(), 'email')
+        this.children.errPlaceMail.setProps({label : res1.message})
+        validateButton.input1 = res1.err
+        checkBtn(this.children.signUpButton)
 
-        // const res2 = inputValidator.regularCheck(this.children.inputPassword.get(), 'password')
-        // this.children.errPlacePassword.setProps({label : res2.message})
-        // validateButton.input2 = res2.err
+        const res2 = inputValidator.regularCheck(this.children.inputLogin.get(), 'login')
+        this.children.errPlaceLogin.setProps({label : res2.message})
+        validateButton.input2 = res2.err
+        checkBtn(this.children.signUpButton)
+        const res3 = inputValidator.regularCheck(this.children.inputFirst.get(), 'first_name')
+        this.children.errPlaceFirst.setProps({label : res3.message})
+        validateButton.input3 = res3.err
+        checkBtn(this.children.signUpButton)
+        const res4 = inputValidator.regularCheck(this.children.inputSecond.get(), 'second_name')
+        this.children.errPlaceSecond.setProps({label : res4.message})
+        validateButton.input4 = res4.err
+        checkBtn(this.children.signUpButton)
+        const res5 = inputValidator.regularCheck(this.children.inputTel.get(), 'phone')
+        this.children.errPlaceTel.setProps({label : res5.message})
+        validateButton.input5 = res5.err
+        checkBtn(this.children.signUpButton)
+        const res6 = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one')
+        this.children.errPlacePassOne.setProps({label : res6.message})
+        validateButton.input6 = res6.err
+        this.children.signUpButton.setProps({active: false})
+        checkBtn(this.children.signUpButton)
+        const res7 = inputValidator.regularCheck(this.children.inputPassTwo.get(), 'password_two')
+        this.children.errPlacePassOne.setProps({label : res7.message})
+        validateButton.input7 = res7.err
+        this.children.signUpButton.setProps({active: false})
 
         checkBtn(this.children.signUpButton)
         const btnToEnable = (!validateButton.input1 && !validateButton.input2 && !validateButton.input3 && !validateButton.input4 && !validateButton.input5 && !validateButton.input6 && !validateButton.input7)
