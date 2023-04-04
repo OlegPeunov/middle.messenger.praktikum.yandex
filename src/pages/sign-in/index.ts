@@ -1,13 +1,12 @@
-// eslint-disable-next-line
+/* eslint-disable */
 import { Block } from '../../utils/Block';
-// eslint-disable-next-line
 import { InputValidator } from '../../utils/InputValidator';
 import signinTpl from './signin.hbs';
 import { Button } from '../../partials/button/index';
-// eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
+/* eslint-enable */
 
 interface signinProps {
 
@@ -18,39 +17,38 @@ export class Signin extends Block<signinProps>{
     super('div', props);
   }
 
-  
-
   init() {
     const inputValidator = new InputValidator('');
-    const validateButton = {input1: true, input2: true}
+    const validateButton = { input1: true, input2: true };
 
     function checkBtn(btn) {
-      if(!validateButton.input1 && !validateButton.input2){
-        btn.setFalse()
-      }else{
-        btn.setTrue()
+      if (!validateButton.input1 && !validateButton.input2) {
+        btn.setFalse();
+      } else {
+        btn.setTrue();
       }
     }
-    
+
     this.children.headerBlock = new HeaderPage({});
     this.children.inputLogin = new Input({
       name: 'login',
       id: 'login-signin',
       type: 'login',
       placeholder: 'Логин',
-      events: { focus: () => {
-        const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login')
-        this.children.errPlaceLogin.setProps({label : res.message})
-        validateButton.input1 = res.err
-        checkBtn(this.children.signInButton)
-
+      events: {
+        focus: () => {
+          const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login');
+          this.children.errPlaceLogin.setProps({ label: res.message });
+          validateButton.input1 = res.err;
+          checkBtn(this.children.signInButton);
+        },
+        blur: () => {
+          const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login');
+          this.children.errPlaceLogin.setProps({ label: res.message });
+          validateButton.input1 = res.err;
+          checkBtn(this.children.signInButton);
+        },
       },
-      blur: () => {
-        const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login')
-        this.children.errPlaceLogin.setProps({label : res.message})
-        validateButton.input1 = res.err
-        checkBtn(this.children.signInButton)
-      }}
     });
     this.children.errPlaceLogin = new Error({
       label: '',
@@ -62,18 +60,19 @@ export class Signin extends Block<signinProps>{
       id: 'password-signin',
       type: 'password',
       placeholder: 'Пароль',
-      events: { focus: () => {
-        const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'password')
-        this.children.errPlacePassword.setProps({label : res.message})
-        validateButton.input2 = res.err
-        this.children.signInButton.setProps({active: false})
-        checkBtn(this.children.signInButton)
+      events: {
+        focus: () => {
+          const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'password');
+          this.children.errPlacePassword.setProps({ label: res.message });
+          validateButton.input2 = res.err;
+          this.children.signInButton.setProps({ active: false });
+          checkBtn(this.children.signInButton);
         },
         blur: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'password')
-          this.children.errPlacePassword.setProps({label : res.message})
-          validateButton.input2 = res.err
-          checkBtn(this.children.signInButton)
+          const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'password');
+          this.children.errPlacePassword.setProps({ label: res.message });
+          validateButton.input2 = res.err;
+          checkBtn(this.children.signInButton);
         },
       },
     });
@@ -87,28 +86,32 @@ export class Signin extends Block<signinProps>{
       id: 'popup-button-signin',
       className: 'popup__button-active',
       label: 'Авторизоваться',
-      events: { click: (event:Event) => {
-        event.preventDefault();
+      events: {
+        click: (event:Event) => {
+          event.preventDefault();
 
-        const res1 = inputValidator.regularCheck(this.children.inputLogin.get(), 'login')
-        this.children.errPlaceLogin.setProps({label : res1.message})
-        validateButton.input1 = res1.err
+          const res1 = inputValidator.regularCheck(this.children.inputLogin.get(), 'login');
+          this.children.errPlaceLogin.setProps({ label: res1.message });
+          validateButton.input1 = res1.err;
 
-        const res2 = inputValidator.regularCheck(this.children.inputPassword.get(), 'password')
-        this.children.errPlacePassword.setProps({label : res2.message})
-        validateButton.input2 = res2.err
+          const res2 = inputValidator.regularCheck(this.children.inputPassword.get(), 'password');
+          this.children.errPlacePassword.setProps({ label: res2.message });
+          validateButton.input2 = res2.err;
 
-        checkBtn(this.children.signInButton)
-        
-        if(!validateButton.input1 && !validateButton.input2)
-        console.log( {'login': this.children.inputLogin.get(),
-        'password': this.children.inputPassword.get()})
-      }},
+          checkBtn(this.children.signInButton);
+
+          if (!validateButton.input1 && !validateButton.input2) {
+            console.log({
+              login: this.children.inputLogin.get(),
+              password: this.children.inputPassword.get(),
+            });
+          }
+        },
+      },
     });
   }
 
   render() {
-    
     return this.compile(signinTpl, this.props);
   }
 }
