@@ -15,31 +15,37 @@ export class HeaderPage extends Block<HeaderProps> {
 
   init() {
     this.children.loginButton1 = new Button({
+      id: '',
       className: 'button-nav',
       label: 'Вход',
       events: { click: () => {} },
     });
     this.children.loginButton2 = new Button({
+      id: '',
       className: 'button-nav',
       label: 'Регистрация',
       events: { click: () => {} },
     });
     this.children.loginButton3 = new Button({
+      id: '',
       className: 'button-nav',
       label: 'Профиль',
       events: { click: () => {} },
     });
     this.children.loginButton4 = new Button({
+      id: '',
       className: 'button-nav',
       label: 'Редактивровать профиль',
       events: { click: () => {} },
     });
     this.children.loginButton5 = new Button({
+      id: '',
       className: 'button-nav',
       label: '404',
       events: { click: () => {} },
     });
     this.children.loginButton6 = new Button({
+      id: '',
       className: 'button-nav',
       label: '500',
       events: { click: () => {} },

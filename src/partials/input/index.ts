@@ -5,6 +5,7 @@ import './input.pcss';
 
 interface InputProps {
   type: string;
+  name: string;
   placeholder: string;
   id: string;
   events: {click: () => void};
@@ -24,6 +25,8 @@ export class Input extends Block<InputProps> {
     (this.element as HTMLInputElement).placeholder = this.props.placeholder;
     (this.element as HTMLInputElement).id = this.props.id;
     (this.element as HTMLInputElement).type = this.props.type;
+    (this.element as HTMLInputElement).name = this.props.name;
+    (this.element as HTMLInputElement).required = true;
     this.element!.classList.add('popup__input');
 
   }

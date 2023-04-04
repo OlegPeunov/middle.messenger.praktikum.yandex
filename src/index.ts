@@ -81,6 +81,6 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // formValidator.setEventListeners();
+    formValidator.setEventListeners();
   }
 });
