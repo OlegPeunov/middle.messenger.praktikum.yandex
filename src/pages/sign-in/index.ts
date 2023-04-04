@@ -56,6 +56,7 @@ export class Signin extends Block<signinProps>{
       label: '',
       id: 'error-login-signin',
     });
+
     this.children.inputPassword = new Input({
       name: 'password',
       id: 'password-signin',
@@ -80,6 +81,7 @@ export class Signin extends Block<signinProps>{
       label: '',
       id: 'error-password-signin',
     });
+
     this.children.signInButton = new Button({
       active: true,
       id: 'popup-button-signin',

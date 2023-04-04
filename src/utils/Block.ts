@@ -80,6 +80,15 @@ export class Block<P extends Record<string, any> = any> {
     });
   }
 
+  _removeEvents() {
+    const { events = {} } = this.props as P & { events: Record<string, () => void> };
+
+    Object.keys(events).forEach((eventName) => {
+      // eslint-disable-next-line
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
   // eslint-disable-next-line
   _registerEvents(eventBus: EventBus) {
     // eslint-disable-next-line
@@ -153,7 +162,8 @@ export class Block<P extends Record<string, any> = any> {
   // eslint-disable-next-line
   private _render() {
     const fragment = this.render();
-
+    // eslint-disable-next-line
+    this._removeEvents();
     // eslint-disable-next-line
     this._element!.innerHTML = '';
 

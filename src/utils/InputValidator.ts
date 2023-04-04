@@ -3,12 +3,13 @@ export class InputValidator {
   private formEvent: any;
 
   private res: {'err': boolean, 'message': string | null} = { err: false, message: null };
+  private pasWords: {'pass1':string | null, 'pass2': string | null} = { pass1: null, pass2: null };
   constructor(formEvent: unknown) {
     this.formEvent = formEvent;
   }
   
   regularCheck(value, name) {
-    // console.log(value, name)
+
     const checkType = name;
     const checkValue = value;
 
@@ -80,6 +81,12 @@ export class InputValidator {
 
     if ((checkType === 'password' || checkType === 'password_one' || checkType === 'password_two')
       &&  value.length !== 0) {
+      if(checkType === 'password_one'){
+        this.pasWords.pass1 = checkValue
+      } else if (checkType === 'password_two'){
+        this.pasWords.pass2 = checkValue
+      }
+
       if (!regexSpace.test(checkValue)) {
         this.res.message = 'Здесь не должно быть пробелов';
         this.res.err = true;
@@ -99,8 +106,8 @@ export class InputValidator {
       }
 
       if (checkType === 'password_two') {
-        const passOne = this.formEvent.querySelector('#password_one').value;
-        if (checkValue !== passOne && passOne.length !== 0) {
+        const passOne = this.pasWords.pass1
+        if (checkValue !== passOne && passOne!.length !== 0) {
           this.res.message = 'Пароли не свопадают';
           this.res.err = true;
           return this.res;
@@ -108,8 +115,8 @@ export class InputValidator {
       }
 
       if (checkType === 'password_one') {
-        const passTwo = this.formEvent.querySelector('#password_two').value;
-        if (checkValue !== passTwo && passTwo.length !== 0) {
+        const passTwo = this.pasWords.pass2
+        if (checkValue !== passTwo && passTwo!.length !== 0) {
           this.res.message = 'Пароли не свопадают';
           this.res.err = true;
           return this.res;
@@ -147,3 +154,5 @@ export class InputValidator {
     this.res.message = '';
     return this.res;
   }
+  
+}
