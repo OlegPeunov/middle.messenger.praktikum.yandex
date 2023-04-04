@@ -4,8 +4,11 @@ import template from './button.hbs';
 import './button.pcss';
 
 interface ButtonProps {
+  active: boolean;
+  id: string;
   label: string;
-  events: {click: () => void};
+  className: string
+  events: {click: (event:any) => void};
 }
 
 // eslint-disable-next-line
@@ -14,8 +17,19 @@ export class Button extends Block<ButtonProps> {
     super('button', props);
   }
 
+  setTrue() {
+    this.props.active = true;
+    (this.element as HTMLButtonElement).disabled = this.props.active;
+  }
+  setFalse() {
+    this.props.active = false;
+    (this.element as HTMLButtonElement).disabled = this.props.active;
+  }
+
   init() {
-    this.element!.classList.add('button-nav');
+    (this.element as HTMLButtonElement).classList.add(this.props.className);
+    (this.element as HTMLButtonElement).id = this.props.id;
+    (this.element as HTMLButtonElement).disabled = this.props.active;
   }
 
   render() {

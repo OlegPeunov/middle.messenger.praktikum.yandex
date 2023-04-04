@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { FormValidator } from './utils/FormValidator';
 import { HomePage } from './pages/home';
 import { Page404 } from './pages/404';
 import { Page500 } from './pages/500';
@@ -34,53 +33,4 @@ window.addEventListener('DOMContentLoaded', () => {
   currentPage.getContent();
   currentPage.dispatchComponentDidMount();
 
-  // работаем с формой, если есть такая на странице
-  const fotmToValidate: any = root!.querySelector('#validateRform');
-
-  if (fotmToValidate !== null) {
-    const formValidator = new FormValidator(fotmToValidate);
-    if (pathPage === '/Signup' || pathPage === '/EditProfile') {
-      fotmToValidate.addEventListener('submit', (event:Event) => {
-        event.preventDefault();
-        const email = fotmToValidate.elements.email.value;
-        const login = fotmToValidate.elements.login.value;
-        const name1 = fotmToValidate.elements.first_name.value;
-        const name2 = fotmToValidate.elements.second_name.value;
-        const phone = fotmToValidate.elements.phone.value;
-        const password1 = fotmToValidate.elements.password_one.value;
-        const password2 = fotmToValidate.elements.password_two.value;
-        type Res = {
-          'email': string,
-          'login': string,
-          'name1': string,
-          'name2': string,
-          'phone': string,
-          'password1': string,
-          'password2': string,
-        }
-        const res: Res = {
-          email,
-          login,
-          name1,
-          name2,
-          phone,
-          password1,
-          password2,
-        };
-        console.log(res);
-      });
-    } else if (pathPage === '/Signin') {
-      fotmToValidate.addEventListener('submit', (event:Event) => {
-        event.preventDefault();
-
-        const login = fotmToValidate.elements.login.value;
-        const password = fotmToValidate.elements.password.value;
-        type Res = {'login': string, 'password': string};
-        const res: Res = { login, password };
-        console.log(res);
-      });
-    }
-
-    formValidator.setEventListeners();
-  }
 });
