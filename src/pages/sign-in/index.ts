@@ -3,6 +3,7 @@ import { Block } from '../../utils/Block';
 import signinTpl from './signin.hbs';
 // eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index';
+import { Input } from '../../partials/input/index';
 
 interface signinProps {
 
@@ -14,8 +15,14 @@ export class Signin extends Block<signinProps>{
   }
 
   init() {
-    this.children.headerBlock = new HeaderPage({
-
+    this.children.headerBlock = new HeaderPage({});
+    this.children.inputLogin = new Input({
+      label: 'Вход',
+      events: { click: () => {} },
+    });
+    this.children.inputPassword = new Input({
+      label: 'Пароль',
+      events: { click: () => {} },
     });
   }
 

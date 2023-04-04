@@ -5,10 +5,12 @@
     <form class="popup__form popup__form_type_signin" novalidate id="validateRform">
       <div>
         <p class="popup__input-title">Логин</p>
-        <input type="login" id="login-signin" name="login" class="popup__input" required minlength="3" placeholder="Логин" value="">
+        {{{inputLogin}}}
+        {{!-- <input type="login" id="login-signin" name="login" class="popup__input" required minlength="3" placeholder="Логин" value=""> --}}
         <span id="error-login-signin" class="error-message"></span>
         <p class="popup__input-title">Пароль</p>
-        <input type="password" id="password-signin" name="password" class="popup__input" required minlength="8" placeholder="Пароль" value="">
+        {{{inputPassword}}}
+        {{!-- <input type="password" id="password-signin" name="password" class="popup__input" required minlength="8" placeholder="Пароль" value=""> --}}
         <span id="error-password-signin" class="error-message"></span>
       </div>
       <div>

@@ -5,6 +5,7 @@ import './button.pcss';
 
 interface ButtonProps {
   label: string;
+  className: string
   events: {click: () => void};
 }
 
@@ -15,7 +16,7 @@ export class Button extends Block<ButtonProps> {
   }
 
   init() {
-    this.element!.classList.add('button-nav');
+    this.element!.classList.add(this.props.className);
   }
 
   render() {
