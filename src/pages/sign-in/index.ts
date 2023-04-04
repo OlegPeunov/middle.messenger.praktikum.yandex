@@ -17,11 +17,15 @@ export class Signin extends Block<signinProps>{
   init() {
     this.children.headerBlock = new HeaderPage({});
     this.children.inputLogin = new Input({
-      label: 'Вход',
+      id: 'login-signin',
+      type: 'login',
+      placeholder: 'Логин',
       events: { click: () => {} },
     });
     this.children.inputPassword = new Input({
-      label: 'Пароль',
+      id: 'password-signin',
+      type: 'password',
+      placeholder: 'Пароль',
       events: { click: () => {} },
     });
   }
