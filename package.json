@@ -36,6 +36,7 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
-    "nanoid": "^4.0.2"
+    "nanoid": "^4.0.2",
+    "stylelint-config-standard": "^32.0.0"
   }
 }
