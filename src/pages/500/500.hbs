@@ -1,33 +1,7 @@
----
-id: "root" 
----
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Massenger</title>
-  <link rel="stylesheet" href="../../pages/index.pcss" />
-</head>
-<body>
-  <div class="root-err">
-    <header class="header">
-      <nav class="pages-nav">
-        <ul class="nav-list">
-          <li class="nav-element"><a href="../sign-up/signup.hbs">{{> button/button label = 'Регистрация' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../../main/index.hbs">{{> button/button label = 'Основная' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a></li>    
-          <li class="nav-element"><a href="../edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль' className='button-nav'}}</a></li>    
-        </ul>
-      </nav>
-    </header>
-    <main class="err__block">
-      <h1 class="err__num">500</h1>
-      <h2 class="err__description">Мы уже фиксим</h2>
-      <a class="err__btn" id="back-to-chat" href="../../main/index.hbs">Назад к чатам</a>
-    </main>
-  </div>
-</body>
-</html>
+{{{headerBlock}}}
+<main class="err__block">
+  <h1 class="err__num">500</h1>
+  <h2 class="err__description">Мы уже фиксим</h2>
+  <a class="err__btn" id="back-to-chat" href="#">Назад к чатам</a>
+</main>
+

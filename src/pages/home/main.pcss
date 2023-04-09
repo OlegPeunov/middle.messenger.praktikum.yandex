@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 .root{
   max-width: 1440px;
   min-height: 100vh;
@@ -29,6 +31,7 @@
 
 .nav-element{
   list-style-type: none;
+  margin-left: 30px;
 }
 
 .chat{
@@ -59,8 +62,7 @@
   text-align: center;
   outline: none;
   margin-bottom: 14px;
-  background-image: url('../../static/images/search-icon.svg');
-  background-repeat: no-repeat;
+  /* background: url('../../static/images/search-icon.svg') no-repeat; */
 }
 
 .chat__search:focus::placeholder {
@@ -148,7 +150,7 @@
 }
 
 .chat__mesaages{
-  height: calc(100% - 110px);
+  height: calc(100% - 112px);
   width: 100%;
   flex-direction: column;
   overflow: scroll;
@@ -212,8 +214,7 @@
   width: 12px;
   height: 12px;
   margin: auto;
-  background-image: url('../../static/images/button-arrow.svg');
-  background-repeat: no-repeat;
+  background: url('../../static/images/button-arrow.svg') no-repeat;
 }
 
 .write__button:hover{
@@ -231,6 +232,18 @@
   cursor: pointer;
   margin-right: 10px;
   background-color: transparent;
-  background-repeat: no-repeat;
-  background-image: url('../../static/images/button-attach.svg');
+  /* background: url('../../static/images/button-attach.svg') no-repeat; */
 }
+
+.message__img{
+  width: 316px;
+  height: 211px;
+  background: url('../../static/images/camera.svg') no-repeat;
+  display: none;
+}
+
+.message__img-show{
+  display: flex;
+}
+
+/* eslint-enable */

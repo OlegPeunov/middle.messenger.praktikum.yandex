@@ -1,61 +1,37 @@
----
-id: "root" 
----
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Massenger</title>
-  <link rel="stylesheet" href="../../pages/index.pcss" />
-</head>
-<body>
-  <div class="root">
-    <header class="header">
-      <nav class="pages-nav">
-        <ul class="nav-list">
-          <li class="nav-element"><a href="../sign-in/signin.hbs">{{> button/button label = 'Вход' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../profile/profile.hbs">{{> button/button label = 'Профиль' className='button-nav'}}</a></li> 
-          <li class="nav-element"><a href="../404/404.hbs">{{> button/button label = '404' className='button-nav'}}</a></li>       
-          <li class="nav-element"><a href="../500/500.hbs">{{> button/button label = '500' className='button-nav'}}</a></li>
-          <li class="nav-element"><a href="../edit-profile/edit-profile.hbs">{{> button/button label = 'Редактивровать профиль' className='button-nav'}}</a></li>          
-        </ul>
-      </nav>
-    </header>
-    <main class="popup popup_type_signup">
-      <div class="popup__content">
-        <div class="popup__title">Редактировать</div>
-        <form class="popup__form popup__form_type_signup" novalidate id="signup">
-          <div>
-            <p class="popup__input-title">Почта</p>
-            <input type="login" id="email-signup" name="email" class="popup__input" required placeholder="Почта" value="">
-            <span id="error-login-signup" class="error-message"></span>
-            <p class="popup__input-title">Логин</p>
-            <input type="login" id="login-signup" name="login" class="popup__input" required placeholder="Логин" value="">
-            <span id="error-login-signup" class="error-message"></span>
-            <p class="popup__input-title">Имя</p>
-            <input type="login" id="first_name-signup" name="first_name" class="popup__input" required placeholder="Имя" value="">
-            <span id="error-login-signup" class="error-message"></span>
-            <p class="popup__input-title">Фамилия</p>
-            <input type="login" id="second_name-signup" name="second_name" class="popup__input" required placeholder="Фамилия" value="">
-            <span id="error-login-signup" class="error-message"></span>
-            <p class="popup__input-title">Телефон</p>
-            <input type="tel" id="phone-signup" name="phone" class="popup__input" required placeholder="Телефон" value="">
-            <span id="error-password-signup" class="error-message"></span>
-            <p class="popup__input-title">Пароль</p>
-            <input type="password" id="password-signup" name="password" class="popup__input" required minlength="8" placeholder="Пароль" value="">
-            <span id="error-password-signup" class="error-message"></span>
-            <p class="popup__input-title">Пароль (еще раз)</p>
-            <input type="password" id="password-repeat-signup" name="password-repeat" class="popup__input" required minlength="8" placeholder="Пароль" value="">
-            <span id="error-password-signup" class="error-message"></span>
-          </div>
-          <div>
-            <button id="popup-button-signup" class="popup__button" disabled >Сохранить</button>
-          </div>
-        </form>
+{{{headerBlock}}}
+<main class="popup popup_type_signup">
+  <div class="popup__content">
+    <div class="popup__title">Редактировать</div>
+    <form class="popup__form popup__form_type_signup" novalidate id="validateRform">
+      <div>
+        <p class="popup__input-title">Отоброжаемое имя</p>
+        {{{inputDisplayName}}}
+        {{{errDisplayName}}}
+        <p class="popup__input-title">Почта</p>
+        {{{inputMail}}}
+        {{{errPlaceMail}}}
+        <p class="popup__input-title">Логин</p>
+        {{{inputLogin}}}
+        {{{errPlaceLogin}}}
+        <p class="popup__input-title">Имя</p>
+        {{{inputFirst}}}
+        {{{errPlaceFirst}}}
+        <p class="popup__input-title">Фамилия</p>
+        {{{inputSecond}}}
+        {{{errPlaceSecond}}}
+        <p class="popup__input-title">Телефон</p>
+        {{{inputTel}}}
+        {{{errPlaceTel}}}
+        <p class="popup__input-title">Пароль</p>
+        {{{inputPassOne}}}
+        {{{errPlacePassOne}}}
+        <p class="popup__input-title">Пароль (еще раз)</p>
+        {{{inputPassTwo}}}
+        {{{errPlacePassTwo}}}
       </div>
-    </main>
+      <div>
+        {{{signUpButton}}}
+      </div>
+    </form>
   </div>
-</body>
-</html>
+</main>
