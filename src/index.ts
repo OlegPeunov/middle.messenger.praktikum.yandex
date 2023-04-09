@@ -15,17 +15,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (pathPage === '/') {
     currentPage = new HomePage({});
-  } else if (pathPage === '/Page404') {
+  } else if (pathPage === '/page-404') {
     currentPage = new Page404({});
-  } else if (pathPage === '/Page500') {
+  } else if (pathPage === '/page-500') {
     currentPage = new Page500({});
-  } else if (pathPage === '/Profile') {
+  } else if (pathPage === '/profile') {
     currentPage = new Profile({});
-  } else if (pathPage === '/Signin') {
+  } else if (pathPage === '/sign-in') {
     currentPage = new Signin({});
-  } else if (pathPage === '/Signup') {
+  } else if (pathPage === '/sign-up') {
     currentPage = new Signup({});
-  } else if (pathPage === '/EditProfile') {
+  } else if (pathPage === '/edit-profile') {
     currentPage = new EditProfile({});
   }
 
