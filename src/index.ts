@@ -6,31 +6,30 @@ import { Profile } from './pages/profile';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
+import Router from './utils/Router';
 /* eslint-enable */
 
+enum Routes {
+  Index = '/',
+  Err404 = '/page-404',
+  Err500 = '/page-500',
+  Profile = '/profile',
+  Signin = '/sign-in',
+  Signup = '/sign-up',
+  EditProfile = '/edit-profile',
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('#root')!;
-  let currentPage;
-  const pathPage = window.location.pathname;
 
-  if (pathPage === '/') {
-    currentPage = new HomePage({});
-  } else if (pathPage === '/page-404') {
-    currentPage = new Page404({});
-  } else if (pathPage === '/page-500') {
-    currentPage = new Page500({});
-  } else if (pathPage === '/profile') {
-    currentPage = new Profile({});
-  } else if (pathPage === '/sign-in') {
-    currentPage = new Signin({});
-  } else if (pathPage === '/sign-up') {
-    currentPage = new Signup({});
-  } else if (pathPage === '/edit-profile') {
-    currentPage = new EditProfile({});
-  }
+  Router
+    .use(Routes.Index, HomePage)
+    .use(Routes.Err404, Page404)
+    .use(Routes.Err500, Page500)
+    .use(Routes.Profile, Profile)
+    .use(Routes.Signin, Signin)
+    .use(Routes.Signup, Signup)
+    .use(Routes.EditProfile, EditProfile)
 
-  root.append(currentPage.getContent()!);
-  currentPage.getContent();
-  currentPage.dispatchComponentDidMount();
+  Router.start();
 
 });
