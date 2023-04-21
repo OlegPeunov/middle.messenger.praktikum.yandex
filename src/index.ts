@@ -29,7 +29,5 @@ window.addEventListener('DOMContentLoaded', () => {
     .use(Routes.Signin, Signin)
     .use(Routes.Signup, Signup)
     .use(Routes.EditProfile, EditProfile)
-
-  Router.start();
-
+    .start();
 });
