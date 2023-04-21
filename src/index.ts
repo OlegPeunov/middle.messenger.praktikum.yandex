@@ -19,7 +19,7 @@ enum Routes {
   EditProfile = '/edit-profile',
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
 
   Router
     .use(Routes.Index, HomePage)
@@ -30,4 +30,31 @@ window.addEventListener('DOMContentLoaded', () => {
     .use(Routes.Signup, Signup)
     .use(Routes.EditProfile, EditProfile)
     .start();
+
+  let isProtectedRoute = true;
+
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.Signup:
+      isProtectedRoute = false;
+      break;
+  }
+
+  // try {
+  //   await AuthController.fetchUser();
+
+  //   Router.start();
+
+  //   if (!isProtectedRoute) {
+  //     Router.go(Routes.Profile)
+  //   }
+  // } catch (e) {
+  //   Router.start();
+
+  //   if (isProtectedRoute) {
+  //     Router.go(Routes.Index);
+  //   }
+  // }
+
+  
 });

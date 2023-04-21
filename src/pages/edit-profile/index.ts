@@ -247,7 +247,7 @@ export class EditProfile extends Block<editProfileProps>{
       active: true,
       id: 'popup-button-signup',
       className: 'popup__button-active',
-      label: 'Авторизоваться',
+      label: 'Сохранить',
       events: {
         click: (event:Event) => {
           event.preventDefault();
