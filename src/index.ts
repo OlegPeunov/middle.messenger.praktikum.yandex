@@ -6,6 +6,7 @@ import { Profile } from './pages/profile';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
+import AuthController from './controllers/AuthController';
 import Router from './utils/Router';
 /* eslint-enable */
 
@@ -31,14 +32,14 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.EditProfile, EditProfile)
     .start();
 
-  let isProtectedRoute = true;
+  // let isProtectedRoute = true;
 
-  switch (window.location.pathname) {
-    case Routes.Index:
-    case Routes.Signup:
-      isProtectedRoute = false;
-      break;
-  }
+  // switch (window.location.pathname) {
+  //   case Routes.Index:
+  //   case Routes.Signup:
+  //     isProtectedRoute = false;
+  //     break;
+  // }
 
   // try {
   //   await AuthController.fetchUser();

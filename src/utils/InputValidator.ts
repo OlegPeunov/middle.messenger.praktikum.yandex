@@ -105,23 +105,6 @@ export class InputValidator {
         return this.res;
       }
 
-      if (checkType === 'password_two') {
-        const passOne = this.pasWords.pass1
-        if (checkValue !== passOne && passOne!.length !== 0) {
-          this.res.message = 'Пароли не свопадают';
-          this.res.err = true;
-          return this.res;
-        }
-      }
-
-      if (checkType === 'password_one') {
-        const passTwo = this.pasWords.pass2
-        if (checkValue !== passTwo && passTwo!.length !== 0) {
-          this.res.message = 'Пароли не свопадают';
-          this.res.err = true;
-          return this.res;
-        }
-      }
     } else {
       this.res.err = false;
     }

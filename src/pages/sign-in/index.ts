@@ -6,6 +6,7 @@ import { Button } from '../../partials/button/index';
 import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
+import AuthController from '../../controllers/AuthController';
 /* eslint-enable */
 
 interface signinProps {
@@ -101,14 +102,26 @@ export class Signin extends Block<signinProps>{
           checkBtn(this.children.signInButton);
 
           if (!validateButton.input1 && !validateButton.input2) {
-            console.log({
-              login: this.children.inputLogin.get(),
-              password: this.children.inputPassword.get(),
-            });
+            this.onSubmit();
+            // console.log({
+            //   login: this.children.inputLogin.get(),
+            //   password: this.children.inputPassword.get(),
+            // });
           }
         },
       },
     });
+  }
+
+  onSubmit() {
+    const values = Object
+      .values(this.children)
+      .filter(child => child instanceof Input)
+      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+
+    const data = Object.fromEntries(values);
+
+    AuthController.signin(data as SigninData);
   }
 
   render() {

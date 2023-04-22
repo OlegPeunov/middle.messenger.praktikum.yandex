@@ -31,7 +31,14 @@ export class Input extends Block<InputProps> {
     (this.element as HTMLInputElement).name = this.props.name;
     (this.element as HTMLInputElement).required = true;
     this.element!.classList.add('popup__input');
+  }
 
+  public getName() {
+    return (this.element as HTMLInputElement).name;
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value;
   }
 
   render() {
