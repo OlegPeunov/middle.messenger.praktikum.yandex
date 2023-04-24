@@ -32,33 +32,50 @@ export class Store extends EventBus {
 
 const store = new Store();
 
+export const withStore = (mapStateToProps: (state: State) => any) => {
+  return (Component: typeof Block) => {
+    return class WithStore extends Component {
+      constructor (props: any){
+        const mappedState = mapStateToProps(store.getState());
+        super({...props, ...mappedState});
+  
+        store.on(StoreEvents.Updated, (newState) => {
+          const newMappedState = mapStateToProps(newState)
+          this.setProps(newMappedState);
+        });
+      }
+    }
+  };
+};
+
+
 // @ts-ignore
 window.store = store;
 
-export function withStore<SP>(mapStateToProps: (state: State) => SP) {
-  return function wrap<P>(Component: typeof Block<SP & P>){
+// export function withStore<SP>(mapStateToProps: (state: State) => SP) {
+//   return function wrap<P>(Component: typeof Block<SP & P>){
 
-    return class WithStore extends Component {
+//     return class WithStore extends Component {
 
-      constructor(props: Omit<P, keyof SP>) {
-        let previousState = mapStateToProps(store.getState());
+//       constructor(props: Omit<P, keyof SP>) {
+//         let previousState = mapStateToProps(store.getState());
 
-        super({ ...(props as P), ...previousState });
+//         super({ ...(props as P), ...previousState });
 
-        store.on(StoreEvents.Updated, () => {
-          const stateProps = mapStateToProps(store.getState());
+//         store.on(StoreEvents.Updated, () => {
+//           const stateProps = mapStateToProps(store.getState());
 
-          previousState = stateProps;
+//           previousState = stateProps;
 
-          this.setProps({ ...stateProps });
-        });
+//           this.setProps({ ...stateProps });
+//         });
 
-      }
+//       }
 
-    }
+//     }
 
-  }
-}
+//   }
+// }
 
 export default store;
 

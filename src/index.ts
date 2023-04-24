@@ -32,6 +32,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.EditProfile, EditProfile)
     .start();
 
+  console.log()
   // let isProtectedRoute = true;
 
   // switch (window.location.pathname) {

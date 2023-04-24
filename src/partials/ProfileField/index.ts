@@ -1,17 +1,23 @@
-import {Block} from '../../utils/Block';
-import {template} from './profileField';
+// eslint-disable-next-line
+import { Block } from '../../utils/Block';
+import './profileField.pcss';
+import template from './profileField.hbs';
 
-interface ProfileFieldProps {
-  name: string;
-  value: string | number;
+interface profileFieldProps {
+  label: string;
 }
 
-export class ProfileField extends Block<ProfileFieldProps> {
-  constructor(props: ProfileFieldProps) {
-    super(props);
+// eslint-disable-next-line
+export class profileField extends Block<profileFieldProps> {
+  constructor(props: profileFieldProps) {
+    super('div', props);
   }
 
-  protected render(): DocumentFragment {
+  init() {
+    this.element!.classList.add('item-value');
+  }
+
+  render() {
     return this.compile(template, this.props);
   }
 }
