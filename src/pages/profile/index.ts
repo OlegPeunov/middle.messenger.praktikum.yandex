@@ -4,7 +4,6 @@ import store from '../../utils/Store';
 import { withStore } from '../../utils/Store';
 import profileTpl from './profile.hbs';
 import { Button } from '../../partials/button/index';
-import { profileField } from '../../partials/profileField/index';
 import AuthController from '../../controllers/AuthController';
 import { User } from '../../api/AuthAPI';
 

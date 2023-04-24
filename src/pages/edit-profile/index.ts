@@ -6,6 +6,9 @@ import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import { Button } from '../../partials/button/index';
+import AuthController from '../../controllers/AuthController';
+import { UpdateData } from '../../api/AuthAPI';
+
 /* eslint-enable */
 
 interface editProfileProps {
@@ -164,58 +167,6 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'error-phone-signup',
     });
 
-    this.children.inputPassOne = new Input({
-      name: 'password_one',
-      id: 'password_one',
-      type: 'password',
-      placeholder: 'Пароль',
-      events: {
-        focus: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input6 = res.err;
-          this.children.signUpButton.setProps({ active: false });
-          checkBtn(this.children.signUpButton);
-        },
-        blur: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input6 = res.err;
-          checkBtn(this.children.signUpButton);
-        },
-      },
-    });
-    this.children.errPlacePassOne = new Error({
-      label: '',
-      id: 'error-password_one',
-    });
-
-    this.children.inputPassTwo = new Input({
-      name: 'password_two',
-      id: 'password_two',
-      type: 'password',
-      placeholder: 'Пароль',
-      events: {
-        focus: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassTwo.get(), 'password_two');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input7 = res.err;
-          this.children.signUpButton.setProps({ active: false });
-          checkBtn(this.children.signUpButton);
-        },
-        blur: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassTwo.get(), 'password_two');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input7 = res.err;
-          checkBtn(this.children.signUpButton);
-        },
-      },
-    });
-    this.children.errPlacePassTwo = new Error({
-      label: '',
-      id: 'error-password_two',
-    });
-
     this.children.inputDisplayName = new Input({
       name: 'display_name',
       id: 'first_name-edit',
@@ -273,37 +224,38 @@ export class EditProfile extends Block<editProfileProps>{
           this.children.errPlaceTel.setProps({ label: res5.message });
           validateButton.input5 = res5.err;
           checkBtn(this.children.signUpButton);
-          // eslint-disable-next-line
-          const res6 = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one');
-          this.children.errPlacePassOne.setProps({ label: res6.message });
-          validateButton.input6 = res6.err;
-          this.children.signUpButton.setProps({ active: false });
-          checkBtn(this.children.signUpButton);
-          // eslint-disable-next-line
-          const res7 = inputValidator.regularCheck(this.children.inputPassTwo.get(), 'password_two');
-          this.children.errPlacePassOne.setProps({ label: res7.message });
-          validateButton.input7 = res7.err;
-          this.children.signUpButton.setProps({ active: false });
 
           checkBtn(this.children.signUpButton);
           // eslint-disable-next-line
-        const btnToEnable = (!validateButton.input1 && !validateButton.input2 && !validateButton.input3 && !validateButton.input4 && !validateButton.input5 && !validateButton.input6 && !validateButton.input7)
+        const btnToEnable = (!validateButton.input1 && !validateButton.input2 && !validateButton.input3 && !validateButton.input4 && !validateButton.input5)
 
           if (btnToEnable) {
-            console.log({
-              inputMail: this.children.inputMail.get(),
-              login: this.children.inputLogin.get(),
-              inputFirst: this.children.inputFirst.get(),
-              inputSecond: this.children.inputSecond.get(),
-              inputTel: this.children.inputTel.get(),
-              inputPassOne: this.children.inputPassOne.get(),
-              inputPassTwo: this.children.inputPassTwo.get(),
-              inputDisplayName: this.children.inputDisplayName.get(),
-            });
+            this.onSubmit()
+            // console.log({
+            //   inputMail: this.children.inputMail.get(),
+            //   login: this.children.inputLogin.get(),
+            //   inputFirst: this.children.inputFirst.get(),
+            //   inputSecond: this.children.inputSecond.get(),
+            //   inputTel: this.children.inputTel.get(),
+            //   inputDisplayName: this.children.inputDisplayName.get(),
+            // });
           }
         },
       },
     });
+  }
+
+  onSubmit() {
+    const values = Object
+      .values(this.children)
+      .filter(child => child instanceof Input)
+      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+
+    const data = Object.fromEntries(values);
+
+    console.log(data)
+
+    AuthController.updateUser(data as UpdateData);
   }
 
   render() {

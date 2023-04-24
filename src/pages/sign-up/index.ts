@@ -229,8 +229,6 @@ export class Signup extends Block<signupProps> {
 
     const data = Object.fromEntries(values);
 
-    // console.log(data)
-
     AuthController.signup(data as SignupData);
   }
 

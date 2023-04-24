@@ -121,7 +121,6 @@ export class InputValidator {
 
     if (checkType === 'phone' &&  value.length !== 0) {
       const truLength = value.split(' ').join('')
-
       if ( truLength.length < 10 ||  truLength.length > 15) {
         this.res.message = 'Должно быть от 10 до 15 символов';
         this.res.err = true;

@@ -14,6 +14,15 @@ export interface SignupData {
   phone: string;
 }
 
+export interface UpdateData {
+  first_name: string;
+  second_name: string;
+  login: string;
+  email: string;
+  display_name: string;
+  phone: string;
+}
+
 export interface User {
   id: number;
   first_name: string;
@@ -27,24 +36,31 @@ export interface User {
 
 export class AuthAPI extends BaseAPI {
   constructor() {
-    super('/auth');
+    super('/');
   }
 
   signin(data: SigninData) {
-    return this.http.post('/signin', data);
+    return this.http.post('auth/signin', data);
   }
 
   signup(data: SignupData) {
-    return this.http.post('/signup', data);
+    return this.http.post('auth/signup', data);
+  }
+
+  udateUser(data: UpdateData) {
+    return this.http.put('user/profile', data);
   }
 
   read(): Promise<User> {
-    return this.http.get('/user');
+    return this.http.get('auth/user');
   }
 
   logout() {
-    return this.http.post('/logout');
+    return this.http.post('auth/logout');
   }
+
+
+
 
   create = undefined;
   update = undefined;

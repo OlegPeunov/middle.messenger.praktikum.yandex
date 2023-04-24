@@ -5,6 +5,7 @@ import { Page500 } from './pages/500';
 import { Profile } from './pages/profile';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
+import  store  from './utils/Store';
 import { EditProfile } from './pages/edit-profile';
 import AuthController from './controllers/AuthController';
 import Router from './utils/Router';
@@ -32,31 +33,30 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.EditProfile, EditProfile)
     .start();
 
-  console.log()
-  // let isProtectedRoute = true;
+    // let isProtectedRoute = true;
 
-  // switch (window.location.pathname) {
-  //   case Routes.Index:
-  //   case Routes.Signup:
-  //     isProtectedRoute = false;
-  //     break;
-  // }
-
-  // try {
-  //   await AuthController.fetchUser();
-
-  //   Router.start();
-
-  //   if (!isProtectedRoute) {
-  //     Router.go(Routes.Profile)
-  //   }
-  // } catch (e) {
-  //   Router.start();
-
-  //   if (isProtectedRoute) {
-  //     Router.go(Routes.Index);
-  //   }
-  // }
-
+    // switch (window.location.pathname) {
+    //   case Routes.Index:
+    //   case Routes.Signup:
+    //   case Routes.Signin:
+    //     isProtectedRoute = false;
+    //     break;
+    // }
+  
+    // try {
+    //   await AuthController.fetchUser();
+  
+    //   Router.start();
+  
+    //   if (!isProtectedRoute) {
+    //     Router.go(Routes.Index)
+    //   }
+    // } catch (e) {
+    //   Router.start();
+  
+    //   if (isProtectedRoute) {
+    //     Router.go(Routes.Index);
+    //   }
+    // }
   
 });
