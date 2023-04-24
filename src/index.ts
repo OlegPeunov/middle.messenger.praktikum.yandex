@@ -5,8 +5,9 @@ import { Page500 } from './pages/500';
 import { Profile } from './pages/profile';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
-import  store  from './utils/Store';
 import { EditProfile } from './pages/edit-profile';
+import { EditPassword } from './pages/edit-password';
+import  store  from './utils/Store';
 import AuthController from './controllers/AuthController';
 import Router from './utils/Router';
 /* eslint-enable */
@@ -19,6 +20,7 @@ enum Routes {
   Signin = '/sign-in',
   Signup = '/sign-up',
   EditProfile = '/edit-profile',
+  EditPassword = '/edit-password',
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -31,6 +33,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Signin, Signin)
     .use(Routes.Signup, Signup)
     .use(Routes.EditProfile, EditProfile)
+    .use(Routes.EditPassword, EditPassword)
     .start();
 
     // let isProtectedRoute = true;
