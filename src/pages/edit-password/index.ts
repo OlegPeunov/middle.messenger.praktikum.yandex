@@ -7,6 +7,7 @@ import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import AuthController from '../../controllers/AuthController';
+import { UpdatePasswordData } from '../../api/AuthAPI';
 /* eslint-enable */
 
 interface editPasswordProps {
@@ -118,8 +119,8 @@ export class EditPassword extends Block<editPasswordProps>{
       .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
 
     const data = Object.fromEntries(values);
-    console.log(data)
-    // AuthController.signin(data as SigninData);
+
+    AuthController.updateUserPassword(data as UpdatePasswordData);
   }
 
   render() {

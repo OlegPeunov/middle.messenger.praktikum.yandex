@@ -23,6 +23,11 @@ export interface UpdateData {
   phone: string;
 }
 
+export interface UpdatePasswordData {
+  oldPassword: string;
+  newPassword: string;
+}
+
 export interface User {
   id: number;
   first_name: string;
@@ -49,6 +54,10 @@ export class AuthAPI extends BaseAPI {
 
   udateUser(data: UpdateData) {
     return this.http.put('user/profile', data);
+  }
+  
+  updateUserPassword(data: UpdatePasswordData) {
+    return this.http.put('user/password', data);
   }
 
   read(): Promise<User> {

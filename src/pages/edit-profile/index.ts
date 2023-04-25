@@ -7,7 +7,7 @@ import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import { Button } from '../../partials/button/index';
 import AuthController from '../../controllers/AuthController';
-import { UpdateData } from '../../api/AuthAPI';
+import { UpdatePassword } from '../../api/AuthAPI';
 
 /* eslint-enable */
 
