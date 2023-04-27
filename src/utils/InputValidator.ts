@@ -21,17 +21,17 @@ export class InputValidator {
     const regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
     const regexLang1 = /^[a-zа-яё-]*$/gi;
     const regexLang2 = /^[\w_-]*$/gi;
-    const regexLink = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    // const regexLink = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
     
-    if (checkType === 'link' && value.length !== 0) {
-      if (!regexLink.test(checkValue)) {
-        this.res.message = 'Здесь должна быть ссылка';
-        this.res.err = true;
-        return this.res;
-      }
-    } else {
-      this.res.err = false;
-    }
+    // if (checkType === 'link' && value.length !== 0) {
+    //   if (!regexLink.test(checkValue)) {
+    //     this.res.message = 'Здесь должна быть ссылка';
+    //     this.res.err = true;
+    //     return this.res;
+    //   }
+    // } else {
+    //   this.res.err = false;
+    // }
 
     if (checkType === 'login' && value.length !== 0) {
       if (!regexSpace.test(checkValue)) {

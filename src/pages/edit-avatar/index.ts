@@ -36,20 +36,20 @@ export class EditAvatar extends Block<editAvatarProps>{
     this.children.headerBlock = new HeaderPage({});
     
     this.children.inputAvatar = new Input({
-      name: 'link',
+      name: 'file',
       id: 'password-signin',
       type: 'file',
       placeholder: 'Ссылка',
       events: {
         focus: () => {
-          const res = inputValidator.regularCheck(this.children.inputAvatar.get(), 'link');
+          const res = inputValidator.regularCheck(this.children.inputAvatar.get(), 'file');
           this.children.errPlaceAvatar.setProps({ label: res.message });
           validateButton.input1 = res.err;
           this.children.avatarButton.setProps({ active: false });
           checkBtn(this.children.avatarButton);
         },
         blur: () => {
-          const res = inputValidator.regularCheck(this.children.inputAvatar.get(), 'link');
+          const res = inputValidator.regularCheck(this.children.inputAvatar.get(), 'file');
           this.children.errPlaceAvatar.setProps({ label: res.message });
           validateButton.input1 = res.err;
           checkBtn(this.children.avatarButton);
@@ -70,7 +70,7 @@ export class EditAvatar extends Block<editAvatarProps>{
         click: (event:Event) => {
           event.preventDefault();
 
-          const res2 = inputValidator.regularCheck(this.children.inputAvatar.get(), 'link');
+          const res2 = inputValidator.regularCheck(this.children.inputAvatar.get(), 'file');
           this.children.errPlaceAvatar.setProps({ label: res2.message });
           validateButton.input1 = res2.err;
 
@@ -93,7 +93,7 @@ export class EditAvatar extends Block<editAvatarProps>{
     const dataLink = Object.fromEntries(values);
     const userData = store.getState().user
     console.log(dataLink);
-    userData.avatar = dataLink.link
+    userData.avatar = dataLink.file
     console.log(userData);
 
     AuthController.updateAvatar(userData as UpdateAvatar);
