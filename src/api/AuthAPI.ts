@@ -23,6 +23,17 @@ export interface UpdateData {
   phone: string;
 }
 
+export interface UpdateAvatar {
+  id: number;
+  avatar: string;
+  first_name: string;
+  second_name: string;
+  login: string;
+  email: string;
+  display_name: string;
+  phone: string;
+}
+
 export interface UpdatePasswordData {
   oldPassword: string;
   newPassword: string;
@@ -52,14 +63,6 @@ export class AuthAPI extends BaseAPI {
     return this.http.post('auth/signup', data);
   }
 
-  udateUser(data: UpdateData) {
-    return this.http.put('user/profile', data);
-  }
-  
-  updateUserPassword(data: UpdatePasswordData) {
-    return this.http.put('user/password', data);
-  }
-
   read(): Promise<User> {
     return this.http.get('auth/user');
   }
@@ -67,9 +70,18 @@ export class AuthAPI extends BaseAPI {
   logout() {
     return this.http.post('auth/logout');
   }
+  
+  updateUserPassword(data: UpdatePasswordData) {
+    return this.http.put('user/password', data);
+  }
 
+  udateUser(data: UpdateData) {
+    return this.http.put('user/profile', data);
+  }
 
-
+  updateAvatar(data: UpdateAvatar) {
+    return this.http.put('user/profile/avatar', data);
+  }
 
   create = undefined;
   update = undefined;

@@ -7,6 +7,7 @@ import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
 import { EditPassword } from './pages/edit-password';
+import { EditAvatar } from './pages/edit-avatar';
 import  store  from './utils/Store';
 import AuthController from './controllers/AuthController';
 import Router from './utils/Router';
@@ -21,6 +22,7 @@ enum Routes {
   Signup = '/sign-up',
   EditProfile = '/edit-profile',
   EditPassword = '/edit-password',
+  EditAvatar = '/edit-avatar',
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -34,6 +36,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Signup, Signup)
     .use(Routes.EditProfile, EditProfile)
     .use(Routes.EditPassword, EditPassword)
+    .use(Routes.EditAvatar, EditAvatar)
     .start();
 
     // let isProtectedRoute = true;

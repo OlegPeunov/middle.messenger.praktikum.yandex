@@ -1,4 +1,4 @@
-import API, { AuthAPI, SigninData, SignupData, UpdateData, UpdatePasswordData } from '../api/AuthAPI';
+import API, { AuthAPI, SigninData, SignupData, UpdateAvatar, UpdateData, UpdatePasswordData } from '../api/AuthAPI';
 import store from '../utils/Store';
 import router from '../utils/Router';
 import MessagesController from './MessagesController';
@@ -37,6 +37,18 @@ export class AuthController {
   async updateUser(data: UpdateData) {
     try {
       await this.api.udateUser(data);
+
+      await this.fetchUser();
+
+      router.go('/profile');
+    } catch (e: any) {
+      console.error(e.message);
+    }
+  }
+
+  async updateAvatar(data: UpdateAvatar) {
+    try {
+      await this.api.updateAvatar(data);
 
       await this.fetchUser();
 

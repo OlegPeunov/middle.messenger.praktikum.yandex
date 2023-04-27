@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
 import { InputValidator } from '../../utils/InputValidator';
-import signinTpl from './signin.hbs';
+import signinTpl from './password_form.hbs';
 import { Button } from '../../partials/button/index';
 import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
