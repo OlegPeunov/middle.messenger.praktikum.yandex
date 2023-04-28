@@ -18,7 +18,15 @@ export class MainPage extends Block<MainProps>{
   init() {
     this.element!.classList.add('chat');
 
-    // this.children.message1 = new Message({
+    
+  }
+
+  render() {
+    return this.compile(mainTpl, this.props);
+  }
+}
+
+// this.children.message1 = new Message({
     //   contentClass: 'message_received',
     //   textMessage: `Привет! Смотри, 
     //   тут всплыл интересный кусок лунной космической 
@@ -73,9 +81,3 @@ export class MainPage extends Block<MainProps>{
     //   isUnread: 'unread-show',
     //   unredAmount: '3',
     // });
-  }
-
-  render() {
-    return this.compile(mainTpl, this.props);
-  }
-}
