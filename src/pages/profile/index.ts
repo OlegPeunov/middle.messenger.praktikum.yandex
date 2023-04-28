@@ -5,7 +5,7 @@ import { withStore } from '../../utils/Store';
 import profileTpl from './profile.hbs';
 import { Button } from '../../partials/button/index';
 import AuthController from '../../controllers/AuthController';
-import { User } from '../../api/AuthAPI';
+import { User } from '../../api/UserAPI';
 
 // eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index';
@@ -21,11 +21,8 @@ class ProfileBase extends Block<ProfileProps> {
     super('div', props);
   }
 
-  init() {
-    AuthController.fetchUser();
-    
+  async init() {    
     this.children.headerBlock = new HeaderPage({});
-
     this.children.exitButton = new Button({
       active: false,
       id: 'logOut-btn',
@@ -35,8 +32,23 @@ class ProfileBase extends Block<ProfileProps> {
         click: () => AuthController.logout()
       },
     });
+
+    await AuthController.fetchUser()
+      .then(response => {
+        fetch(`https://ya-praktikum.tech/api/v2/resources${store.getState().user.avatar}`, {
+          method: 'get',
+          credentials: 'include',
+          mode: 'cors',
+        })
+          .then(response => {
+            const avatar:any = document.getElementById('profile-avatar');
+            avatar.setAttribute('src', response.url);
+          })
+      })
+  
   }
 
+  
   render() {
     return this.compile(profileTpl, this.props);
   }

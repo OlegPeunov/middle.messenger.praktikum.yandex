@@ -4,6 +4,7 @@ import { InputValidator } from '../../utils/InputValidator';
 import signinTpl from './avatar_form.hbs';
 import './avatar_form.pcss';
 import { Button } from '../../partials/button/index';
+import router from '../../utils/Router';
 import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
@@ -37,7 +38,7 @@ export class EditAvatar extends Block<editAvatarProps>{
     
     this.children.inputAvatar = new Input({
       name: 'file',
-      id: 'password-signin',
+      id: 'avatar-input',
       type: 'file',
       placeholder: 'Ссылка',
       events: {
@@ -85,18 +86,25 @@ export class EditAvatar extends Block<editAvatarProps>{
   }
 
   onSubmit() {
-    const values = Object
-      .values(this.children)
-      .filter(child => child instanceof Input)
-      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
 
-    const dataLink = Object.fromEntries(values);
-    const userData = store.getState().user
-    console.log(dataLink);
-    userData.avatar = dataLink.file
-    console.log(userData);
+    const avatar:any = document.getElementById('avatar-input');
+    const form = new FormData();
+    form.append('avatar', avatar.files[0])
 
-    AuthController.updateAvatar(userData as UpdateAvatar);
+    fetch(`https://ya-praktikum.tech/api/v2/user/profile/avatar`, {
+      method: 'PUT',
+      credentials: 'include',
+      mode: 'cors',
+      body: form,
+    })
+      .then(response => {
+        response.json();
+        router.go('/profile');
+      })
+      .then(data => {
+        console.log(data);
+        return data;
+      });
   }
 
   render() {
