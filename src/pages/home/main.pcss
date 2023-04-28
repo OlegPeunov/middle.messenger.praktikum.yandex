@@ -43,8 +43,8 @@
 }
 
 .chat__profile{
-  width: 100%;
-  text-align: end;
+  display: inline-block;
+  margin: auto 0 auto auto;
   color: #999999;
   font-family: 'inter';
   font-weight: 500;
@@ -52,6 +52,13 @@
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0.7px;
+  transition: color 0.3s linear;
+}
+
+.chat__profile:hover{
+  color: #1A1B22;
+  cursor: pointer;
+  transition: color 0.3s linear;
 }
 
 .chat__search{
