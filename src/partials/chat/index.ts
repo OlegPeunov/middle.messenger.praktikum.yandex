@@ -3,12 +3,14 @@ import template from './chat.hbs';
 import './chat.pcss';
 
 interface ChatProps {
-  chatClass: string;
+  id: number;
   lastMessage: string;
-  dateTime: string;
+  title: string;
   isUnread: string;
-  unredAmount: string;
-  userName: string;
+  unread_count: string;
+  events: {
+    click: () => void;
+  }
 }
 
 export class Chat extends Block<ChatProps> {

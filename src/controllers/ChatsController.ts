@@ -17,7 +17,6 @@ class ChatsController {
 
   async fetchChats() {
     const chats = await this.api.read();
-
     chats.map(async (chat) => {
       const token = await this.getToken(chat.id);
 
@@ -25,6 +24,7 @@ class ChatsController {
     });
 
     store.set('chats', chats);
+    return chats
   }
 
   addUserToChat(id: number, userId: number) {
