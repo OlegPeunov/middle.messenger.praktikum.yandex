@@ -1,0 +1,24 @@
+{{!-- <aside class="{{ styles.chats-list }}">
+{{#if isLoaded }}
+    {{#each chats}}
+        {{{this}}}
+    {{/each}}
+    {{{profileLink}}}
+{{else}}
+  Loading...
+{{/if}}
+</aside> --}}
+
+<div class="chat__left">
+  <div class="chat__search-block">
+    <a class="chat__profile" href="profile">Профиль ></a>
+    <a class="chat__add-btn" href="chat-add">Добавить чат +</a>
+    {{!-- <input type="search" id="search-chat" name="search" class="chat__search" placeholder="Поиск" value=""> --}}
+  </div>
+  <div class="chat__list">
+    {{{chat1}}}
+    {{{chat2}}}
+    {{{chat3}}}
+  </div>
+</div>
+<img src="../../../static/images/button-arrow.svg" alt="">

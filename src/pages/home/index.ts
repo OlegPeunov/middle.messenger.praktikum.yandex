@@ -4,7 +4,10 @@ import { Block } from '../../utils/Block';
 import { HeaderPage } from '../../partials/header/index';
 // eslint-disable-next-line
 import { MainPage } from '../main/index';
+import { ChatsList } from '../../partials/ChatsList';
+// import { Messenger } from '../main/index';
 // eslint-disable-next-line
+import './main.pcss'
 import homeTpl from './home.hbs';
 
 interface HomeProps {
@@ -17,11 +20,19 @@ export class HomePage extends Block<HomeProps>{
   }
 
   init() {
-    this.children.headerBlock = new HeaderPage({
+    this.children.headerBlock = new HeaderPage({});
+    this.children.chatsList = new ChatsList({});
+    // this.children.chatsList = new ChatsList({ isLoaded: false });
 
-    });
+    // this.children.messenger = new Messenger({});
 
-    this.children.mainBlock = new MainPage({});
+    // ChatsController.fetchChats().finally(() => {
+    //   (this.children.chatsList as Block).setProps({
+    //     isLoaded: true
+    //   })
+    // });
+
+    // this.children.mainBlock = new MainPage({});
   }
 
   render() {

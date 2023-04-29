@@ -58,7 +58,7 @@ export class AuthController {
     }
   }
 
-  async createChat(data: UpdateAvatar) {
+  async createChat(data: string) {
     try {
       await this.api.createChat(data);
 

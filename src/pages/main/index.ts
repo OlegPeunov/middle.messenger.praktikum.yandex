@@ -55,29 +55,4 @@ export class MainPage extends Block<MainProps>{
     //   sentTime: '12:00',
     // });
 
-    // this.children.chat1 = new Chat({
-    //   chatClass: '',
-    //   userName: 'Гутенберг',
-    //   // eslint-disable-next-line
-    //   lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
-    //   dateTime: 'вт',
-    //   isUnread: '',
-    //   unredAmount: '0',
-    // });
-    // this.children.chat2 = new Chat({
-    //   chatClass: '',
-    //   userName: 'Гутенберг',
-    //   // eslint-disable-next-line
-    //   lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
-    //   dateTime: 'вт',
-    //   isUnread: '',
-    //   unredAmount: '0',
-    // });
-    // this.children.chat3 = new Chat({
-    //   chatClass: 'content-holder__choice',
-    //   userName: 'Аня',
-    //   lastMessage: 'Приветикик',
-    //   dateTime: '15:12',
-    //   isUnread: 'unread-show',
-    //   unredAmount: '3',
-    // });
+    
