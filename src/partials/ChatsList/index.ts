@@ -34,7 +34,6 @@ class ChatsListBase extends Block<ChatsListProps> {
       const chatNew = new Chat({
         id: chat.id,
         isSelected: isSelected,
-        lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
         title: chat.title,
         isUnread: '',
         unread_count: '0',
@@ -55,7 +54,6 @@ class ChatsListBase extends Block<ChatsListProps> {
       const chatNew = new Chat({
         id: chat.id,
         isSelected: isSelected,
-        lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
         title: chat.title,
         isUnread: '',
         unread_count: '0',

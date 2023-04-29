@@ -4,52 +4,59 @@ import { Block } from '../../utils/Block';
 import { Message } from '../../partials/message/index';
 // eslint-disable-next-line
 import messengerTpl from './messenger.hbs';
+import MessagesController, { Message as MessageInfo } from '../../controllers/MessagesController';
+import { withStore } from '../../utils/Store';
+import store from '../../utils/Store';
 
-interface MessengerProps {}
+
+
+interface MessengerProps {
+  selectedChat: number | undefined;
+  messages: MessageInfo[];
+  userId: number;
+}
 
 // eslint-disable-next-line
-export class Messenger extends Block<MessengerProps>{
+export class MessengerBase extends Block<MessengerProps>{
   constructor(props: MessengerProps) {
     super('div', props);
   }
 
   init() {
     this.element!.classList.add('chat__right');
+  }
 
-    // this.children.message1 = new Message({
-    //   contentClass: 'message_received',
-    //   textMessage: `Привет! Смотри, 
-    //   тут всплыл интересный кусок лунной космической 
-    //   истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC 
-    //   для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL —
-    //   и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
-    //   как астронавты с собой забрали только кассеты с пленкой.<br><br>Хассельблад в итоге 
-    //   адаптировал SWC для космоса, но что-то пошло не так и на ракету 
-    //   они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно 
-    //   продали на аукционе за 45000 евро. <span class="message__time">11:56</span>`,
-    //   showImg: '',
-    //   sentTime: '',
-    // });
-
-    // this.children.message2 = new Message({
-    //   contentClass: 'message_no',
-    //   textMessage: '',
-    //   showImg: 'message__img-show',
-    //   sentTime: '11:56',
-    // });
-
-    // this.children.message3 = new Message({
-    //   contentClass: 'message_sent',
-    //   textMessage: 'Круто!',
-    //   showImg: '',
-    //   sentTime: '12:00',
-    // });
+   protected componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
+    console.log('обнова')
+    return true;
   }
 
   render() {
+    
     return this.compile(messengerTpl, this.props);
   }
 }
+
+const withSelectedChatMessages = withStore(state => {
+  const selectedChatId = state.selectedChat;
+
+  if (!selectedChatId) {
+    return {
+      messages: [],
+      selectedChat: undefined,
+      userId: state.id
+    };
+  }
+
+  return {
+    messages: (state.messages || {})[selectedChatId] || [],
+    selectedChat: state.selectedChat,
+    userId: state.id
+  };
+});
+
+export const Messenger = withSelectedChatMessages(MessengerBase);
+
 
 
 
@@ -132,4 +139,36 @@ export class Messenger extends Block<MessengerProps>{
 //   };
 // });
 
-// export const Messenger = withSelectedChatMessages(MessengerBase);
+
+
+
+
+
+// this.children.message1 = new Message({
+    //   contentClass: 'message_received',
+    //   textMessage: `Привет! Смотри, 
+    //   тут всплыл интересный кусок лунной космической 
+    //   истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC 
+    //   для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL —
+    //   и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так
+    //   как астронавты с собой забрали только кассеты с пленкой.<br><br>Хассельблад в итоге 
+    //   адаптировал SWC для космоса, но что-то пошло не так и на ракету 
+    //   они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно 
+    //   продали на аукционе за 45000 евро. <span class="message__time">11:56</span>`,
+    //   showImg: '',
+    //   sentTime: '',
+    // });
+
+    // this.children.message2 = new Message({
+    //   contentClass: 'message_no',
+    //   textMessage: '',
+    //   showImg: 'message__img-show',
+    //   sentTime: '11:56',
+    // });
+
+    // this.children.message3 = new Message({
+    //   contentClass: 'message_sent',
+    //   textMessage: 'Круто!',
+    //   showImg: '',
+    //   sentTime: '12:00',
+    // });

@@ -91,7 +91,6 @@ export class ChatAdd extends Block<addChatProps>{
       .then(()=>{
         router.go('/');
       })
-
   }
 
   render() {

@@ -15,15 +15,18 @@
 </div> --}}
 
 <div class="chat__header">
-<div class="header-content">
-    <div class="header-avatar"></div>
-    <div class="header-options-button">
-    <div class="options-dot"></div>
-    <div class="options-dot"></div>
-    <div class="options-dot"></div>
+    <div class="header-content">
+        <div class="header-avatar"></div>
+        <div class="header-options-button">
+        <div class="options-dot"></div>
+        <div class="options-dot"></div>
+        <div class="options-dot"></div>
+        </div>
     </div>
 </div>
-</div>
+{{#if selectedChat }}
+    <div class="chat__users-manage"></div>
+{{/if}}
 <div class="chat__mesaages">
 {{{message1}}}
 {{{message2}}}

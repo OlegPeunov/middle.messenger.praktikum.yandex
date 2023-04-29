@@ -6,6 +6,7 @@ import { HeaderPage } from '../../partials/header/index';
 import { MainPage } from '../main/index';
 import { ChatsList } from '../../partials/ChatsList';
 import { Messenger } from '../../partials/Messenger';
+
 // eslint-disable-next-line
 import './main.pcss'
 import homeTpl from './home.hbs';
@@ -20,6 +21,7 @@ export class HomePage extends Block<HomeProps>{
   }
 
   init() {
+    
     this.children.headerBlock = new HeaderPage({});
     this.children.chatsList = new ChatsList({});
     // this.children.chatsList = new ChatsList({ isLoaded: false });

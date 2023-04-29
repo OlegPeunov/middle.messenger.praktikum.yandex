@@ -4,7 +4,6 @@ import './chat.pcss';
 
 interface ChatProps {
   id: number;
-  lastMessage: string;
   title: string;
   isUnread: string;
   unread_count: string;
