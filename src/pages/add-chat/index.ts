@@ -8,11 +8,10 @@ import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import MessagesController from '../../controllers/MessagesController';
 import ChatsController from '../../controllers/ChatsController';
+import router from '../../utils/Router';
 
-// import ChatsApi from '../../api/ChatsAPI';
-// import { UpdatePasswordData } from '../../api/AuthAPI';
+
 /* eslint-enable */
-
 interface addChatProps {}
 
 // eslint-disable-next-line
@@ -80,16 +79,19 @@ export class ChatAdd extends Block<addChatProps>{
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     const values = Object
       .values(this.children)
       .filter(child => child instanceof Input)
       .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
 
     const data = Object.fromEntries(values);
-    console.log(data)
 
-    ChatsController.create(data.title);
+    await ChatsController.create(data.title)
+      .then(()=>{
+        router.go('/');
+      })
+
   }
 
   render() {
