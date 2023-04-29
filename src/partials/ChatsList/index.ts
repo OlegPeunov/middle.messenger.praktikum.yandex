@@ -11,11 +11,11 @@ interface ChatsListProps {}
 // eslint-disable-next-line
 export class ChatsList extends Block<ChatsListProps>{
   constructor(props: ChatsListProps) {
-    super('main', props);
+    super('div', props);
   }
 
   init() {
-    this.element!.classList.add('chat'); 
+    this.element!.classList.add('chat__left'); 
 
 
 
