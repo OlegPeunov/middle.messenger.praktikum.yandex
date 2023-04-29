@@ -8,6 +8,7 @@ interface ChatProps {
   title: string;
   isUnread: string;
   unread_count: string;
+  isSelected: boolean;
   events: {
     click: () => void;
   }

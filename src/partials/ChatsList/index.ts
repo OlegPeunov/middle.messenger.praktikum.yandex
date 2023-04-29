@@ -5,6 +5,7 @@ import { Chat } from '../chat/index';
 import { ChatInfo } from '../../api/ChatsAPI';
 import ChatsController from '../../controllers/ChatsController';
 import { withStore } from '../../utils/Store';
+import store from '../../utils/Store';
 
 
 
@@ -29,8 +30,10 @@ class ChatsListBase extends Block<ChatsListProps> {
 
     this.props.chats.forEach((chat, i) =>{
       const chatName:string = 'chat'+i;
+      const isSelected = store.getState().selectedChat === chat.id ? true : false;
       const chatNew = new Chat({
         id: chat.id,
+        isSelected: isSelected,
         lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
         title: chat.title,
         isUnread: '',
@@ -43,14 +46,15 @@ class ChatsListBase extends Block<ChatsListProps> {
       });
       this.children[chatName] = chatNew;
     })
-    
   }
 
   protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
     newProps.chats.forEach((chat, i) =>{
       const chatName:string = 'chat'+i;
+      const isSelected = store.getState().selectedChat === chat.id ? true : false;
       const chatNew = new Chat({
         id: chat.id,
+        isSelected: isSelected,
         lastMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate assumenda totam iusto quam, voluptatibus sequi sit.',
         title: chat.title,
         isUnread: '',
@@ -65,7 +69,6 @@ class ChatsListBase extends Block<ChatsListProps> {
     })
     return true;
   }
-
   render() {
     return this.compile(listTpl, this.props);
   }

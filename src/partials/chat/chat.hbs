@@ -1,4 +1,8 @@
-<div class= "content-holder" id="{{id}}">
+{{#if isSelected }}
+  <div class= "content-holder content-holder__choice" id="{{id}}">
+{{else}}
+  <div class= "content-holder" id="{{id}}">
+{{/if}}
   <div class="avatar-parent">
     <div class="avatar"></div>
   </div>
