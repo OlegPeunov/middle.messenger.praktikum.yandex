@@ -58,6 +58,18 @@ export class AuthController {
     }
   }
 
+  async createChat(data: UpdateAvatar) {
+    try {
+      await this.api.createChat(data);
+
+      await this.fetchUser();
+
+      router.go('/');
+    } catch (e: any) {
+      console.error(e.message);
+    }
+  }
+
   async updateUserPassword(data: UpdatePasswordData) {
     try {
       await this.api.updateUserPassword(data);

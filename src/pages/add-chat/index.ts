@@ -6,8 +6,11 @@ import { Button } from '../../partials/button/index';
 import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
+import MessagesController from '../../controllers/MessagesController';
 import AuthController from '../../controllers/AuthController';
-import { UpdatePasswordData } from '../../api/AuthAPI';
+
+// import ChatsApi from '../../api/ChatsAPI';
+// import { UpdatePasswordData } from '../../api/AuthAPI';
 /* eslint-enable */
 
 interface addChatProps {}
@@ -33,20 +36,20 @@ export class ChatAdd extends Block<addChatProps>{
     this.children.headerBlock = new HeaderPage({});
 
     this.children.inputPassword = new Input({
-      name: 'new-chat',
+      name: 'title',
       id: 'password-signin',
-      type: 'text',
+      type: 'login',
       placeholder: 'Название',
       events: {
         focus: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'new-chat');
+          const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'title');
           this.children.errPlacePassword.setProps({ label: res.message });
           validateButton.input1 = res.err;
           this.children.passwordButton.setProps({ active: false });
           checkBtn(this.children.passwordButton);
         },
         blur: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'new-chat');
+          const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'title');
           this.children.errPlacePassword.setProps({ label: res.message });
           validateButton.input1 = res.err;
           checkBtn(this.children.passwordButton);
@@ -71,10 +74,6 @@ export class ChatAdd extends Block<addChatProps>{
 
           if ( !validateButton.input1) {
             this.onSubmit();
-            // console.log({
-            //   login: this.children.inputLogin.get(),
-            //   password: this.children.inputPassword.get(),
-            // });
           }
         },
       },
@@ -82,14 +81,15 @@ export class ChatAdd extends Block<addChatProps>{
   }
 
   onSubmit() {
-    // const values = Object
-    //   .values(this.children)
-    //   .filter(child => child instanceof Input)
-    //   .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+    const values = Object
+      .values(this.children)
+      .filter(child => child instanceof Input)
+      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
 
-    // const data = Object.fromEntries(values);
+    const data = Object.fromEntries(values);
+    console.log(data)
 
-    // AuthController.updateUserPassword(data as UpdatePasswordData);
+    AuthController.createChat(data);
   }
 
   render() {
