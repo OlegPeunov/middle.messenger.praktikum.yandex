@@ -7,7 +7,7 @@ import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import MessagesController from '../../controllers/MessagesController';
-import AuthController from '../../controllers/AuthController';
+import ChatsController from '../../controllers/ChatsController';
 
 // import ChatsApi from '../../api/ChatsAPI';
 // import { UpdatePasswordData } from '../../api/AuthAPI';
@@ -89,7 +89,7 @@ export class ChatAdd extends Block<addChatProps>{
     const data = Object.fromEntries(values);
     console.log(data)
 
-    AuthController.createChat(data);
+    ChatsController.create(data.title);
   }
 
   render() {

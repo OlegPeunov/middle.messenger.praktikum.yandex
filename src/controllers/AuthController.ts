@@ -58,17 +58,17 @@ export class AuthController {
     }
   }
 
-  async createChat(data: string) {
-    try {
-      await this.api.createChat(data);
+  // async createChat(data: string) {
+  //   try {
+  //     await this.api.createChat(data);
 
-      await this.fetchUser();
+  //     await this.fetchUser();
 
-      router.go('/');
-    } catch (e: any) {
-      console.error(e.message);
-    }
-  }
+  //     router.go('/');
+  //   } catch (e: any) {
+  //     console.error(e.message);
+  //   }
+  // }
 
   async updateUserPassword(data: UpdatePasswordData) {
     try {

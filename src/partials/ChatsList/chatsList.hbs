@@ -15,8 +15,16 @@
   {{!-- <input type="search" id="search-chat" name="search" class="chat__search" placeholder="Поиск" value=""> --}}
 </div>
 <div class="chat__list">
-  {{{chat1}}}
+  {{#if isLoaded }}
+    {{#each chats}}
+        {{{this}}}
+    {{/each}}
+    {{{profileLink}}}
+  {{else}}
+    Loading...
+  {{/if}}
+  {{!-- {{{chat1}}}
   {{{chat2}}}
-  {{{chat3}}}
+  {{{chat3}}} --}}
 </div>
 

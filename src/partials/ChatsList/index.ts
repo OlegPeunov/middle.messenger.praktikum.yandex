@@ -15,11 +15,8 @@ export class ChatsList extends Block<ChatsListProps>{
   }
 
   init() {
-    this.element!.classList.add('chat__left'); 
-
-
-
-
+    this.element!.classList.add('chat__left');
+    
     // this.children.chat1 = new Chat({
     //   chatClass: '',
     //   userName: 'Гутенберг',

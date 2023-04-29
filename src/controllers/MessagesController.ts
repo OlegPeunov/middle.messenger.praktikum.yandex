@@ -1,4 +1,5 @@
 import WSTransport, { WSTransportEvents } from '../utils/WSTransport';
+import AuthController from './AuthController';
 import store from '../utils/Store';
 
 export interface Message {
@@ -25,6 +26,7 @@ class MessagesController {
     if (this.sockets.has(id)) {
       return;
     }
+    await AuthController.fetchUser()
 
     const userId = store.getState().user.id;
 

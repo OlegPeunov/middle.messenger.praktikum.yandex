@@ -76,9 +76,9 @@ export class AuthAPI extends BaseAPI {
     return this.http.put('user/profile/avatar', data);
   }
 
-  createChat(data: string) {
-    return this.http.post('chats', data);
-  }
+  // createChat(data: string) {
+  //   return this.http.post('chats', data);
+  // }
 
   deleteChat(data: string) {
     return this.http.delete('chats', data);
