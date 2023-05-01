@@ -2,6 +2,7 @@
 import { Block } from '../../utils/Block';
 // eslint-disable-next-line
 import { Message } from '../../partials/message/index';
+import { Input } from '../../partials/input/index';
 // eslint-disable-next-line
 import messengerTpl from './messenger.hbs';
 import router from '../../utils/Router';
@@ -9,6 +10,7 @@ import { Button } from '../button/index';
 import MessagesController, { Message as MessageInfo } from '../../controllers/MessagesController';
 import { withStore } from '../../utils/Store';
 import store from '../../utils/Store';
+
 import ChatsController from '../../controllers/ChatsController';
 
 
@@ -28,29 +30,7 @@ export class MessengerBase extends Block<MessengerProps>{
 
   async init() {
     this.element!.classList.add('chat__right');
-    // await ChatsController.fetchChats()
     
-    // await ChatsController.fetchChats()
-
-    // this.props.chats.forEach((chat, i) =>{
-    //   const chatName:string = 'chat'+i;
-    //   const isSelected = store.getState().selectedChat === chat.id ? true : false;
-    //   const chatNew = new Chat({
-    //     id: chat.id,
-    //     isSelected: isSelected,
-    //     title: chat.title,
-    //     isUnread: '',
-    //     unread_count: '0',
-    //     events: {
-    //       click: () => {
-    //         ChatsController.selectChat(chat.id);
-    //       }
-    //     }
-    //   });
-    //   this.children[chatName] = chatNew;
-    // })
-
-
     this.children.btnAdd = new Button({
       active: false,
       id: 'user-add',
@@ -77,6 +57,27 @@ export class MessengerBase extends Block<MessengerProps>{
         },
       },
     });
+
+
+    this.children.btnMessageSend = new Button({
+      active: false,
+      id: 'btn-send',
+      className: 'write__button',
+      label: '',
+      events: {
+        click: (event:Event) => {
+          event.preventDefault();
+          if(typeof store.getState().selectedChat === 'number'){
+            const input = <HTMLInputElement>document.getElementById('best-input');
+            MessagesController.sendMessage(this.props.selectedChat!, input.value);
+          }else{
+            console.log('выберите чат')
+          }
+        },
+      },
+    });
+
+
 
     this.children.messages = this.createMessages(this.props);
 
@@ -107,10 +108,7 @@ export class MessengerBase extends Block<MessengerProps>{
   async componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
     this.children.messages = this.createMessages(newProps);
 
-    // console.log(store.getState().selectedChat)
     if(typeof store.getState().selectedChat === 'number'){
-      // store.getState().messages[store.getState().selectedChat][0].content
-      // console.log(newProps)
       await ChatsController.getUsers(store.getState().selectedChat)
         .then(res => console.log(Object.keys(res).length))
     }
@@ -120,9 +118,8 @@ export class MessengerBase extends Block<MessengerProps>{
 
   private createMessages(props: MessengerProps) {
     const regex = /\d\d:\d\d/i;
-    this.props.messages.forEach((message, i) =>{
+    return this.props.messages.map((message, i) =>{
 
-      console.log(message)
       const messageName:string = 'message'+i;
 
       const messageNew = new Message({
@@ -130,22 +127,9 @@ export class MessengerBase extends Block<MessengerProps>{
         textMessage: message.content + `<span class="message__time">${message.time.match(regex)}</span>`,
         showImg: '',
       });
-      console.log(messageName)
       this.children[messageName] = messageNew;
     })
-
-    // })
-    return props.messages.map((data, i) => {
-      // console.log(data.user_id, this.props.userId)
-      
-      const regex = /\d\d:\d\d/i;
-      return new Message({
-        contentClass: data.user_id === this.props.userId ? 'message_sent' : 'message_received',
-        textMessage: data.content + `<span class="message__time">${data.time.match(regex)}</span>`,
-        showImg: '',
-      });
-      // return new Message({...data, isMine: props.userId === data.user_id });
-    })
+   
   }
 
   render() {

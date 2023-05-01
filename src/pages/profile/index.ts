@@ -6,6 +6,7 @@ import profileTpl from './profile.hbs';
 import { Button } from '../../partials/button/index';
 import AuthController from '../../controllers/AuthController';
 import { User } from '../../api/UserAPI';
+import router from '../../utils/Router';
 
 // eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index';
@@ -29,7 +30,12 @@ class ProfileBase extends Block<ProfileProps> {
       className: 'exit-btn',
       label: 'Выйти',
       events: {
-        click: () => AuthController.logout()
+        click: () => {
+          AuthController.logout()
+            .then(()=>{
+              router.go('/sign-in')
+            })
+        }
       },
     });
 
