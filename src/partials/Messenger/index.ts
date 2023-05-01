@@ -33,7 +33,6 @@ export class MessengerBase extends Block<MessengerProps>{
       label: 'Добавить пользователя',
       events: {
         click: (event:Event) => {
-          console.log('add')
           // event.preventDefault();
           this.userAdd();
         },
@@ -57,17 +56,18 @@ export class MessengerBase extends Block<MessengerProps>{
 
 
   async userAdd() {
-    const values = Object
-      .values(this.children)
-      .filter(child => child instanceof Input)
-      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+    const res = Number(prompt('Id пользователя'));
+    console.log('resultId', res)
+    console.log('chatId', store.getState().selectedChat)
+    // const values = Object
+    //   .values(this.children)
+    //   .filter(child => child instanceof Input)
+    //   .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
 
-    const data = Object.fromEntries(values);
+    // const data = Object.fromEntries(values);
 
-    await ChatsController.create(data.title)
-      .then(()=>{
-        router.go('/');
-      })
+    // await ChatsController.create(data.title)
+
   }
 
 
