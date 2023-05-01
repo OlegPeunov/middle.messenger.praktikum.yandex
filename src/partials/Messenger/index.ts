@@ -35,8 +35,7 @@ export class MessengerBase extends Block<MessengerProps>{
         click: (event:Event) => {
           console.log('add')
           // event.preventDefault();
-            // this.userDelete();
-            // this.userAdd();
+          this.userAdd();
         },
       },
     });
@@ -51,15 +50,26 @@ export class MessengerBase extends Block<MessengerProps>{
           // event.preventDefault();
           console.log('del')
             // this.userDelete();
-            // this.userAdd();
         },
       },
     });
-
-   
   }
 
- 
+
+  async userAdd() {
+    const values = Object
+      .values(this.children)
+      .filter(child => child instanceof Input)
+      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+
+    const data = Object.fromEntries(values);
+
+    await ChatsController.create(data.title)
+      .then(()=>{
+        router.go('/');
+      })
+  }
+
 
    protected componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
     return true;
