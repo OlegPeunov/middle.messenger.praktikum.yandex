@@ -41,31 +41,5 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.EditAvatar, EditAvatar)
     .use(Routes.ChatAdd, ChatAdd)
     .start();
-
-    let isProtectedRoute = true;
-
-    switch (window.location.pathname) {
-      case Routes.Index:
-      case Routes.Signup:
-      case Routes.Signin:
-        isProtectedRoute = false;
-        break;
-    }
-  
-    try {
-      await AuthController.fetchUser();
-  
-      Router.start();
-  
-      if (!isProtectedRoute) {
-        Router.go(Routes.Index)
-      }
-    } catch (e) {
-      Router.start();
-  
-      if (isProtectedRoute) {
-        Router.go(Routes.Index);
-      }
-    }
   
 });
