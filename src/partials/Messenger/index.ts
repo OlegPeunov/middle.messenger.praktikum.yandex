@@ -4,6 +4,7 @@ import { Block } from '../../utils/Block';
 import { Message } from '../../partials/message/index';
 // eslint-disable-next-line
 import messengerTpl from './messenger.hbs';
+import router from '../../utils/Router';
 import { Button } from '../button/index';
 import MessagesController, { Message as MessageInfo } from '../../controllers/MessagesController';
 import { withStore } from '../../utils/Store';
@@ -71,9 +72,14 @@ export class MessengerBase extends Block<MessengerProps>{
       events: {
         click: (event:Event) => {
           this.userDelete();
+          router.go('/profile');
+
         },
       },
     });
+
+    this.children.messages = this.createMessages(this.props);
+
 
     if(typeof store.getState().selectedChat === 'number'){
       await ChatsController.getUsers(store.getState().selectedChat)
@@ -113,14 +119,30 @@ export class MessengerBase extends Block<MessengerProps>{
   }
 
   private createMessages(props: MessengerProps) {
-    return props.messages.map(data => {
-      console.log(data)
-      const regex = /T...../gi;
-      this.children.message1 = new Message({
-        contentClass: 'message_received',
+    const regex = /\d\d:\d\d/i;
+    this.props.messages.forEach((message, i) =>{
+
+      console.log(message)
+      const messageName:string = 'message'+i;
+
+      const messageNew = new Message({
+        contentClass: message.user_id === this.props.userId ? 'message_sent' : 'message_received',
+        textMessage: message.content + `<span class="message__time">${message.time.match(regex)}</span>`,
+        showImg: '',
+      });
+      console.log(messageName)
+      this.children[messageName] = messageNew;
+    })
+
+    // })
+    return props.messages.map((data, i) => {
+      // console.log(data.user_id, this.props.userId)
+      
+      const regex = /\d\d:\d\d/i;
+      return new Message({
+        contentClass: data.user_id === this.props.userId ? 'message_sent' : 'message_received',
         textMessage: data.content + `<span class="message__time">${data.time.match(regex)}</span>`,
         showImg: '',
-        sentTime: '',
       });
       // return new Message({...data, isMine: props.userId === data.user_id });
     })

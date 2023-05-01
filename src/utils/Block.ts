@@ -131,7 +131,13 @@ export class Block<P extends Record<string, any> = any> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach(child => {
+      if (Array.isArray(child)) {
+        child.forEach(ch => ch.dispatchComponentDidMount());
+      } else {
+        child.dispatchComponentDidMount();
+      }
+    });
   }
   // eslint-disable-next-line
   private _componentDidUpdate(oldProps: P, newProps: P) {
