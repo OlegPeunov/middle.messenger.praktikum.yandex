@@ -27,8 +27,28 @@ export class MessengerBase extends Block<MessengerProps>{
 
   async init() {
     this.element!.classList.add('chat__right');
-
+    // await ChatsController.fetchChats()
     
+    // await ChatsController.fetchChats()
+
+    // this.props.chats.forEach((chat, i) =>{
+    //   const chatName:string = 'chat'+i;
+    //   const isSelected = store.getState().selectedChat === chat.id ? true : false;
+    //   const chatNew = new Chat({
+    //     id: chat.id,
+    //     isSelected: isSelected,
+    //     title: chat.title,
+    //     isUnread: '',
+    //     unread_count: '0',
+    //     events: {
+    //       click: () => {
+    //         ChatsController.selectChat(chat.id);
+    //       }
+    //     }
+    //   });
+    //   this.children[chatName] = chatNew;
+    // })
+
 
     this.children.btnAdd = new Button({
       active: false,
@@ -55,8 +75,10 @@ export class MessengerBase extends Block<MessengerProps>{
       },
     });
 
-
-
+    if(typeof store.getState().selectedChat === 'number'){
+      await ChatsController.getUsers(store.getState().selectedChat)
+        .then(res => console.log(Object.keys(res).length))
+    }
   }
 
 
@@ -64,8 +86,6 @@ export class MessengerBase extends Block<MessengerProps>{
     const res = Number(prompt('Id пользователя'));
 
     await ChatsController.addUserToChat(store.getState().selectedChat, res)
-
-
 
   }
 
@@ -79,12 +99,31 @@ export class MessengerBase extends Block<MessengerProps>{
 
 
   async componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
+    this.children.messages = this.createMessages(newProps);
+
+    // console.log(store.getState().selectedChat)
     if(typeof store.getState().selectedChat === 'number'){
+      // store.getState().messages[store.getState().selectedChat][0].content
+      // console.log(newProps)
       await ChatsController.getUsers(store.getState().selectedChat)
         .then(res => console.log(Object.keys(res).length))
     }
     
-  return true;
+    return true;
+  }
+
+  private createMessages(props: MessengerProps) {
+    return props.messages.map(data => {
+      console.log(data)
+      const regex = /T...../gi;
+      this.children.message1 = new Message({
+        contentClass: 'message_received',
+        textMessage: data.content + `<span class="message__time">${data.time.match(regex)}</span>`,
+        showImg: '',
+        sentTime: '',
+      });
+      // return new Message({...data, isMine: props.userId === data.user_id });
+    })
   }
 
   render() {

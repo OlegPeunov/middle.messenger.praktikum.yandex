@@ -37,7 +37,7 @@ class MessagesController {
     await wsTransport.connect();
 
     this.subscribe(wsTransport, id);
-    this.fetchOldMessages(id);
+    this.fetchOldMessages(id)    
   }
 
   sendMessage(id: number, message: string) {
@@ -60,7 +60,8 @@ class MessagesController {
       throw new Error(`Chat ${id} is not connected`);
     }
 
-    socket.send({type: 'get old', content: '0'});
+    socket.send({type: 'get old', content: '0'})
+      
   }
 
   closeAll() {
