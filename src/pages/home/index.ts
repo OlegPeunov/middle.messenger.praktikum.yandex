@@ -27,13 +27,6 @@ export class HomePage extends Block<HomeProps>{
     // this.children.chatsList = new ChatsList({ isLoaded: false });
     this.children.messenger = new Messenger({});
 
-    // ChatsController.fetchChats().finally(() => {
-    //   (this.children.chatsList as Block).setProps({
-    //     isLoaded: true
-    //   })
-    // });
-
-    // this.children.mainBlock = new MainPage({});
     this.element!.classList.add('chat');
 
   }

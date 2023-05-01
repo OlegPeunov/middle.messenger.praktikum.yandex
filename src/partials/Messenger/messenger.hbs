@@ -25,21 +25,24 @@
     </div>
 </div>
 {{#if selectedChat }}
-    <div class="chat__users-manage"></div>
+  <div class="chat__users-manage">
+    {{{btnAdd}}}
+    {{{btnDel}}}
+  </div>
 {{/if}}
 <div class="chat__mesaages">
-{{{message1}}}
-{{{message2}}}
-{{{message3}}}
+  {{{message1}}}
+  {{{message2}}}
+  {{{message3}}}
 </div>
 <div class="chat__write">
 <form class="write__input-block">
-    <button type="button" class="write__attach"></button>
-    <div class="write__box-wrapper">
-    <input type="text" class="write__box" name="message" required placeholder="Сообщение" value="">
-    </div>
-    <button type="submit" class="write__button">
-    <div class="button-arrow"></div>
-    </button>
+  <button type="button" class="write__attach"></button>
+  <div class="write__box-wrapper">
+  <input type="text" class="write__box" name="message" required placeholder="Сообщение" value="">
+  </div>
+  <button type="submit" class="write__button">
+  <div class="button-arrow"></div>
+  </button>
 </form>
 </div>

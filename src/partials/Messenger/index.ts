@@ -4,6 +4,7 @@ import { Block } from '../../utils/Block';
 import { Message } from '../../partials/message/index';
 // eslint-disable-next-line
 import messengerTpl from './messenger.hbs';
+import { Button } from '../button/index';
 import MessagesController, { Message as MessageInfo } from '../../controllers/MessagesController';
 import { withStore } from '../../utils/Store';
 import store from '../../utils/Store';
@@ -24,10 +25,43 @@ export class MessengerBase extends Block<MessengerProps>{
 
   init() {
     this.element!.classList.add('chat__right');
+
+    this.children.btnAdd = new Button({
+      active: false,
+      id: 'user-add',
+      className: 'user-manage',
+      label: 'Добавить пользователя',
+      events: {
+        click: (event:Event) => {
+          console.log('add')
+          // event.preventDefault();
+            // this.userDelete();
+            // this.userAdd();
+        },
+      },
+    });
+
+    this.children.btnDel = new Button({
+      active: false,
+      id: 'user-del',
+      className: 'user-manage',
+      label: 'Удалить пользователя',
+      events: {
+        click: (event:Event) => {
+          // event.preventDefault();
+          console.log('del')
+            // this.userDelete();
+            // this.userAdd();
+        },
+      },
+    });
+
+   
   }
 
+ 
+
    protected componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
-    console.log('обнова')
     return true;
   }
 
