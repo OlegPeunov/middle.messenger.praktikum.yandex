@@ -8,6 +8,7 @@ import { Button } from '../button/index';
 import MessagesController, { Message as MessageInfo } from '../../controllers/MessagesController';
 import { withStore } from '../../utils/Store';
 import store from '../../utils/Store';
+import ChatsController from '../../controllers/ChatsController';
 
 
 
@@ -15,6 +16,7 @@ interface MessengerProps {
   selectedChat: number | undefined;
   messages: MessageInfo[];
   userId: number;
+  usersAmount: number
 }
 
 // eslint-disable-next-line
@@ -23,8 +25,10 @@ export class MessengerBase extends Block<MessengerProps>{
     super('div', props);
   }
 
-  init() {
+  async init() {
     this.element!.classList.add('chat__right');
+
+    
 
     this.children.btnAdd = new Button({
       active: false,
@@ -46,33 +50,41 @@ export class MessengerBase extends Block<MessengerProps>{
       label: 'Удалить пользователя',
       events: {
         click: (event:Event) => {
-          // event.preventDefault();
-          console.log('del')
-            // this.userDelete();
+          this.userDelete();
         },
       },
     });
+
+
+
   }
 
 
   async userAdd() {
     const res = Number(prompt('Id пользователя'));
-    console.log('resultId', res)
-    console.log('chatId', store.getState().selectedChat)
-    // const values = Object
-    //   .values(this.children)
-    //   .filter(child => child instanceof Input)
-    //   .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
 
-    // const data = Object.fromEntries(values);
+    await ChatsController.addUserToChat(store.getState().selectedChat, res)
 
-    // await ChatsController.create(data.title)
+
 
   }
 
 
-   protected componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
-    return true;
+  async userDelete() {
+    const res = Number(prompt('Id пользователя'));
+
+    await ChatsController.delUserFromChat(store.getState().selectedChat, res)
+
+  }
+
+
+  async componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
+    if(typeof store.getState().selectedChat === 'number'){
+      await ChatsController.getUsers(store.getState().selectedChat)
+        .then(res => console.log(Object.keys(res).length))
+    }
+    
+  return true;
   }
 
   render() {

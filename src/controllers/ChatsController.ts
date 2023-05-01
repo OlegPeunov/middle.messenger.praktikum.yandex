@@ -31,6 +31,14 @@ class ChatsController {
     this.api.addUsers(id, [userId]);
   }
 
+  delUserFromChat(id: number, userId: number) {
+    this.api.delUsers(id, [userId]);
+  }
+
+  async getUsers(id: number) {
+    return await this.api.getUsers(id)
+  }
+
   async delete(id: number) {
     await this.api.delete(id);
 
