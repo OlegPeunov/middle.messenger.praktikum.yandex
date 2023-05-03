@@ -50,8 +50,10 @@ class ProfileBase extends Block<ProfileProps> {
             const avatar:any = document.getElementById('profile-avatar');
             avatar.setAttribute('src', response.url);
           })
+          .catch ((err)=>{
+            console.log(err)
+          })
       })
-  
   }
 
   
