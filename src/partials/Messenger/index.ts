@@ -58,6 +58,18 @@ export class MessengerBase extends Block<MessengerProps>{
       },
     });
 
+    this.children.btnDelChat = new Button({
+      active: false,
+      id: 'chat-del',
+      className: 'user-manage',
+      label: 'Удалить чат',
+      events: {
+        click: (event:Event) => {
+          this.chatDelete();
+        },
+      },
+    });
+
 
     this.children.btnMessageSend = new Button({
       active: false,
@@ -102,6 +114,11 @@ export class MessengerBase extends Block<MessengerProps>{
 
     await ChatsController.delUserFromChat(store.getState().selectedChat, res)
 
+  }
+
+  async chatDelete() {
+    await ChatsController.delete(store.getState().selectedChat)
+      .then(()=> location.reload())
   }
 
 

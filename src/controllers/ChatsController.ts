@@ -61,7 +61,6 @@ class ChatsController {
   async delete(id: number) {
     try {
       await this.api.delete(id);
-
       this.fetchChats();
     } catch (e: any) {
       console.error(e);
