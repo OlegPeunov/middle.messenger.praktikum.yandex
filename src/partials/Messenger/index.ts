@@ -69,15 +69,15 @@ export class MessengerBase extends Block<MessengerProps>{
           event.preventDefault();
           if(typeof store.getState().selectedChat === 'number'){
             const input = <HTMLInputElement>document.getElementById('best-input');
-            MessagesController.sendMessage(this.props.selectedChat!, input.value);
+            if(input.value.trim() !== ''){
+              MessagesController.sendMessage(this.props.selectedChat!, input.value);
+            }
           }else{
             console.log('выберите чат')
           }
         },
       },
     });
-
-
 
     this.children.messages = this.createMessages(this.props);
 
