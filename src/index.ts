@@ -12,7 +12,6 @@ import { ChatAdd } from './pages/add-chat';
 import  store  from './utils/Store';
 import AuthController from './controllers/AuthController';
 import Router from './utils/Router';
-/* eslint-enable */
 
 enum Routes {
   Index = '/',
@@ -28,7 +27,6 @@ enum Routes {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-
   Router
     .use(Routes.Index, HomePage)
     .use(Routes.Err404, Page404)
@@ -41,5 +39,5 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.EditAvatar, EditAvatar)
     .use(Routes.ChatAdd, ChatAdd)
     .start();
-  
 });
+/* eslint-enable */
