@@ -45,6 +45,7 @@ export class Signup extends Block<signupProps> {
       id: 'first_name-signup',
       type: 'login',
       placeholder: 'Имя',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputFirst.get(), 'first_name');
@@ -70,6 +71,7 @@ export class Signup extends Block<signupProps> {
       id: 'second_name-signup',
       type: 'login',
       placeholder: 'Фамилия',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputSecond.get(), 'second_name');
@@ -95,6 +97,7 @@ export class Signup extends Block<signupProps> {
       id: 'login-signin',
       type: 'login',
       placeholder: 'Логин',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login');
@@ -120,6 +123,7 @@ export class Signup extends Block<signupProps> {
       id: 'email-signup',
       type: 'email',
       placeholder: 'Почта',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputMail.get(), 'email');
@@ -145,6 +149,7 @@ export class Signup extends Block<signupProps> {
       id: 'password_one',
       type: 'password',
       placeholder: 'Пароль',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one');
@@ -171,6 +176,7 @@ export class Signup extends Block<signupProps> {
       id: 'phone-signup',
       type: 'tel',
       placeholder: 'Телефон',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputTel.get(), 'phone');

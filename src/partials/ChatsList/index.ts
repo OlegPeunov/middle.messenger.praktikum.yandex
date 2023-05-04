@@ -25,8 +25,12 @@ class ChatsListBase extends Block<ChatsListProps> {
     this.element!.classList.add('chat__left');
 
     await ChatsController.fetchChats();
+    // console.log(store.state.chats)
 
-    this.props.chats.forEach((chat, i) =>{
+    this.props.chats.forEach(async (chat, i) =>{
+      // console.log(chat.avatar)
+      
+
       const chatName:string = 'chat'+i;
       const isSelected = store.getState().selectedChat === chat.id ? true : false;
       const chatNew = new Chat({
@@ -34,6 +38,7 @@ class ChatsListBase extends Block<ChatsListProps> {
         isSelected: isSelected,
         title: chat.title,
         isUnread: '',
+        avatar: await this.getAva(chat.avatar),
         unread_count: '0',
         events: {
           click: () => {
@@ -41,12 +46,32 @@ class ChatsListBase extends Block<ChatsListProps> {
           }
         }
       });
+      
       this.children[chatName] = chatNew;
     })
+
   }
 
-  protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
-    newProps.chats.forEach((chat, i) =>{
+  
+
+  async componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
+    await newProps.chats.forEach(async (chat, i) =>{
+      let ava:any = null
+      await fetch(`https://ya-praktikum.tech/api/v2/resources${chat.avatar}`, {
+      method: 'get',
+      credentials: 'include',
+      mode: 'cors',
+    })
+      .then(response => {
+        ava = response.url
+        return response.url
+      })
+      .catch ((err)=>{
+        console.log(err)
+      })
+        
+      console.log(ava)
+
       const chatName:string = 'chat'+i;
       const isSelected = store.getState().selectedChat === chat.id ? true : false;
       const chatNew = new Chat({
@@ -55,6 +80,7 @@ class ChatsListBase extends Block<ChatsListProps> {
         title: chat.title,
         isUnread: '',
         unread_count: '0',
+        avatar: ava,
         events: {
           click: () => {
             ChatsController.selectChat(chat.id);
@@ -63,7 +89,26 @@ class ChatsListBase extends Block<ChatsListProps> {
       });
       this.children[chatName] = chatNew;
     })
+    
+
+    
     return true;
+  }
+
+  async getAva(ava) {
+    if(ava !== null){
+      await fetch(`https://ya-praktikum.tech/api/v2/resources${ava}`, {
+      method: 'get',
+      credentials: 'include',
+      mode: 'cors',
+    })
+      .then(response => {
+        return response.url
+      })
+      .catch ((err)=>{
+        console.log(err)
+      })
+    }
   }
   render() {
     return this.compile(listTpl, this.props);

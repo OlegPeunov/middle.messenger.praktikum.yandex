@@ -36,6 +36,7 @@ export class Signin extends Block<signinProps>{
       id: 'login-signin',
       type: 'login',
       placeholder: 'Логин',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login');
@@ -61,6 +62,7 @@ export class Signin extends Block<signinProps>{
       id: 'password-signin',
       type: 'password',
       placeholder: 'Пароль',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'password');

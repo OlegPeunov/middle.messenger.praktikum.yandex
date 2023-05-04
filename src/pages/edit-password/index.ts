@@ -38,6 +38,7 @@ export class EditPassword extends Block<editPasswordProps>{
       id: 'password-signin-old',
       type: 'password',
       placeholder: 'Пароль',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputPasswordOld.get(), 'password');
@@ -64,6 +65,7 @@ export class EditPassword extends Block<editPasswordProps>{
       id: 'password-signin',
       type: 'password',
       placeholder: 'Пароль',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'password');

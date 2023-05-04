@@ -8,6 +8,7 @@ interface ChatProps {
   isUnread: string;
   unread_count: string;
   isSelected: boolean;
+  avatar: string;
   events: {
     click: () => void;
   }
@@ -18,7 +19,7 @@ export class Chat extends Block<ChatProps> {
     super('div', props);
   }
 
-  init() {
+  async init() {
     this.element!.classList.add('chat__block')
   }
 

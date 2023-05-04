@@ -41,6 +41,7 @@ export class EditAvatar extends Block<editAvatarProps>{
       id: 'avatar-input',
       type: 'file',
       placeholder: 'Ссылка',
+      value:'',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputAvatar.get(), 'file');

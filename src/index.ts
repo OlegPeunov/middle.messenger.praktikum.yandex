@@ -28,7 +28,9 @@ enum Routes {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-  await AuthController.fetchUser()
+  if(window.location.pathname === '/edit-profile'){
+    await AuthController.fetchUser()
+  }
 
   Router
     .use(Routes.Index, HomePage)
