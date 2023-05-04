@@ -8,19 +8,21 @@ import { Error } from '../../partials/error/index';
 import { Button } from '../../partials/button/index';
 import AuthController from '../../controllers/AuthController';
 import { UpdateData } from '../../api/AuthAPI';
+import store from '../../utils/Store';
+import { withStore } from '../../utils/Store';
+import { User } from '../../api/UserAPI';
 
 /* eslint-enable */
-
-interface editProfileProps {
-
-}
+interface editProfileProps extends User {}
 // eslint-disable-next-line
-export class EditProfile extends Block<editProfileProps>{
+export class EditProfileBase extends Block<editProfileProps>{
+  
   constructor(props: editProfileProps) {
     super('div', props);
   }
 
-  init() {
+  async init() {
+
     const inputValidator = new InputValidator('');
     const validateButton = {
       input1: true,
@@ -42,11 +44,14 @@ export class EditProfile extends Block<editProfileProps>{
     }
 
     this.children.headerBlock = new HeaderPage({});
+    const profileData = store.getState().user;
+
     this.children.inputMail = new Input({
       name: 'email',
       id: 'email-signup',
       type: 'email',
       placeholder: 'Почта',
+      value: profileData.email,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputMail.get(), 'email');
@@ -72,6 +77,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'login-signin',
       type: 'login',
       placeholder: 'Логин',
+      value: profileData.login,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login');
@@ -97,6 +103,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'first_name-signup',
       type: 'login',
       placeholder: 'Имя',
+      value: profileData.first_name,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputFirst.get(), 'first_name');
@@ -122,6 +129,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'second_name-signup',
       type: 'login',
       placeholder: 'Фамилия',
+      value: profileData.second_name,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputSecond.get(), 'second_name');
@@ -147,6 +155,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'phone-signup',
       type: 'tel',
       placeholder: 'Телефон',
+      value: profileData.phone,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputTel.get(), 'phone');
@@ -172,6 +181,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'first_name-edit',
       type: 'login',
       placeholder: 'Отоброжаемое имя',
+      value: profileData.display_name,
       events: {
         focus: () => {
           // eslint-disable-next-line
@@ -231,18 +241,11 @@ export class EditProfile extends Block<editProfileProps>{
 
           if (btnToEnable) {
             this.onSubmit()
-            // console.log({
-            //   inputMail: this.children.inputMail.get(),
-            //   login: this.children.inputLogin.get(),
-            //   inputFirst: this.children.inputFirst.get(),
-            //   inputSecond: this.children.inputSecond.get(),
-            //   inputTel: this.children.inputTel.get(),
-            //   inputDisplayName: this.children.inputDisplayName.get(),
-            // });
           }
         },
       },
     });
+
   }
 
   onSubmit() {
@@ -262,3 +265,8 @@ export class EditProfile extends Block<editProfileProps>{
     return this.compile(editProfileTpl, this.props);
   }
 }
+
+
+
+const withUser = withStore((state) => ({...state.user}));
+export const EditProfile = withUser(EditProfileBase);

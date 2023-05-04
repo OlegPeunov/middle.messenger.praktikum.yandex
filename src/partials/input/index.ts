@@ -8,6 +8,7 @@ interface InputProps {
   name: string;
   placeholder: string;
   id: string;
+  value: any
   events: { 
     focus: () => void,
     blur: () => void
@@ -24,9 +25,10 @@ export class Input extends Block<InputProps> {
     return (this.element as HTMLInputElement).value
   }
 
-  init() {
+  async init() {
     (this.element as HTMLInputElement).placeholder = this.props.placeholder;
     (this.element as HTMLInputElement).id = this.props.id;
+    (this.element as HTMLInputElement).value = this.props.value;
     (this.element as HTMLInputElement).type = this.props.type;
     (this.element as HTMLInputElement).name = this.props.name;
     (this.element as HTMLInputElement).required = true;

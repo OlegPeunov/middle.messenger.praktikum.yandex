@@ -7,8 +7,6 @@ import ChatsController from '../../controllers/ChatsController';
 import { withStore } from '../../utils/Store';
 import store from '../../utils/Store';
 
-
-
 import listTpl from './chatsList.hbs';
 
 interface ChatsListProps {
@@ -26,7 +24,7 @@ class ChatsListBase extends Block<ChatsListProps> {
 
     this.element!.classList.add('chat__left');
 
-    await ChatsController.fetchChats()
+    await ChatsController.fetchChats();
 
     this.props.chats.forEach((chat, i) =>{
       const chatName:string = 'chat'+i;

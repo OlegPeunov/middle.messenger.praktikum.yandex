@@ -39,6 +39,7 @@ export class ChatAdd extends Block<addChatProps>{
       id: 'password-signin',
       type: 'login',
       placeholder: 'Название',
+      value: '',
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputPassword.get(), 'title');

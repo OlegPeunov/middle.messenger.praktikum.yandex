@@ -13,6 +13,7 @@ import  store  from './utils/Store';
 import AuthController from './controllers/AuthController';
 import Router from './utils/Router';
 
+
 enum Routes {
   Index = '/',
   Err404 = '/page-404',
@@ -27,6 +28,8 @@ enum Routes {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
+  await AuthController.fetchUser()
+
   Router
     .use(Routes.Index, HomePage)
     .use(Routes.Err404, Page404)
