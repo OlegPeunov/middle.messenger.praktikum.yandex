@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
 import template from './error.hbs';
+import './error.pcss';
 
 interface ErrorProps {
   label: string;

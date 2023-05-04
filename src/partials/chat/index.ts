@@ -3,12 +3,15 @@ import template from './chat.hbs';
 import './chat.pcss';
 
 interface ChatProps {
-  chatClass: string;
-  lastMessage: string;
-  dateTime: string;
+  id: number;
+  title: string;
   isUnread: string;
-  unredAmount: string;
-  userName: string;
+  unread_count: string;
+  isSelected: boolean;
+  avatar: string;
+  events: {
+    click: () => void;
+  }
 }
 
 export class Chat extends Block<ChatProps> {
@@ -16,7 +19,7 @@ export class Chat extends Block<ChatProps> {
     super('div', props);
   }
 
-  init() {
+  async init() {
     this.element!.classList.add('chat__block')
   }
 

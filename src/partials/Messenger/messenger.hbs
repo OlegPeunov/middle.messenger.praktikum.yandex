@@ -1,0 +1,71 @@
+{{!-- <div class="{{ styles.messenger }}">
+    {{#if selectedChat }}
+        <div class="{{ styles.messenger__messages }}">
+            {{#each messages}}
+                {{{this}}}
+            {{/each}}
+        </div>
+        <div class="{{ styles.messenger__footer }}">
+            {{{input}}}
+            {{{button}}}
+        </div>
+    {{else}}
+        Выбирете чат
+    {{/if}}
+</div> --}}
+
+<div class="chat__header">
+    <div class="header-content">
+        <div class="header-avatar"></div>
+        <div class="header-options-button">
+        <div class="options-dot"></div>
+        <div class="options-dot"></div>
+        <div class="options-dot"></div>
+        </div>
+    </div>
+</div>
+{{#if selectedChat }}
+  <div class="chat__users-manage">
+    {{!-- <div class="chat__users-in">
+      {{{usersAmount}}}
+    </div> --}}
+    {{{btnAdd}}}
+    {{{btnDel}}}
+    {{{btnDelChat}}}
+  </div>
+{{/if}}
+<div class="chat__mesaages">
+  {{{message0}}}
+  {{{message1}}}
+  {{{message2}}}
+  {{{message3}}}
+  {{{message4}}}
+  {{{message5}}}
+  {{{message6}}}
+  {{{message7}}}
+  {{{message8}}}
+  {{{message9}}}
+  {{{message10}}}
+  {{{message11}}}
+  {{{message12}}}
+  {{{message13}}}
+  {{{message14}}}
+  {{{message15}}}
+  {{{message16}}}
+  {{{message17}}}
+  {{{message18}}}
+  {{{message19}}}
+  {{{message20}}}
+</div>
+<div class="chat__write">
+<form class="write__input-block">
+  <button type="button" class="write__attach"></button>
+  <div class="write__box-wrapper">
+  <input type="text" class="write__box" id="best-input" name="message" required placeholder="Сообщение" value="">
+  </div>
+  {{{btnMessageSend}}}
+  {{!-- <button type="submit" class="write__button"> --}}
+  <div class="button-arrow"></div>
+  </button>
+</form>
+</div>

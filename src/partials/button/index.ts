@@ -8,7 +8,7 @@ interface ButtonProps {
   id: string;
   label: string;
   className: string
-  events: {click: (event:any) => void};
+  events: {click: (event:any) => any};
 }
 
 // eslint-disable-next-line

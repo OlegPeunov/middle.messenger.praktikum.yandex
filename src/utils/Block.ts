@@ -17,7 +17,7 @@ export class Block<P extends Record<string, any> = any> {
   protected props: P;
 
   // eslint-disable-next-line
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
 
   private eventBus: () => EventBus;
 
@@ -55,9 +55,9 @@ export class Block<P extends Record<string, any> = any> {
   }
 
   // eslint-disable-next-line
-  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block>} {
+  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block | Block[]>} {
     const props: Record<string, unknown> = {};
-    const children: Record<string, Block> = {};
+    const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -131,7 +131,13 @@ export class Block<P extends Record<string, any> = any> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach(child => {
+      if (Array.isArray(child)) {
+        child.forEach(ch => ch.dispatchComponentDidMount());
+      } else {
+        child.dispatchComponentDidMount();
+      }
+    });
   }
   // eslint-disable-next-line
   private _componentDidUpdate(oldProps: P, newProps: P) {

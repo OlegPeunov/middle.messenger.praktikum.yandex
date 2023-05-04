@@ -6,31 +6,43 @@ import { Profile } from './pages/profile';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
-/* eslint-enable */
+import { EditPassword } from './pages/edit-password';
+import { EditAvatar } from './pages/edit-avatar';
+import { ChatAdd } from './pages/add-chat';
+import  store  from './utils/Store';
+import AuthController from './controllers/AuthController';
+import Router from './utils/Router';
 
-window.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('#root')!;
-  let currentPage;
-  const pathPage = window.location.pathname;
 
-  if (pathPage === '/') {
-    currentPage = new HomePage({});
-  } else if (pathPage === '/Page404') {
-    currentPage = new Page404({});
-  } else if (pathPage === '/Page500') {
-    currentPage = new Page500({});
-  } else if (pathPage === '/Profile') {
-    currentPage = new Profile({});
-  } else if (pathPage === '/Signin') {
-    currentPage = new Signin({});
-  } else if (pathPage === '/Signup') {
-    currentPage = new Signup({});
-  } else if (pathPage === '/EditProfile') {
-    currentPage = new EditProfile({});
+enum Routes {
+  Index = '/',
+  Err404 = '/page-404',
+  Err500 = '/page-500',
+  Profile = '/profile',
+  Signin = '/sign-in',
+  Signup = '/sign-up',
+  EditProfile = '/edit-profile',
+  EditPassword = '/edit-password',
+  EditAvatar = '/edit-avatar',
+  ChatAdd = '/chat-add',
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  if(window.location.pathname === '/edit-profile'){
+    await AuthController.fetchUser()
   }
 
-  root.append(currentPage.getContent()!);
-  currentPage.getContent();
-  currentPage.dispatchComponentDidMount();
-
+  Router
+    .use(Routes.Index, HomePage)
+    .use(Routes.Err404, Page404)
+    .use(Routes.Err500, Page500)
+    .use(Routes.Profile, Profile)
+    .use(Routes.Signin, Signin)
+    .use(Routes.Signup, Signup)
+    .use(Routes.EditProfile, EditProfile)
+    .use(Routes.EditPassword, EditPassword)
+    .use(Routes.EditAvatar, EditAvatar)
+    .use(Routes.ChatAdd, ChatAdd)
+    .start();
 });
+/* eslint-enable */
