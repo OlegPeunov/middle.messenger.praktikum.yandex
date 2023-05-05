@@ -39,7 +39,7 @@ export class Signup extends Block<signupProps> {
       }
     }
 
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
     this.children.inputFirst = new Input({
       name: 'first_name',
       id: 'first_name-signup',

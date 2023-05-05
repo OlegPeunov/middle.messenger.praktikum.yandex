@@ -32,7 +32,7 @@ export class ChatAdd extends Block<addChatProps>{
       }
     }
 
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
 
     this.children.inputPassword = new Input({
       name: 'title',

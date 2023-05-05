@@ -22,7 +22,7 @@ export class HomePage extends Block<HomeProps>{
 
   init() {
     
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
     this.children.chatsList = new ChatsList({});
     // this.children.chatsList = new ChatsList({ isLoaded: false });
     this.children.messenger = new Messenger({});

@@ -30,7 +30,7 @@ class ChatsListBase extends Block<ChatsListProps> {
     this.props.chats.forEach(async (chat, i) =>{
       // console.log(chat.avatar)
       
-
+      console.log(chat.avatar === null || chat.avatar === undefined)
       const chatName:string = 'chat'+i;
       const isSelected = store.getState().selectedChat === chat.id ? true : false;
       const chatNew = new Chat({
@@ -38,7 +38,7 @@ class ChatsListBase extends Block<ChatsListProps> {
         isSelected: isSelected,
         title: chat.title,
         isUnread: '',
-        avatar: await this.getAva(chat.avatar),
+        avatar: ((chat.avatar !== null && chat.avatar !== undefined)) ? await this.getAva(chat.avatar) : '',
         unread_count: '0',
         events: {
           click: () => {
@@ -55,21 +55,24 @@ class ChatsListBase extends Block<ChatsListProps> {
   
 
   async componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
+
     await newProps.chats.forEach(async (chat, i) =>{
-      let ava:any = null
-      await fetch(`https://ya-praktikum.tech/api/v2/resources${chat.avatar}`, {
-      method: 'get',
-      credentials: 'include',
-      mode: 'cors',
-    })
-      .then(response => {
-        ava = response.url
-        return response.url
-      })
-      .catch ((err)=>{
-        console.log(err)
-      })
-        
+      let ava:any = ''
+
+      if(chat.avatar !== null && chat.avatar !== undefined){
+        await fetch(`https://ya-praktikum.tech/api/v2/resources${chat.avatar}`, {
+          method: 'get',
+          credentials: 'include',
+          mode: 'cors',
+        })
+          .then(response => {
+            ava = response.url
+            return response.url
+          })
+          .catch ((err)=>{
+            console.log(err)
+          })
+      }
       console.log(ava)
 
       const chatName:string = 'chat'+i;
