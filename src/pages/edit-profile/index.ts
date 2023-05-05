@@ -25,14 +25,14 @@ export class EditProfileBase extends Block<editProfileProps>{
 
     const inputValidator = new InputValidator('');
     const validateButton = {
-      input1: true,
-      input2: true,
-      input3: true,
-      input4: true,
-      input5: true,
-      input6: true,
-      input7: true,
-      input8: true,
+      input1: false,
+      input2: false,
+      input3: false,
+      input4: false,
+      input5: false,
+      input6: false,
+      input7: false,
+      input8: false,
     };
 
     function checkBtn(btn) {
@@ -43,7 +43,7 @@ export class EditProfileBase extends Block<editProfileProps>{
       }
     }
 
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
     const profileData = store.getState().user;
 
     this.children.inputMail = new Input({

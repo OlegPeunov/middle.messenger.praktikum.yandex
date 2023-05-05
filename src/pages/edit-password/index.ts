@@ -31,7 +31,7 @@ export class EditPassword extends Block<editPasswordProps>{
       }
     }
 
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
 
     this.children.inputPasswordOld = new Input({
       name: 'oldPassword',

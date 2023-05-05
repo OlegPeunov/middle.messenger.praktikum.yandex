@@ -30,7 +30,7 @@ export class Signin extends Block<signinProps>{
       }
     }
 
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
     this.children.inputLogin = new Input({
       name: 'login',
       id: 'login-signin',

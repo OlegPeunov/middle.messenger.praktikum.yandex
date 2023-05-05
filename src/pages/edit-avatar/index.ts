@@ -34,7 +34,7 @@ export class EditAvatar extends Block<editAvatarProps>{
       }
     }
 
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
     
     this.children.inputAvatar = new Input({
       name: 'file',

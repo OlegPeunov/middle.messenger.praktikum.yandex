@@ -23,7 +23,7 @@ class ProfileBase extends Block<ProfileProps> {
   }
 
   async init() {    
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
     this.children.exitButton = new Button({
       active: false,
       id: 'logOut-btn',
@@ -39,21 +39,20 @@ class ProfileBase extends Block<ProfileProps> {
       },
     });
 
-    await AuthController.fetchUser()
-      .then(response => {
-        fetch(`https://ya-praktikum.tech/api/v2/resources${store.getState().user.avatar}`, {
-          method: 'get',
-          credentials: 'include',
-          mode: 'cors',
-        })
-          .then(response => {
-            const avatar:any = document.getElementById('profile-avatar');
-            avatar.setAttribute('src', response.url);
-          })
-          .catch ((err)=>{
-            console.log(err)
-          })
+    if(store.getState().user.avatar !== null && store.getState().user.avatar !== undefined){
+      await fetch(`https://ya-praktikum.tech/api/v2/resources${store.getState().user.avatar}`, {
+        method: 'get',
+        credentials: 'include',
+        mode: 'cors',
       })
+        .then(response => {
+          const avatar:any = document.getElementById('profile-avatar');
+          avatar.setAttribute('src', response.url);
+        })
+        .catch ((err)=>{
+          console.log(err)
+        })
+    }
   }
 
   
