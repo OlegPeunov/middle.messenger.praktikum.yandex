@@ -13,8 +13,6 @@ import store from '../../utils/Store';
 
 import ChatsController from '../../controllers/ChatsController';
 
-
-
 interface MessengerProps {
   selectedChat: number | undefined;
   messages: MessageInfo[];
@@ -164,7 +162,7 @@ const withSelectedChatMessages = withStore(state => {
       selectedChat: undefined,
       userId: state.id
     };
-  }
+  };
 
   return {
     messages: (state.messages || {})[selectedChatId] || [],
