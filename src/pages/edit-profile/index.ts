@@ -6,28 +6,33 @@ import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import { Button } from '../../partials/button/index';
+import AuthController from '../../controllers/AuthController';
+import { UpdateData } from '../../api/AuthAPI';
+import store from '../../utils/Store';
+import { withStore } from '../../utils/Store';
+import { User } from '../../api/UserAPI';
+
 /* eslint-enable */
-
-interface editProfileProps {
-
-}
+interface editProfileProps extends User {}
 // eslint-disable-next-line
-export class EditProfile extends Block<editProfileProps>{
+export class EditProfileBase extends Block<editProfileProps>{
+  
   constructor(props: editProfileProps) {
     super('div', props);
   }
 
-  init() {
+  async init() {
+
     const inputValidator = new InputValidator('');
     const validateButton = {
-      input1: true,
-      input2: true,
-      input3: true,
-      input4: true,
-      input5: true,
-      input6: true,
-      input7: true,
-      input8: true,
+      input1: false,
+      input2: false,
+      input3: false,
+      input4: false,
+      input5: false,
+      input6: false,
+      input7: false,
+      input8: false,
     };
 
     function checkBtn(btn) {
@@ -38,12 +43,15 @@ export class EditProfile extends Block<editProfileProps>{
       }
     }
 
-    this.children.headerBlock = new HeaderPage({});
+    // this.children.headerBlock = new HeaderPage({});
+    const profileData = store.getState().user;
+
     this.children.inputMail = new Input({
       name: 'email',
       id: 'email-signup',
       type: 'email',
       placeholder: 'Почта',
+      value: profileData.email,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputMail.get(), 'email');
@@ -69,6 +77,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'login-signin',
       type: 'login',
       placeholder: 'Логин',
+      value: profileData.login,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputLogin.get(), 'login');
@@ -94,6 +103,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'first_name-signup',
       type: 'login',
       placeholder: 'Имя',
+      value: profileData.first_name,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputFirst.get(), 'first_name');
@@ -119,6 +129,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'second_name-signup',
       type: 'login',
       placeholder: 'Фамилия',
+      value: profileData.second_name,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputSecond.get(), 'second_name');
@@ -144,6 +155,7 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'phone-signup',
       type: 'tel',
       placeholder: 'Телефон',
+      value: profileData.phone,
       events: {
         focus: () => {
           const res = inputValidator.regularCheck(this.children.inputTel.get(), 'phone');
@@ -164,63 +176,12 @@ export class EditProfile extends Block<editProfileProps>{
       id: 'error-phone-signup',
     });
 
-    this.children.inputPassOne = new Input({
-      name: 'password_one',
-      id: 'password_one',
-      type: 'password',
-      placeholder: 'Пароль',
-      events: {
-        focus: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input6 = res.err;
-          this.children.signUpButton.setProps({ active: false });
-          checkBtn(this.children.signUpButton);
-        },
-        blur: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input6 = res.err;
-          checkBtn(this.children.signUpButton);
-        },
-      },
-    });
-    this.children.errPlacePassOne = new Error({
-      label: '',
-      id: 'error-password_one',
-    });
-
-    this.children.inputPassTwo = new Input({
-      name: 'password_two',
-      id: 'password_two',
-      type: 'password',
-      placeholder: 'Пароль',
-      events: {
-        focus: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassTwo.get(), 'password_two');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input7 = res.err;
-          this.children.signUpButton.setProps({ active: false });
-          checkBtn(this.children.signUpButton);
-        },
-        blur: () => {
-          const res = inputValidator.regularCheck(this.children.inputPassTwo.get(), 'password_two');
-          this.children.errPlacePassOne.setProps({ label: res.message });
-          validateButton.input7 = res.err;
-          checkBtn(this.children.signUpButton);
-        },
-      },
-    });
-    this.children.errPlacePassTwo = new Error({
-      label: '',
-      id: 'error-password_two',
-    });
-
     this.children.inputDisplayName = new Input({
       name: 'display_name',
       id: 'first_name-edit',
       type: 'login',
       placeholder: 'Отоброжаемое имя',
+      value: profileData.display_name,
       events: {
         focus: () => {
           // eslint-disable-next-line
@@ -247,7 +208,7 @@ export class EditProfile extends Block<editProfileProps>{
       active: true,
       id: 'popup-button-signup',
       className: 'popup__button-active',
-      label: 'Авторизоваться',
+      label: 'Сохранить',
       events: {
         click: (event:Event) => {
           event.preventDefault();
@@ -273,40 +234,39 @@ export class EditProfile extends Block<editProfileProps>{
           this.children.errPlaceTel.setProps({ label: res5.message });
           validateButton.input5 = res5.err;
           checkBtn(this.children.signUpButton);
-          // eslint-disable-next-line
-          const res6 = inputValidator.regularCheck(this.children.inputPassOne.get(), 'password_one');
-          this.children.errPlacePassOne.setProps({ label: res6.message });
-          validateButton.input6 = res6.err;
-          this.children.signUpButton.setProps({ active: false });
-          checkBtn(this.children.signUpButton);
-          // eslint-disable-next-line
-          const res7 = inputValidator.regularCheck(this.children.inputPassTwo.get(), 'password_two');
-          this.children.errPlacePassOne.setProps({ label: res7.message });
-          validateButton.input7 = res7.err;
-          this.children.signUpButton.setProps({ active: false });
 
           checkBtn(this.children.signUpButton);
           // eslint-disable-next-line
-        const btnToEnable = (!validateButton.input1 && !validateButton.input2 && !validateButton.input3 && !validateButton.input4 && !validateButton.input5 && !validateButton.input6 && !validateButton.input7)
+        const btnToEnable = (!validateButton.input1 && !validateButton.input2 && !validateButton.input3 && !validateButton.input4 && !validateButton.input5)
 
           if (btnToEnable) {
-            console.log({
-              inputMail: this.children.inputMail.get(),
-              login: this.children.inputLogin.get(),
-              inputFirst: this.children.inputFirst.get(),
-              inputSecond: this.children.inputSecond.get(),
-              inputTel: this.children.inputTel.get(),
-              inputPassOne: this.children.inputPassOne.get(),
-              inputPassTwo: this.children.inputPassTwo.get(),
-              inputDisplayName: this.children.inputDisplayName.get(),
-            });
+            this.onSubmit()
           }
         },
       },
     });
+
+  }
+
+  onSubmit() {
+    const values = Object
+      .values(this.children)
+      .filter(child => child instanceof Input)
+      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+
+    const data = Object.fromEntries(values);
+
+    console.log(data)
+
+    AuthController.updateUser(data as UpdateData);
   }
 
   render() {
     return this.compile(editProfileTpl, this.props);
   }
 }
+
+
+
+const withUser = withStore((state) => ({...state.user}));
+export const EditProfile = withUser(EditProfileBase);

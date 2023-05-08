@@ -1,8 +1,7 @@
 type Handler<A extends any[] = unknown[]> = (...args: A) => void;
 type MapInterface<P> = P[keyof P]
 
-// eslint-disable-next-line
-export class EventBus <
+export class EventBus<
   E extends Record<string, string> = Record<string, string>,
   Args extends Record<MapInterface<E>, any[]> = Record<string, any[]>
 > {
@@ -15,6 +14,7 @@ export class EventBus <
       this.listeners[event] = [];
     }
 
+
     this.listeners[event]?.push(callback);
   }
 
@@ -24,16 +24,16 @@ export class EventBus <
     }
 
     this.listeners[event] = this.listeners[event]!.filter(
-      (listener) => listener !== callback,
+      listener => listener !== callback
     );
   }
 
   emit<Event extends MapInterface<E>>(event: Event, ...args: Args[Event]) {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`);
+      return;
     }
 
-    this.listeners[event]!.forEach((listener) => {
+    this.listeners[event]!.forEach(listener => {
       listener(...args);
     });
   }

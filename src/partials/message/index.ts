@@ -8,7 +8,6 @@ interface MessageProps {
   contentClass: string;
   textMessage: string;
   showImg: string;
-  sentTime: string;
 }
 
 // eslint-disable-next-line
