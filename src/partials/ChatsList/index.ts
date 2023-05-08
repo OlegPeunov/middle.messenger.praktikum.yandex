@@ -25,12 +25,9 @@ class ChatsListBase extends Block<ChatsListProps> {
     this.element!.classList.add('chat__left');
 
     await ChatsController.fetchChats();
-    // console.log(store.state.chats)
 
     this.props.chats.forEach(async (chat, i) =>{
-      // console.log(chat.avatar)
       
-      console.log(chat.avatar === null || chat.avatar === undefined)
       const chatName:string = 'chat'+i;
       const isSelected = store.getState().selectedChat === chat.id ? true : false;
       const chatNew = new Chat({
@@ -73,7 +70,6 @@ class ChatsListBase extends Block<ChatsListProps> {
             console.log(err)
           })
       }
-      console.log(ava)
 
       const chatName:string = 'chat'+i;
       const isSelected = store.getState().selectedChat === chat.id ? true : false;

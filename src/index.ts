@@ -30,7 +30,7 @@ enum Routes {
 window.addEventListener('DOMContentLoaded', async () => {
   await AuthController.fetchUser()
     .then((res)=>{
-      console.log(res)
+      // console.log(res)
     })
     .catch((err)=>{
       Router.go('/sign-in');
