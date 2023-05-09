@@ -35,8 +35,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     .catch((err)=>{
       Router.go('/sign-in');
     })
-  // if(window.location.pathname === '/edit-profile'){
-  // }
+  if(window.location.pathname === '/edit-profile'){
+  }
 
   Router
     .use(Routes.Index, HomePage)
@@ -49,6 +49,17 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.EditPassword, EditPassword)
     .use(Routes.EditAvatar, EditAvatar)
     .use(Routes.ChatAdd, ChatAdd)
-    .start();
+
+    // try {
+    //   await AuthController.fetchUser();
+  
+    Router.start();
+  
+
+    // } catch (e) {
+    //   Router.start();
+  
+
+    // }
 });
 /* eslint-enable */

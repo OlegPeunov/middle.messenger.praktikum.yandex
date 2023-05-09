@@ -140,7 +140,6 @@ export class MessengerBase extends Block<MessengerProps>{
       const messageNew = new Message({
         contentClass: message.user_id === this.props.userId ? 'message_sent' : 'message_received',
         textMessage: message.content + `<span class="message__time">${message.time.match(regex)}</span>`,
-        showImg: '',
       });
       this.children[messageName] = messageNew;
     })

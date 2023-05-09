@@ -10,6 +10,7 @@ import store from '../../utils/Store';
 import listTpl from './chatsList.hbs';
 
 interface ChatsListProps {
+  selectedChat: number | undefined;
   chats: ChatInfo[];
   isLoaded: boolean;
 }
