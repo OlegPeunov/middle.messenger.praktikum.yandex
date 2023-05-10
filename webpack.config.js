@@ -26,7 +26,7 @@ module.exports = {
       },
     },
     {
-      test: /\.css$/i,
+      test: /\.pcss$/i,
       use: [
         (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
         {
@@ -55,7 +55,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: 'style.[contenthash].pcss',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
