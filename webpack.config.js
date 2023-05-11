@@ -10,7 +10,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   devtool: 'eval-source-map',
   entry: {
-    index: './src/index.js',
+    index: './src/index.ts',
     // saved: './src/saved.js',
   },
   output: {
@@ -19,10 +19,10 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /\.js$/,
+      test: /\.ts$/,
       exclude: /node_modules/,
       use: {
-        loader: 'babel-loader',
+        loader: 'ts-loader',
       },
     },
     {
