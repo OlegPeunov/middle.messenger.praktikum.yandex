@@ -10,12 +10,11 @@ import AuthController from '../../controllers/AuthController';
 import { UpdateData } from '../../api/AuthAPI';
 import store from '../../utils/Store';
 import { withStore } from '../../utils/Store';
-import { User } from '../../api/UserAPI';
 
 /* eslint-enable */
-interface editProfileProps extends User {}
+interface editProfileProps {}
 // eslint-disable-next-line
-export class EditProfileBase extends Block<editProfileProps>{
+export class EditProfileBase extends Block <editProfileProps>{
   
   constructor(props: editProfileProps) {
     super('div', props);
@@ -35,7 +34,7 @@ export class EditProfileBase extends Block<editProfileProps>{
       input8: false,
     };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1 && !validateButton.input2) {
         btn.setFalse();
       } else {
