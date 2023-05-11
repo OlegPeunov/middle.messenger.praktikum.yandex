@@ -38,7 +38,7 @@ export const withStore = (mapStateToProps: (state: State) => any) => {
     return class WithStore extends Component {
       constructor (props: any){
         const mappedState = mapStateToProps(store.getState());
-        super({...props, ...mappedState});
+        super({...props, ...mappedState}, '');
   
         store.on(StoreEvents.Updated, (newState) => {
           const newMappedState = mapStateToProps(newState)
