@@ -31,7 +31,7 @@ export class Signup extends Block<signupProps> {
       input7: true,
     };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1 && !validateButton.input2) {
         btn.setFalse();
       } else {

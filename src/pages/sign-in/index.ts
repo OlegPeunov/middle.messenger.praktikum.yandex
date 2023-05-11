@@ -123,7 +123,7 @@ export class Signin extends Block<signinProps>{
 
     const data = Object.fromEntries(values);
 
-    AuthController.signin(data as SigninData);
+    AuthController.signin(data);
   }
 
   render() {
