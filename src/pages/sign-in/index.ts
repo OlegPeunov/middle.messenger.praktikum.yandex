@@ -22,7 +22,7 @@ export class Signin extends Block<signinProps>{
     const inputValidator = new InputValidator('');
     const validateButton = { input1: true, input2: true };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1 && !validateButton.input2) {
         btn.setFalse();
       } else {

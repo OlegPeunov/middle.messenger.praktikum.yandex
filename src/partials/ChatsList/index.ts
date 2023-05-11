@@ -95,7 +95,7 @@ class ChatsListBase extends Block<ChatsListProps> {
     return true;
   }
 
-  async getAva(ava) {
+  async getAva(ava:any) {
     if(ava !== null){
       await fetch(`https://ya-praktikum.tech/api/v2/resources${ava}`, {
       method: 'get',

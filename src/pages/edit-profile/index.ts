@@ -265,7 +265,5 @@ export class EditProfileBase extends Block <editProfileProps>{
   }
 }
 
-
-
 const withUser = withStore((state) => ({...state.user}));
 export const EditProfile = withUser(EditProfileBase);
