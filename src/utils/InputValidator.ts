@@ -8,7 +8,7 @@ export class InputValidator {
     this.formEvent = formEvent;
   }
   
-  regularCheck(value, name) {
+  regularCheck(value:any, name: any) {
 
     const checkType = name;
     const checkValue = value;
