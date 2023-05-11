@@ -1,0 +1,64 @@
+
+{{{headerBlock}}}
+<main class="popup popup_type_signup">
+  <div class="popup__content">
+    <a href="/" class="popup__leave">✕</a>
+    <div class="popup__title">Регистрация</div>
+    <form class="popup__form popup__form_type_signup" novalidate id="validateRform">
+      <div>
+        <p class="popup__input-title">Имя</p>
+        {{{inputFirst}}}
+        {{{errPlaceFirst}}}
+        
+        <p class="popup__input-title">Фамилия</p>
+        {{{inputSecond}}}
+        {{{errPlaceSecond}}}
+
+        <p class="popup__input-title">Логин</p>
+        {{{inputLogin}}}
+        {{{errPlaceLogin}}}
+
+        <p class="popup__input-title">Почта</p>
+        {{{inputMail}}}
+        {{{errPlaceMail}}}
+
+        <p class="popup__input-title">Пароль</p>
+        {{{inputPassOne}}}
+        {{{errPlacePassOne}}}
+
+        <p class="popup__input-title">Телефон</p>
+        {{{inputTel}}}
+        {{{errPlaceTel}}}
+        {{!-- <input type="email" id="email-signup" name="email" class="popup__input" required placeholder="Почта" value=""> --}}
+        {{!-- <span id="error-email-signup" class="error-message"></span> --}}
+
+        {{!-- <input type="login" id="login-signup" name="login" class="popup__input" required placeholder="Логин" value=""> --}}
+        {{!-- <span id="error-login-signup" class="error-message"></span> --}}
+
+        {{!-- <input type="login" id="first_name-signup" name="first_name" class="popup__input" required placeholder="Имя" value=""> --}}
+        {{!-- <span id="error-first_name-signup" class="error-message"></span> --}}
+
+        {{!-- <input type="login" id="second_name-signup" name="second_name" class="popup__input" required placeholder="Фамилия" value=""> --}}
+        {{!-- <span id="error-second_name-signup" class="error-message"></span> --}}
+
+        {{!-- <input type="tel" id="phone-signup" name="phone" class="popup__input" required placeholder="Телефон" value=""> --}}
+        {{!-- <span id="error-phone-signup" class="error-message"></span> --}}
+
+        {{!-- <input type="password" id="password_one" name="password_one" class="popup__input" required minlength="8" placeholder="Пароль" value=""> --}}
+        {{!-- <span id="error-password_one" class="error-message"></span> --}}
+        {{!-- <p class="popup__input-title">Пароль (еще раз)</p>
+        {{{inputPassTwo}}}
+        {{{errPlacePassTwo}}} --}}
+        {{!-- <input type="password" id="password_two" name="password_two" class="popup__input" required minlength="8" placeholder="Пароль" value=""> --}}
+        {{!-- <span id="error-password_two" class="error-message"></span> --}}
+      </div>
+      <div>
+        {{{signUpButton}}}
+        {{!-- <button id="popup-button-signup" class="popup__button" disabled >Авторизоваться</button> --}}
+        <p class="popup__no-account">
+        <a class="popup__no-account popup__no-account_link" id="no-account" href="sign-in">Войти</a></p>
+      </div>
+    </form>
+  </div>
+  <script type='module' type="text/javascript" src="./index.ts"></script> 
+</main>

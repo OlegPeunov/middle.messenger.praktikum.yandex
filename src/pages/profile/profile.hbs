@@ -1,0 +1,43 @@
+{{{headerBlock}}}
+<a href="/" class="prfile__link-away"><</a>
+<main class="profile">
+  <div class="prfile__img-block">
+    <a href="edit-avatar"><img class="user-img" id="profile-avatar" src=""></a>
+  </div>
+  <div class="profile__info-block">
+    <div class="profile__item">
+      <div class="item-info">Id</div>
+      <div class="item-value">{{ id }}</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Почта</div>
+      <div class="item-value">{{ email }}</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Логин</div>
+      <div class="item-value">{{ login }}</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Имя</div>
+      <div class="item-value">{{ first_name }}</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Фамилия</div>
+      <div class="item-value">{{ second_name }}</div>
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Имя в чате</div>
+      <div class="item-value">{{ first_name }}</div> {{!-- {{display_name}} --}}
+    </div>
+    <div class="profile__item">
+      <div class="item-info">Телефон</div>
+      <div class="item-value">{{ phone }}</div>
+    </div>
+  </div>
+  <div class="profile__buttons-block">
+    <div class="profile__item"><a class="profile-btn" id="change-data" href="edit-profile">Изменить данные</a></div>
+    <div class="profile__item"><a class="profile-btn" id="change-password" href="edit-password">Изменить пароль</a></div>
+    {{{exitButton}}}
+    {{!-- <btn class="exit-btn" id="logOut">Выйти</btn> --}}
+  </div>
+</main>
