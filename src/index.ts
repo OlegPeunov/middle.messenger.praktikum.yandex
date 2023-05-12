@@ -1,5 +1,5 @@
 /* eslint-disable */
-// import "./pages/index.pcss";
+import "./pages/index.pcss";
 // import { HomePage } from './pages/home';
 // import { Page404 } from './pages/404';
 // import { Page500 } from './pages/500';
