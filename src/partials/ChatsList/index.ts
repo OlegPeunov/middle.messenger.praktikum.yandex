@@ -52,7 +52,7 @@ class ChatsListBase extends Block<ChatsListProps> {
 
   
 
-  async componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
+  async componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): Promise<boolean> {
 
     await newProps.chats.forEach(async (chat, i) =>{
       let ava:any = ''

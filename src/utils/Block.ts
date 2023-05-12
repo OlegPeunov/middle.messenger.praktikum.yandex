@@ -139,15 +139,15 @@ export class Block<P extends Record<string, any> = any> {
     });
   }
   // eslint-disable-next-line
-  private _componentDidUpdate(oldProps: P, newProps: P) {
+  async _componentDidUpdate(oldProps: P, newProps: P) {
     // eslint-disable-next-line
-    if (this.componentDidUpdate(oldProps, newProps)) {
+    if (await this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
   // eslint-disable-next-line
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  async componentDidUpdate(oldProps: P, newProps: P): Promise<boolean> {
     return true;
   }
 
