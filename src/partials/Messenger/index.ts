@@ -94,7 +94,7 @@ export class MessengerBase extends Block<MessengerProps>{
 
     if(typeof store.getState().selectedChat === 'number'){
       await ChatsController.getUsers(store.getState().selectedChat)
-        .then(res => console.log(Object.keys(res).length))
+        .then(res => console.log(Object.keys([res]).length))
     }
   }
 
@@ -120,12 +120,12 @@ export class MessengerBase extends Block<MessengerProps>{
   }
 
 
-  async componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): boolean {
+  async componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): Promise<boolean> {
     this.children.messages = this.createMessages(newProps);
 
     if(typeof store.getState().selectedChat === 'number'){
       await ChatsController.getUsers(store.getState().selectedChat)
-        .then(res => console.log(Object.keys(res).length))
+        .then(res => console.log(Object.keys([res]).length))
     }
     
     return true;
