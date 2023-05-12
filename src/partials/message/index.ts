@@ -5,9 +5,9 @@ import template from './message.hbs';
 import './message.pcss';
 
 interface MessageProps {
-  contentClass: string;
-  textMessage: string;
-  showImg: string;
+  contentClass: any;
+  textMessage: any;
+  showImg: any;
 }
 
 // eslint-disable-next-line
