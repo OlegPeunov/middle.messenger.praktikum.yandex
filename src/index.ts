@@ -1,5 +1,5 @@
 /* eslint-disable */
-import "./pages/index.pcss";
+// import "./pages/index.pcss";
 // import { HomePage } from './pages/home';
 // import { Page404 } from './pages/404';
 // import { Page500 } from './pages/500';
@@ -27,7 +27,7 @@ import "./pages/index.pcss";
 //   EditAvatar = '/edit-avatar',
 //   ChatAdd = '/chat-add',
 // }
-(function(){
+
 window.addEventListener('DOMContentLoaded', async () => {
   // await AuthController.fetchUser()
   //   .then((res)=>{
@@ -56,5 +56,5 @@ window.addEventListener('DOMContentLoaded', async () => {
   console.log('webpack старт')
 
 });
-}());
+
 /* eslint-enable */

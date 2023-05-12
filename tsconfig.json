@@ -1,18 +1,14 @@
 {
-  "ts-node": {
-    "files": true
-  },
   "compilerOptions": {
+    "outDir": "dist",
     "target": "es2016",
+    "declaration": false,
     "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": false,
-    "strict": true,
-    "skipLibCheck": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ]
-  }
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "files": ["./src/index.ts"],
 }

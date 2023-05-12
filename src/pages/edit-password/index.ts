@@ -23,7 +23,7 @@ export class EditPassword extends Block<editPasswordProps>{
     const inputValidator = new InputValidator('');
     const validateButton = { input2: true, input1: true };
 
-    function checkBtn(btn:any) {
+    function checkBtn(btn) {
       if (!validateButton.input2 && !validateButton.input1) {
         btn.setFalse();
       } else {
