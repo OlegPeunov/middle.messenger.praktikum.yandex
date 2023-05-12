@@ -1,4 +1,7 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
+
 
 module.exports = {
   mode: 'development',
@@ -25,5 +28,12 @@ module.exports = {
         exclude: /(node_modules)/
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),  
+  ],
+
 }; 
