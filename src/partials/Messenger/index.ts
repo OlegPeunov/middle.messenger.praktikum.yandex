@@ -89,7 +89,21 @@ export class MessengerBase extends Block<MessengerProps>{
       },
     });
 
-    this.children.messages = this.createMessages(this.props);
+    for( let i =0; i < this.props.messages.length; i++){
+      const regex = /\d\d:\d\d/i;
+      return this.props.messages.map((message, i) =>{
+  
+        const messageName:string = 'message'+i;
+  
+        const messageNew = new Message({
+          contentClass: message.user_id === this.props.userId ? 'message_sent' : 'message_received',
+          textMessage: message.content + `<span class="message__time">${message.time.match(regex)}</span>`,
+          showImg: '',
+        });
+        this.children[messageName] = messageNew;
+      })
+    }
+    // this.children.messages = this.createMessages(this.props);
 
 
     if(typeof store.getState().selectedChat === 'number'){
@@ -121,7 +135,21 @@ export class MessengerBase extends Block<MessengerProps>{
 
 
   async componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): Promise<boolean> {
-    this.children.messages = this.createMessages(newProps);
+    // this.children.messages = this.createMessages(newProps);
+    for( let i =0; i < newProps.messages.length; i++){
+      const regex = /\d\d:\d\d/i;
+      newProps.messages.forEach((message, i) =>{
+  
+        const messageName:string = 'message'+i;
+  
+        const messageNew = new Message({
+          contentClass: message.user_id === newProps.userId ? 'message_sent' : 'message_received',
+          textMessage: message.content + `<span class="message__time">${message.time.match(regex)}</span>`,
+          showImg: '',
+        });
+        this.children[messageName] = messageNew;
+      })
+    }
 
     if(typeof store.getState().selectedChat === 'number'){
       await ChatsController.getUsers(store.getState().selectedChat)
@@ -131,21 +159,21 @@ export class MessengerBase extends Block<MessengerProps>{
     return true;
   }
 
-  private createMessages(props: MessengerProps) {
-    const regex = /\d\d:\d\d/i;
-    return this.props.messages.map((message, i) =>{
+  // private createMessages(props: MessengerProps) {
+  //   const regex = /\d\d:\d\d/i;
+  //   return this.props.messages.map((message, i) =>{
 
-      const messageName:string = 'message'+i;
+  //     const messageName:string = 'message'+i;
 
-      const messageNew = new Message({
-        contentClass: message.user_id === this.props.userId ? 'message_sent' : 'message_received',
-        textMessage: message.content + `<span class="message__time">${message.time.match(regex)}</span>`,
-        showImg: ''
-      });
-      this.children[messageName] = messageNew;
-    })
+  //     const messageNew = new Message({
+  //       contentClass: message.user_id === this.props.userId ? 'message_sent' : 'message_received',
+  //       textMessage: message.content + `<span class="message__time">${message.time.match(regex)}</span>`,
+  //       showImg: ''
+  //     });
+  //     this.children[messageName] = messageNew;
+  //   })
    
-  }
+  // }
 
   render() {
     
