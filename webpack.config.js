@@ -25,6 +25,10 @@ module.exports = {
         loader: 'ts-loader',
       },
     },
+    { 
+      test: /\.hbs$/, 
+      loader: "handlebars-loader" 
+    },
     {
       test: /\.pcss$/i,
       use: [
@@ -71,6 +75,7 @@ module.exports = {
       chunks: ['index'],
       filename: 'index.html',
     }),
+    
     // new HtmlWebpackPlugin({
     //   inject: false,
     //   chunks: ['saved'],
