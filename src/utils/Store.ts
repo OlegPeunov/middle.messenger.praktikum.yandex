@@ -33,7 +33,7 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-export const withStore = (mapStateToProps: (state: State) => any) => {
+export const withStore:any = (mapStateToProps: (state: State) => any) => {
   return (Component: typeof Block) => {
     return class WithStore extends Component {
       constructor (props: any){

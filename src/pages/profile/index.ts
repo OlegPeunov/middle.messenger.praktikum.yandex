@@ -23,7 +23,6 @@ class ProfileBase extends Block<ProfileProps> {
   }
 
   async init() {    
-    // this.children.headerBlock = new HeaderPage({});
     this.children.exitButton = new Button({
       active: false,
       id: 'logOut-btn',

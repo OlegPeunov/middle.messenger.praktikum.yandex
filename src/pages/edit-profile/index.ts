@@ -23,7 +23,7 @@ export class EditProfileBase extends Block <editProfileProps>{
   async init() {
 
     const inputValidator = new InputValidator('');
-    const validateButton = {
+    const validateButton: any = {
       input1: false,
       input2: false,
       input3: false,
