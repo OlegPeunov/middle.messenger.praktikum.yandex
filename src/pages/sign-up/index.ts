@@ -19,7 +19,7 @@ export class Signup extends Block<signupProps> {
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = {
       input1: true,
       input2: true,

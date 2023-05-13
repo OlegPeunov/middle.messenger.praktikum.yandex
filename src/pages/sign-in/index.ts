@@ -18,7 +18,7 @@ export class Signin extends Block<signinProps>{
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = { input1: true, input2: true };
 
     function checkBtn(btn:any) {

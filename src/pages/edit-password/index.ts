@@ -19,7 +19,7 @@ export class EditPassword extends Block<editPasswordProps>{
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = { input2: true, input1: true };
 
     function checkBtn(btn:any) {

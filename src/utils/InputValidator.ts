@@ -1,11 +1,10 @@
 // eslint-disable-next-line
 export class InputValidator {
-  private formEvent: any;
   
   private res: {'err': boolean, 'message': string | null} = { err: false, message: null };
   private pasWords: {'pass1':string | null, 'pass2': string | null} = { pass1: null, pass2: null };
-  constructor(formEvent: any) {
-    this.formEvent = formEvent;
+  constructor() {
+    
   }
   regularCheck(value:any, name: any) {
 

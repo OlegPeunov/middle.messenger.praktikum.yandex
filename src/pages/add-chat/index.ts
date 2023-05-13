@@ -19,7 +19,7 @@ export class ChatAdd extends Block<addChatProps>{
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = { input1: true };
 
     function checkBtn(btn:any) {
