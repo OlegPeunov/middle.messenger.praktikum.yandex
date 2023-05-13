@@ -26,6 +26,7 @@
     "handlebars": "^4.7.7",
     "html-webpack-plugin": "^5.5.1",
     "install": "^0.13.0",
+    "mini-css-extract-plugin": "^2.7.5",
     "npm": "^9.6.2",
     "parcel": "^2.8.3",
     "postcss": "^8.4.23",

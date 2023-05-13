@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const path = require('path');
 
@@ -12,9 +13,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js', '.json'],
-    alias:{
-      handlebars: 'handlebars/dist/handlebars.min.js',
-    }
+    // alias:{
+    //   handlebars: 'handlebars/dist/handlebars.min.js',
+    // }
   },
   module: {
     rules: [
@@ -32,8 +33,15 @@ module.exports = {
         exclude: /(node_modules)/
       },
       {
-        test: /\.pcss$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        test: /\.(pc|c)ss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {},
+          },
+          'css-loader',
+          'postcss-loader'
+        ],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -46,7 +54,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'style-[hash].css'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './static/index.html',
+
+    }),
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),  
