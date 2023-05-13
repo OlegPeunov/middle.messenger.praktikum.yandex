@@ -5,7 +5,6 @@ import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import { Button } from '../../partials/button/index';
-import { HeaderPage } from '../../partials/header/index';
 import { SignupData } from '../../api/AuthAPI';
 import AuthController from '../../controllers/AuthController';
 /* eslint-enable */

@@ -8,8 +8,6 @@ import AuthController from '../../controllers/AuthController';
 import router from '../../utils/Router';
 
 // eslint-disable-next-line
-import { HeaderPage } from '../../partials/header/index';
-
 interface ProfileProps{}
 
 // const userFields = ['id', 'first_name', 'second_name', 'display_name', 'login', 'avatar', 'email', 'phone'] as Array<keyof ProfileProps>;
@@ -59,7 +57,7 @@ class ProfileBase extends Block<ProfileProps> {
   }
 }
 
-const withUser = withStore((state) => ({...state.user}));
+const withUser = withStore((state: any) => ({...state.user}));
 export const Profile = withUser(ProfileBase);
    
 // console.log(store.getState().user)

@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
 import editProfileTpl from './edit-profile.hbs';
-import { HeaderPage } from '../../partials/header/index';
 import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
@@ -265,5 +264,5 @@ export class EditProfileBase extends Block <editProfileProps>{
   }
 }
 
-const withUser = withStore((state) => ({...state.user}));
+const withUser = withStore((state:any) => ({...state.user}));
 export const EditProfile = withUser(EditProfileBase);

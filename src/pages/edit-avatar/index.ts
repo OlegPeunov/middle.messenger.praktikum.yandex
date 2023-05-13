@@ -5,12 +5,9 @@ import signinTpl from './avatar_form.hbs';
 import './avatar_form.pcss';
 import { Button } from '../../partials/button/index';
 import router from '../../utils/Router';
-import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
-import store from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
-import { UpdateAvatar } from '../../api/AuthAPI';
 /* eslint-enable */
 
 interface editAvatarProps {}

@@ -3,10 +3,8 @@ import { Block } from '../../utils/Block';
 import { InputValidator } from '../../utils/InputValidator';
 import chatAdd from './add_chat.hbs';
 import { Button } from '../../partials/button/index';
-import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
-import MessagesController from '../../controllers/MessagesController';
 import ChatsController from '../../controllers/ChatsController';
 import router from '../../utils/Router';
 
