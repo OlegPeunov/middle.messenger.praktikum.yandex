@@ -3,7 +3,8 @@ import { Block } from '../../utils/Block';
 // eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index'
 
-import Tpl500 from './500.hbs';
+const Tpl500 = require("./500.hbs");
+
 
 interface Props500 {
 

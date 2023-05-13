@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
-import Tpl404 from './404.hbs';
+const Tpl404 = require("./404.hbs");
 // eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index';
 

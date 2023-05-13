@@ -3,7 +3,7 @@ import { Block } from '../../utils/Block';
 // eslint-disable-next-line
 import { Message } from '../../partials/message/index';
 // eslint-disable-next-line
-import messengerTpl from './messenger.hbs';
+const messengerTpl = require("./messenger.hbs");
 import router from '../../utils/Router';
 import { Button } from '../button/index';
 import MessagesController, { Message as MessageInfo } from '../../controllers/MessagesController';

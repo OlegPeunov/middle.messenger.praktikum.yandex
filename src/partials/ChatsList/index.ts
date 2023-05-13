@@ -6,8 +6,8 @@ import { ChatInfo } from '../../api/ChatsAPI';
 import ChatsController from '../../controllers/ChatsController';
 import { withStore } from '../../utils/Store';
 import store from '../../utils/Store';
+const listTpl = require("./chatsList.hbs");
 
-import listTpl from './chatsList.hbs';
 
 interface ChatsListProps {
   selectedChat: number | undefined;

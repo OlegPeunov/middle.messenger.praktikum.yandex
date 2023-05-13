@@ -1,5 +1,6 @@
 import {Block} from '../../utils/Block';
-import template from './chat.hbs';
+const template = require("./chat.hbs");
+
 import './chat.pcss';
 
 interface ChatProps {

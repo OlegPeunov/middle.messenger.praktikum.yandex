@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
-import editProfileTpl from './edit-profile.hbs';
+const editProfileTpl = require("./edit-profile.hbs");
 import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';

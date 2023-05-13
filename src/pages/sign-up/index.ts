@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
-import signupTpl from './signup.hbs';
+const signupTpl = require("./signup.hbs");
 import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';

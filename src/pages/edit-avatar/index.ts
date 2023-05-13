@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
 import { InputValidator } from '../../utils/InputValidator';
-import signinTpl from './avatar_form.hbs';
+const signinTpl = require("./avatar_form.hbs");
 import './avatar_form.pcss';
 import { Button } from '../../partials/button/index';
 import router from '../../utils/Router';

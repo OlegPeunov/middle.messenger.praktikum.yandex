@@ -7,7 +7,7 @@ import { Messenger } from '../../partials/Messenger';
 
 // eslint-disable-next-line
 import './main.pcss'
-import homeTpl from './home.hbs';
+const homeTpl = require("./home.hbs");
 
 interface HomeProps {
 

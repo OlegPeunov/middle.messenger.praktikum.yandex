@@ -2,7 +2,7 @@
 import { Block } from '../../utils/Block';
 import store from '../../utils/Store';
 import { withStore } from '../../utils/Store';
-import profileTpl from './profile.hbs';
+const profileTpl = require("./profile.hbs");
 import { Button } from '../../partials/button/index';
 import AuthController from '../../controllers/AuthController';
 import router from '../../utils/Router';

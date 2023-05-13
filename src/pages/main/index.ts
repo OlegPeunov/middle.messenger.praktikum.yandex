@@ -4,7 +4,7 @@ import { Block } from '../../utils/Block';
 import { Message } from '../../partials/message/index';
 // eslint-disable-next-line
 import { Chat } from '../../partials/chat/index';
-import mainTpl from './main.hbs';
+const mainTpl = require("./main.hbs");
 
 interface MainProps {
 

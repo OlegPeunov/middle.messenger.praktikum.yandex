@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
-import template from './button.hbs';
+const template = require("./button.hbs");
+
 import './button.pcss';
 
 interface ButtonProps {
