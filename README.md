@@ -27,7 +27,7 @@
 * Docker сборка - **docker build -t sprint4 .**
 * Docker запуск - **docker run -d sprint4**
 
-### [Посмотреть проект>>>](https://glowing-custard-98d816.netlify.app/)
+### [Посмотреть проект Render.com>>>](https://peunov-sprint4.onrender.com/)
 #### [Макет>>>](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0-1&t=JFuSa2YWbRhbvhdY-0)
 
 ***
