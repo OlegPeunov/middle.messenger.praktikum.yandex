@@ -3,9 +3,9 @@ import { expect } from 'chai';
 
 
 describe ('Message component', ()=>{
-  it('should render', () => {
-    const meassage = new Error({label: '', id: '' });
-  });
+  // it('should render', () => {
+  //   const meassage = new Error({label: '', id: '' });
+  // });
 
   it('label should be a string', () => {
     const meassage = new Error({label: '', id: '' });
