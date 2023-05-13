@@ -2,7 +2,6 @@
 import { Block } from '../../utils/Block';
 // eslint-disable-next-line
 import { Message } from '../../partials/message/index';
-import { Input } from '../../partials/input/index';
 // eslint-disable-next-line
 import messengerTpl from './messenger.hbs';
 import router from '../../utils/Router';
@@ -35,7 +34,7 @@ export class MessengerBase extends Block<MessengerProps>{
       className: 'user-manage',
       label: 'Добавить пользователя',
       events: {
-        click: (event:Event) => {
+        click: () => {
           // event.preventDefault();
           this.userAdd();
         },
@@ -48,7 +47,7 @@ export class MessengerBase extends Block<MessengerProps>{
       className: 'user-manage',
       label: 'Удалить пользователя',
       events: {
-        click: (event:Event) => {
+        click: () => {
           this.userDelete();
           router.go('/profile');
 
@@ -62,7 +61,7 @@ export class MessengerBase extends Block<MessengerProps>{
       className: 'user-manage',
       label: 'Удалить чат',
       events: {
-        click: (event:Event) => {
+        click: () => {
           this.chatDelete();
         },
       },
@@ -136,6 +135,7 @@ export class MessengerBase extends Block<MessengerProps>{
 
   async componentDidUpdate(oldProps: MessengerProps, newProps: MessengerProps): Promise<boolean> {
     // this.children.messages = this.createMessages(newProps);
+    console.log(oldProps)
     for( let i =0; i < newProps.messages.length; i++){
       const regex = /\d\d:\d\d/i;
       newProps.messages.forEach((message, i) =>{
@@ -181,7 +181,7 @@ export class MessengerBase extends Block<MessengerProps>{
   }
 }
 
-const withSelectedChatMessages = withStore(state => {
+const withSelectedChatMessages = withStore((state:any) => {
   const selectedChatId = state.selectedChat;
 
   if (!selectedChatId) {

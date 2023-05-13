@@ -148,6 +148,8 @@ export class Block<P extends Record<string, any> = any> {
 
   // eslint-disable-next-line
   async componentDidUpdate(oldProps: P, newProps: P): Promise<boolean> {
+    console.log(oldProps)
+    console.log(newProps)
     return true;
   }
 

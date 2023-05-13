@@ -53,7 +53,7 @@ class ChatsListBase extends Block<ChatsListProps> {
   
 
   async componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): Promise<boolean> {
-
+    console.log(oldProps)
     await newProps.chats.forEach(async (chat, i) =>{
       let ava:any = ''
 
@@ -115,6 +115,6 @@ class ChatsListBase extends Block<ChatsListProps> {
   }
 }
 
-const withChats = withStore((state) => ({chats: [...(state.chats || [])]}));
+const withChats = withStore((state:any) => ({chats: [...(state.chats || [])]}));
 
 export const ChatsList = withChats(ChatsListBase);
