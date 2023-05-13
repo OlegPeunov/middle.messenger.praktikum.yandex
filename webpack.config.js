@@ -11,10 +11,14 @@ module.exports = {
     filename: 'project-name.bundle.js'
   },
   resolve: {
-    extensions: ['.ts', '.js', '.json']
+    extensions: ['.ts', '.js', '.json'],
+    alias:{
+      handlebars: 'handlebars/dist/handlebars.min.js',
+    }
   },
   module: {
     rules: [
+      { test: /\.hbs$/, loader: "handlebars-loader" },
       {
         test: /\.tsx?$/,
         use: [
