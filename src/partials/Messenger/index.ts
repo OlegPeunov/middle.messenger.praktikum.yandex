@@ -105,6 +105,9 @@ export class MessengerBase extends Block<MessengerProps>{
     if(typeof store.getState().selectedChat === 'number'){
       await ChatsController.getUsers(store.getState().selectedChat)
         .then(res => console.log(Object.keys([res]).length))
+        .catch ((err)=>{
+          console.log(err)
+        })
     }
   }
 
@@ -112,21 +115,31 @@ export class MessengerBase extends Block<MessengerProps>{
   async userAdd() {
     const res = Number(prompt('Id пользователя'));
 
-    await ChatsController.addUserToChat(store.getState().selectedChat, res)
+    try{
+      await ChatsController.addUserToChat(store.getState().selectedChat, res)
+    } catch (e: any) {
+      console.error(e);
+    }
 
   }
 
 
   async userDelete() {
     const res = Number(prompt('Id пользователя'));
-
-    await ChatsController.delUserFromChat(store.getState().selectedChat, res)
+    try{
+      await ChatsController.delUserFromChat(store.getState().selectedChat, res)
+    } catch (e: any) {
+      console.error(e);
+    }
 
   }
 
   async chatDelete() {
     await ChatsController.delete(store.getState().selectedChat)
       .then(()=> location.reload())
+      .catch ((err)=>{
+        console.log(err)
+      })
   }
 
 
@@ -151,6 +164,9 @@ export class MessengerBase extends Block<MessengerProps>{
     if(typeof store.getState().selectedChat === 'number'){
       await ChatsController.getUsers(store.getState().selectedChat)
         .then(res => console.log(Object.keys([res]).length))
+        .catch ((err)=>{
+          console.log(err)
+        })
     }
     
     return true;

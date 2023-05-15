@@ -141,8 +141,12 @@ export class Block<P extends Record<string, any> = any> {
   // eslint-disable-next-line
   async _componentDidUpdate(oldProps: P, newProps: P) {
     // eslint-disable-next-line
-    if (await this.componentDidUpdate(oldProps, newProps)) {
-      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    try{
+      if (await this.componentDidUpdate(oldProps, newProps)) {
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+      }
+    } catch (e: any) {
+      console.error(e);
     }
   }
 
