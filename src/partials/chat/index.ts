@@ -1,5 +1,6 @@
 import {Block} from '../../utils/Block';
 const template = require("./chat.hbs");
+import './chat.pcss';
 
 import './chat.pcss';
 

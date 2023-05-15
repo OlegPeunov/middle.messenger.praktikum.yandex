@@ -9,6 +9,8 @@ import AuthController from '../../controllers/AuthController';
 import { UpdateData } from '../../api/AuthAPI';
 import store from '../../utils/Store';
 import { withStore } from '../../utils/Store';
+import './edit-profile.pcss';
+
 
 /* eslint-enable */
 interface editProfileProps {}

@@ -7,7 +7,7 @@ import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import ChatsController from '../../controllers/ChatsController';
 import router from '../../utils/Router';
-
+import './add_chat.pcss';
 
 /* eslint-enable */
 interface addChatProps {}

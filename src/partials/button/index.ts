@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
 const template = require("./button.hbs");
+import './button.pcss';
 
 import './button.pcss';
 

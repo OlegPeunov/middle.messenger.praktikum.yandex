@@ -6,6 +6,10 @@ const PORT = 3000;
 
 app.use(express.static('./dist/'));
 
+app.get('/*', (req, res) => {
+  res.sendFile('index.ts.html', {root: `${__dirname}/../dist`});
+})
+
 app.listen(PORT, function () {
-  console.log(`Example app listening on port ${PORT}!`);
+  console.log(`Example app listening on port ${process.env.PORT || PORT}!`);
 });

@@ -3,6 +3,7 @@ import { Block } from '../../utils/Block';
 const Tpl404 = require("./404.hbs");
 // eslint-disable-next-line
 import { HeaderPage } from '../../partials/header/index';
+import './404.pcss';
 
 interface Props404 {
 

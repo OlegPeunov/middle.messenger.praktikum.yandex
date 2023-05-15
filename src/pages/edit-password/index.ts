@@ -7,6 +7,7 @@ import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import AuthController from '../../controllers/AuthController';
 import { UpdatePasswordData } from '../../api/AuthAPI';
+import './password_form.pcss';
 /* eslint-enable */
 
 interface editPasswordProps {

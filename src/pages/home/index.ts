@@ -4,6 +4,7 @@ import { Block } from '../../utils/Block';
 // eslint-disable-next-line
 import { ChatsList } from '../../partials/ChatsList';
 import { Messenger } from '../../partials/Messenger';
+import './main.pcss';
 
 // eslint-disable-next-line
 import './main.pcss'

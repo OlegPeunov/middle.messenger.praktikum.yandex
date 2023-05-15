@@ -1,14 +1,12 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
 // eslint-disable-next-line
-import { HeaderPage } from '../../partials/header/index'
+import { HeaderPage } from '../../partials/header/index';
+import './500.pcss';
 
 const Tpl500 = require("./500.hbs");
 
-
-interface Props500 {
-
-}
+interface Props500 {}
 
 // eslint-disable-next-line
 export class Page500 extends Block<Props500>{

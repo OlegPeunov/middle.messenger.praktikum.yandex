@@ -8,6 +8,7 @@ import router from '../../utils/Router';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import AuthController from '../../controllers/AuthController';
+import './avatar_form.pcss';
 /* eslint-enable */
 
 interface editAvatarProps {}

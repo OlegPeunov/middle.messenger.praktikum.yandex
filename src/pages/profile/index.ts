@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
+import './profile.pcss'
 import store from '../../utils/Store';
 import { withStore } from '../../utils/Store';
 const profileTpl = require("./profile.hbs");

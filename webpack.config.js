@@ -17,6 +17,13 @@ module.exports = {
     //   handlebars: 'handlebars/dist/handlebars.min.js',
     // }
   },
+  devServer: {
+    historyApiFallback: true,
+    bonjour: {
+      type: 'http',
+      protocol: 'udp',
+    },
+  },
   module: {
     rules: [
       { test: /\.hbs$/, loader: "handlebars-loader" },

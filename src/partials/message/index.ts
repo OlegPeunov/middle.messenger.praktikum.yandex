@@ -2,7 +2,6 @@
 import {Block} from '../../utils/Block';
 // eslint-disable-next-line
 const template = require("./message.hbs");
-
 import './message.pcss';
 
 interface MessageProps {

@@ -6,6 +6,7 @@ import { Button } from '../../partials/button/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import AuthController from '../../controllers/AuthController';
+import './signin.pcss';
 /* eslint-enable */
 
 interface signinProps {

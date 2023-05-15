@@ -3,7 +3,7 @@
 import { HomePage } from './pages/home';
 import { Page404 } from './pages/404';
 import { Page500 } from './pages/500';
-import { Profile } from './pages/profile';
+import { Profile } from './pages/profile/';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.ChatAdd, ChatAdd)
 
   
-    Router.start();
+  Router.start();
   console.log('webpack старт')
   console.log(HomePage)
 

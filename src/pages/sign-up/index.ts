@@ -7,6 +7,7 @@ import { Error } from '../../partials/error/index';
 import { Button } from '../../partials/button/index';
 import { SignupData } from '../../api/AuthAPI';
 import AuthController from '../../controllers/AuthController';
+import './signup.pcss';
 /* eslint-enable */
 
 interface signupProps {
