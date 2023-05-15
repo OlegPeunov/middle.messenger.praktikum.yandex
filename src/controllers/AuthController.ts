@@ -71,11 +71,14 @@ export class AuthController {
   }
 
   async fetchUser() {
-    const user = await this.api.read();
-    store.set('user', user);
-    store.set('id', user.id);
+    try {
+      const user = await this.api.read();
+      store.set('user', user);
+      store.set('id', user.id);
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
-
   async logout() {
     try {
       MessagesController.closeAll();
