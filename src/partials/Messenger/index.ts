@@ -4,12 +4,11 @@ import { Block } from '../../utils/Block';
 import { Message } from '../../partials/message/index';
 // eslint-disable-next-line
 const messengerTpl = require("./messenger.hbs");
-import router from '../../utils/Router';
+// import router from '../../utils/Router';
 import { Button } from '../button/index';
 import MessagesController, { Message as MessageInfo } from '../../controllers/MessagesController';
 import { withStore } from '../../utils/Store';
 import store from '../../utils/Store';
-
 import ChatsController from '../../controllers/ChatsController';
 
 interface MessengerProps {
@@ -49,8 +48,6 @@ export class MessengerBase extends Block<MessengerProps>{
       events: {
         click: () => {
           this.userDelete();
-          router.go('/profile');
-
         },
       },
     });
