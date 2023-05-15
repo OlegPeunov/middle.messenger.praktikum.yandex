@@ -66,8 +66,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './dist/index.html',
-
+      template: './static/index.html',
     }),
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
