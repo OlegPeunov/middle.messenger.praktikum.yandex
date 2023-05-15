@@ -86,10 +86,14 @@ export class ChatAdd extends Block<addChatProps>{
 
     const data = Object.fromEntries(values);
 
-    await ChatsController.create(data.title)
-      .then(()=>{
-        router.go('/');
-      })
+    try {
+      await ChatsController.create(data.title)
+        .then(()=>{
+          router.go('/');
+        })
+    } catch (e: any) {
+      console.error(e);
+    }
   }
 
   render() {

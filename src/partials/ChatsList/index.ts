@@ -25,7 +25,11 @@ class ChatsListBase extends Block<ChatsListProps> {
 
     this.element!.classList.add('chat__left');
 
-    await ChatsController.fetchChats();
+    try {
+      await ChatsController.fetchChats();
+    } catch (e: any) {
+      console.error(e);
+    }
 
     this.props.chats.forEach(async (chat, i) =>{
       
