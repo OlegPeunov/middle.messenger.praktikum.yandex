@@ -1,0 +1,13 @@
+{
+  "eslint": {
+      "md": {
+          "enabled": false
+      }
+  },
+  "markdownlint": {
+      "enabled": false
+  },
+  "mdjsonlint": {
+      "enabled": false
+  }
+}
