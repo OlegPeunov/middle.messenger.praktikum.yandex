@@ -66,7 +66,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './static/index.html',
+      template: './dist/index.html',
 
     }),
     new webpack.DefinePlugin({
