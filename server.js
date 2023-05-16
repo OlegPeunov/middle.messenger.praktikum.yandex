@@ -7,7 +7,7 @@ const PORT = 3000;
 app.use(express.static('./dist/'));
 
 app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: `${__dirname}/../dist` });
+  res.sendFile('index.html', { root: `./dist` });
 });
 
 app.listen(PORT, () => {
