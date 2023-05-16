@@ -25,7 +25,7 @@
 * Build проекта - **npm run build**
 * Тест файлов - **npm run test**
 * Docker сборка - **docker build -t sprint4 .**
-* Docker запуск - **docker run -p 4000:3000 -d sprint4**
+* Docker запуск - **docker run -p 3000 -d sprint4**
 
 ### [Посмотреть проект Render.com>>>](https://peunov-sprint4.onrender.com/)
 #### [Макет>>>](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0-1&t=JFuSa2YWbRhbvhdY-0)
