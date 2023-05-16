@@ -10,7 +10,6 @@
 //   console.log(`Example app listening on port ${PORT}!`);
 // });
 
-
 // // server.js
 const express = require('express');
 
@@ -20,7 +19,7 @@ const PORT = 3000;
 app.use(express.static('./dist/'));
 
 app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: `./dist` });
+  res.sendFile('index.html', { root: './dist' });
 });
 
 app.listen(PORT, () => {

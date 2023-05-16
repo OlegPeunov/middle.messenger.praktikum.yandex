@@ -8,8 +8,8 @@
     "start": "node ./server.js",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
     "eslint": "npx eslint .",
-    "stylelint": "px stylelint \"**/*.pcss\"",
-    "lint:all": "npm run eslint && pm run stylelint"
+    "stylelint": "npx stylelint \"**/*.pcss\"",
+    "lint:all": "npm run eslint && npx run stylelint"
   },
   "husky": {
     "hooks": {
@@ -38,6 +38,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
     "express": "^4.18.2",
     "html-webpack-plugin": "^5.5.1",
     "husky": "^8.0.3",
