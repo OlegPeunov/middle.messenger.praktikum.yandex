@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
-import editProfileTpl from './edit-profile.hbs';
-import { HeaderPage } from '../../partials/header/index';
+const editProfileTpl = require("./edit-profile.hbs");
 import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
@@ -10,12 +9,13 @@ import AuthController from '../../controllers/AuthController';
 import { UpdateData } from '../../api/AuthAPI';
 import store from '../../utils/Store';
 import { withStore } from '../../utils/Store';
-import { User } from '../../api/UserAPI';
+import './edit-profile.pcss';
+
 
 /* eslint-enable */
-interface editProfileProps extends User {}
+interface editProfileProps {}
 // eslint-disable-next-line
-export class EditProfileBase extends Block<editProfileProps>{
+export class EditProfileBase extends Block <editProfileProps>{
   
   constructor(props: editProfileProps) {
     super('div', props);
@@ -23,8 +23,8 @@ export class EditProfileBase extends Block<editProfileProps>{
 
   async init() {
 
-    const inputValidator = new InputValidator('');
-    const validateButton = {
+    const inputValidator = new InputValidator();
+    const validateButton: any = {
       input1: false,
       input2: false,
       input3: false,
@@ -35,7 +35,7 @@ export class EditProfileBase extends Block<editProfileProps>{
       input8: false,
     };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1 && !validateButton.input2) {
         btn.setFalse();
       } else {
@@ -266,7 +266,5 @@ export class EditProfileBase extends Block<editProfileProps>{
   }
 }
 
-
-
-const withUser = withStore((state) => ({...state.user}));
+const withUser = withStore((state:any) => ({...state.user}));
 export const EditProfile = withUser(EditProfileBase);

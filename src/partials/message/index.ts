@@ -1,13 +1,13 @@
 // eslint-disable-next-line
 import {Block} from '../../utils/Block';
 // eslint-disable-next-line
-import template from './message.hbs';
+const template = require("./message.hbs");
 import './message.pcss';
 
 interface MessageProps {
-  contentClass: string;
-  textMessage: string;
-  showImg: string;
+  contentClass: any;
+  textMessage: any;
+  showImg: any;
 }
 
 // eslint-disable-next-line

@@ -1,12 +1,12 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
 import { InputValidator } from '../../utils/InputValidator';
-import signinTpl from './signin.hbs';
+const signinTpl = require("./signin.hbs");
 import { Button } from '../../partials/button/index';
-import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import AuthController from '../../controllers/AuthController';
+import './signin.pcss';
 /* eslint-enable */
 
 interface signinProps {
@@ -19,10 +19,10 @@ export class Signin extends Block<signinProps>{
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = { input1: true, input2: true };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1 && !validateButton.input2) {
         btn.setFalse();
       } else {
@@ -123,7 +123,7 @@ export class Signin extends Block<signinProps>{
 
     const data = Object.fromEntries(values);
 
-    AuthController.signin(data as SigninData);
+    AuthController.signin(data);
   }
 
   render() {

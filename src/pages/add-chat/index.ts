@@ -1,15 +1,13 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
 import { InputValidator } from '../../utils/InputValidator';
-import chatAdd from './add_chat.hbs';
+var chatAdd = require("./add_chat.hbs");
 import { Button } from '../../partials/button/index';
-import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
-import MessagesController from '../../controllers/MessagesController';
 import ChatsController from '../../controllers/ChatsController';
 import router from '../../utils/Router';
-
+import './add_chat.pcss';
 
 /* eslint-enable */
 interface addChatProps {}
@@ -21,10 +19,10 @@ export class ChatAdd extends Block<addChatProps>{
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = { input1: true };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1) {
         btn.setFalse();
       } else {
@@ -88,10 +86,14 @@ export class ChatAdd extends Block<addChatProps>{
 
     const data = Object.fromEntries(values);
 
-    await ChatsController.create(data.title)
-      .then(()=>{
-        router.go('/');
-      })
+    try {
+      await ChatsController.create(data.title)
+        .then(()=>{
+          router.go('/');
+        })
+    } catch (e: any) {
+      console.error(e);
+    }
   }
 
   render() {

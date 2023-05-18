@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
-import template from './input.hbs';
+const template = require("./input.hbs");
 import './input.pcss';
 
 interface InputProps {

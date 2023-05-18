@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
-import template from './error.hbs';
+const template = require("./error.hbs");
 import './error.pcss';
 
 interface ErrorProps {

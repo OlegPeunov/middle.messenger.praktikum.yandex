@@ -12,14 +12,13 @@ export class Block<P extends Record<string, any> = any> {
     FLOW_RENDER: 'flow:render',
   } as const;
 
-  public id = nanoid(6);
-
-  protected props: P;
-
   // eslint-disable-next-line
-  public children: Record<string, Block | Block[]>;
+  public children: Record<string, Block>;
 
   private eventBus: () => EventBus;
+
+  public id = nanoid(6);
+  protected props: P;
 
   private _element: HTMLElement | null = null;
 
@@ -55,9 +54,9 @@ export class Block<P extends Record<string, any> = any> {
   }
 
   // eslint-disable-next-line
-  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block | Block[]>} {
+  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block >} {
     const props: Record<string, unknown> = {};
-    const children: Record<string, Block | Block[]> = {};
+    const children: Record<string, Block > = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -140,15 +139,21 @@ export class Block<P extends Record<string, any> = any> {
     });
   }
   // eslint-disable-next-line
-  private _componentDidUpdate(oldProps: P, newProps: P) {
+  async _componentDidUpdate(oldProps: P, newProps: P) {
     // eslint-disable-next-line
-    if (this.componentDidUpdate(oldProps, newProps)) {
-      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    try{
+      if (await this.componentDidUpdate(oldProps, newProps)) {
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+      }
+    } catch (e: any) {
+      console.error(e);
     }
   }
 
   // eslint-disable-next-line
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  async componentDidUpdate(oldProps: P, newProps: P): Promise<boolean> {
+    console.log(oldProps)
+    console.log(newProps)
     return true;
   }
 
@@ -182,8 +187,9 @@ export class Block<P extends Record<string, any> = any> {
 
   protected compile(template: (context: any) => string, context: any) {
     const contextAndStubs = { ...context };
-
+    
     Object.entries(this.children).forEach(([name, component]) => {
+      
       contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
     });
 

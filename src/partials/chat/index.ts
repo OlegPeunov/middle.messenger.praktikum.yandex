@@ -1,5 +1,7 @@
 import {Block} from '../../utils/Block';
-import template from './chat.hbs';
+const template = require("./chat.hbs");
+import './chat.pcss';
+
 import './chat.pcss';
 
 interface ChatProps {
@@ -8,7 +10,7 @@ interface ChatProps {
   isUnread: string;
   unread_count: string;
   isSelected: boolean;
-  avatar: string;
+  avatar: string | any;
   events: {
     click: () => void;
   }

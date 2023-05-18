@@ -1,16 +1,14 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
 import { InputValidator } from '../../utils/InputValidator';
-import signinTpl from './avatar_form.hbs';
+const signinTpl = require("./avatar_form.hbs");
 import './avatar_form.pcss';
 import { Button } from '../../partials/button/index';
 import router from '../../utils/Router';
-import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
-import store from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
-import { UpdateAvatar } from '../../api/AuthAPI';
+import './avatar_form.pcss';
 /* eslint-enable */
 
 interface editAvatarProps {}
@@ -23,10 +21,10 @@ export class EditAvatar extends Block<editAvatarProps>{
   init() {
     AuthController.fetchUser();
 
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = { input1: true };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1) {
         btn.setFalse();
       } else {

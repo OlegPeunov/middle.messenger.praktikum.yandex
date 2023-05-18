@@ -1,7 +1,8 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
 import './profileField.pcss';
-import template from './profileField.hbs';
+const template = require("./profileField.hbs");
+
 
 interface profileFieldProps {
   label: string;

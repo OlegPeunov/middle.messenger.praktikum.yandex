@@ -1,15 +1,15 @@
 /* eslint-disable */
+// import "./pages/index.pcss";
 import { HomePage } from './pages/home';
 import { Page404 } from './pages/404';
 import { Page500 } from './pages/500';
-import { Profile } from './pages/profile';
+import { Profile } from './pages/profile/';
 import { Signin } from './pages/sign-in';
 import { Signup } from './pages/sign-up';
 import { EditProfile } from './pages/edit-profile';
 import { EditPassword } from './pages/edit-password';
 import { EditAvatar } from './pages/edit-avatar';
 import { ChatAdd } from './pages/add-chat';
-import  store  from './utils/Store';
 import AuthController from './controllers/AuthController';
 import Router from './utils/Router';
 
@@ -33,10 +33,11 @@ window.addEventListener('DOMContentLoaded', async () => {
       console.log(res)
     })
     .catch((err)=>{
+      console.log(err)
       Router.go('/sign-in');
     })
-  // if(window.location.pathname === '/edit-profile'){
-  // }
+  if(window.location.pathname === '/edit-profile'){
+  }
 
   Router
     .use(Routes.Index, HomePage)
@@ -49,6 +50,12 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.EditPassword, EditPassword)
     .use(Routes.EditAvatar, EditAvatar)
     .use(Routes.ChatAdd, ChatAdd)
-    .start();
+
+  
+  Router.start();
+  console.log('webpack старт')
+  console.log(HomePage)
+
 });
+
 /* eslint-enable */

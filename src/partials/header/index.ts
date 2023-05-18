@@ -2,7 +2,8 @@
 import { Block } from '../../utils/Block';
 // eslint-disable-next-line
 import { Button } from '../../partials/button/index';
-import headerTpl from './header.hbs';
+const headerTpl = require("./header.hbs");
+
 
 interface HeaderProps {
 

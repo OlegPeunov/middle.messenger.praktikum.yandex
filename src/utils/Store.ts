@@ -33,12 +33,12 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-export const withStore = (mapStateToProps: (state: State) => any) => {
+export const withStore:any = (mapStateToProps: (state: State) => any) => {
   return (Component: typeof Block) => {
     return class WithStore extends Component {
       constructor (props: any){
         const mappedState = mapStateToProps(store.getState());
-        super({...props, ...mappedState});
+        super({...props, ...mappedState}, '');
   
         store.on(StoreEvents.Updated, (newState) => {
           const newMappedState = mapStateToProps(newState)
@@ -79,4 +79,3 @@ window.store = store;
 // }
 
 export default store;
-

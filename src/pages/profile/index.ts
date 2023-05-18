@@ -1,17 +1,15 @@
 // eslint-disable-next-line
 import { Block } from '../../utils/Block';
+import './profile.pcss'
 import store from '../../utils/Store';
 import { withStore } from '../../utils/Store';
-import profileTpl from './profile.hbs';
+const profileTpl = require("./profile.hbs");
 import { Button } from '../../partials/button/index';
 import AuthController from '../../controllers/AuthController';
-import { User } from '../../api/UserAPI';
 import router from '../../utils/Router';
 
 // eslint-disable-next-line
-import { HeaderPage } from '../../partials/header/index';
-
-interface ProfileProps extends User {}
+interface ProfileProps{}
 
 // const userFields = ['id', 'first_name', 'second_name', 'display_name', 'login', 'avatar', 'email', 'phone'] as Array<keyof ProfileProps>;
 
@@ -23,7 +21,6 @@ class ProfileBase extends Block<ProfileProps> {
   }
 
   async init() {    
-    // this.children.headerBlock = new HeaderPage({});
     this.children.exitButton = new Button({
       active: false,
       id: 'logOut-btn',
@@ -61,7 +58,7 @@ class ProfileBase extends Block<ProfileProps> {
   }
 }
 
-const withUser = withStore((state) => ({...state.user}));
+const withUser = withStore((state: any) => ({...state.user}));
 export const Profile = withUser(ProfileBase);
    
 // console.log(store.getState().user)

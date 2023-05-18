@@ -1,13 +1,13 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
 import { InputValidator } from '../../utils/InputValidator';
-import signinTpl from './password_form.hbs';
+const signinTpl = require("./password_form.hbs");
 import { Button } from '../../partials/button/index';
-import { HeaderPage } from '../../partials/header/index';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import AuthController from '../../controllers/AuthController';
 import { UpdatePasswordData } from '../../api/AuthAPI';
+import './password_form.pcss';
 /* eslint-enable */
 
 interface editPasswordProps {
@@ -20,10 +20,10 @@ export class EditPassword extends Block<editPasswordProps>{
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = { input2: true, input1: true };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input2 && !validateButton.input1) {
         btn.setFalse();
       } else {

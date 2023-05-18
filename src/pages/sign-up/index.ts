@@ -1,13 +1,13 @@
 /* eslint-disable */
 import { Block } from '../../utils/Block';
-import signupTpl from './signup.hbs';
+const signupTpl = require("./signup.hbs");
 import { InputValidator } from '../../utils/InputValidator';
 import { Input } from '../../partials/input/index';
 import { Error } from '../../partials/error/index';
 import { Button } from '../../partials/button/index';
-import { HeaderPage } from '../../partials/header/index';
 import { SignupData } from '../../api/AuthAPI';
 import AuthController from '../../controllers/AuthController';
+import './signup.pcss';
 /* eslint-enable */
 
 interface signupProps {
@@ -20,7 +20,7 @@ export class Signup extends Block<signupProps> {
   }
 
   init() {
-    const inputValidator = new InputValidator('');
+    const inputValidator = new InputValidator();
     const validateButton = {
       input1: true,
       input2: true,
@@ -31,7 +31,7 @@ export class Signup extends Block<signupProps> {
       input7: true,
     };
 
-    function checkBtn(btn) {
+    function checkBtn(btn:any) {
       if (!validateButton.input1 && !validateButton.input2) {
         btn.setFalse();
       } else {

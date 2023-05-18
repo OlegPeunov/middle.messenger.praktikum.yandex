@@ -6,10 +6,11 @@ import { ChatInfo } from '../../api/ChatsAPI';
 import ChatsController from '../../controllers/ChatsController';
 import { withStore } from '../../utils/Store';
 import store from '../../utils/Store';
+const listTpl = require("./chatsList.hbs");
 
-import listTpl from './chatsList.hbs';
 
 interface ChatsListProps {
+  selectedChat: number | undefined;
   chats: ChatInfo[];
   isLoaded: boolean;
 }
@@ -24,13 +25,14 @@ class ChatsListBase extends Block<ChatsListProps> {
 
     this.element!.classList.add('chat__left');
 
-    await ChatsController.fetchChats();
-    // console.log(store.state.chats)
+    try {
+      await ChatsController.fetchChats();
+    } catch (e: any) {
+      console.error(e);
+    }
 
     this.props.chats.forEach(async (chat, i) =>{
-      // console.log(chat.avatar)
       
-      console.log(chat.avatar === null || chat.avatar === undefined)
       const chatName:string = 'chat'+i;
       const isSelected = store.getState().selectedChat === chat.id ? true : false;
       const chatNew = new Chat({
@@ -54,8 +56,8 @@ class ChatsListBase extends Block<ChatsListProps> {
 
   
 
-  async componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
-
+  async componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): Promise<boolean> {
+    console.log(oldProps)
     await newProps.chats.forEach(async (chat, i) =>{
       let ava:any = ''
 
@@ -73,7 +75,6 @@ class ChatsListBase extends Block<ChatsListProps> {
             console.log(err)
           })
       }
-      console.log(ava)
 
       const chatName:string = 'chat'+i;
       const isSelected = store.getState().selectedChat === chat.id ? true : false;
@@ -98,7 +99,7 @@ class ChatsListBase extends Block<ChatsListProps> {
     return true;
   }
 
-  async getAva(ava) {
+  async getAva(ava:any) {
     if(ava !== null){
       await fetch(`https://ya-praktikum.tech/api/v2/resources${ava}`, {
       method: 'get',
@@ -118,6 +119,6 @@ class ChatsListBase extends Block<ChatsListProps> {
   }
 }
 
-const withChats = withStore((state) => ({chats: [...(state.chats || [])]}));
+const withChats = withStore((state:any) => ({chats: [...(state.chats || [])]}));
 
 export const ChatsList = withChats(ChatsListBase);

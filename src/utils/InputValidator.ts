@@ -1,14 +1,12 @@
 // eslint-disable-next-line
 export class InputValidator {
-  private formEvent: any;
-
+  
   private res: {'err': boolean, 'message': string | null} = { err: false, message: null };
   private pasWords: {'pass1':string | null, 'pass2': string | null} = { pass1: null, pass2: null };
-  constructor(formEvent: unknown) {
-    this.formEvent = formEvent;
+  constructor() {
+    
   }
-  
-  regularCheck(value, name) {
+  regularCheck(value:any, name: any) {
 
     const checkType = name;
     const checkValue = value;
@@ -21,6 +19,7 @@ export class InputValidator {
     const regexOneCap = /([A-Z].*[0-9])|([0-9].*[A-Z])/;
     const regexLang1 = /^[a-zа-яё-]*$/gi;
     const regexLang2 = /^[\w_-]*$/gi;
+    
     // const regexLink = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
     
     // if (checkType === 'link' && value.length !== 0) {
@@ -149,5 +148,4 @@ export class InputValidator {
     this.res.message = '';
     return this.res;
   }
-  
 }
